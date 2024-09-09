@@ -1500,9 +1500,10 @@ def get_wds_dataset_vggsound_audioset_music_intra_contrast(args, preprocess_img,
     input_shards = args.train_data if is_train else args.val_data
     print(input_shards)
     if is_train and args.train_data == "audioset_vggsound_music":
-        input_shards = ["/localdata_ssd/lsm/Stage1_Pretrained_Packed/VGGSound/Train/vggsound-{}.tar".format(str(i).zfill(6)) for i in range(32)]
-        input_shards.extend(["/localdata_ssd/lsm/Stage1_Pretrained_Packed/AudioSet/Train/audioset-{}.tar".format(str(i).zfill(6)) for i in range(32)])
-        input_shards.extend(["/localdata_ssd/lsm/Stage1_Pretrained_Packed/AudioSet_Music/Train/audioset_music-{}.tar".format(str(i).zfill(6)) for i in range(8)])
+        # input_shards = ["/content/drive/MyDrive/Diff-Foley-Workspace/training/open_cavp_main/src/training_dummy_files_vgg/vggsound-{}.tar".format(str(i).zfill(6)) for i in range(32)
+        input_shards = ["/content/drive/MyDrive/Diff-Foley-Workspace/video/archive_{}.tar".format(str(i)) for i in range(1,2)]
+        #input_shards.extend(["/content/drive/MyDrive/Diff-Foley-Workspace/training/open_cavp_main/src/training_dummy_files_audioset/audioset-{}.tar".format(str(i).zfill(6)) for i in range(32)])
+        #input_shards.extend(["/content/drive/MyDrive/Diff-Foley-Workspace/training/open_cavp_main/src/training_dummy_files_audioset_music/audioset_music-{}.tar".format(str(i).zfill(6)) for i in range(8)])
         print("Shard List: ", input_shards)    
 
     assert input_shards is not None
@@ -2142,8 +2143,19 @@ def get_wds_dataset_vggsound_audioset_intra_contrast(args, preprocess_img, is_tr
 def preprocess_vggsound_audioset_temporal_contrast(sample, sample_num=4, shift_lb=8):
     # image, json = sample
     # print(src)
-    # print(sample.keys())
-    spec, video = sample["spec.npy"], sample["video.jpg"]
+    print("-----------------debug----------------")
+    print(sample.keys())
+    try:
+        spec = sample["spec.npy"]
+        video = sample["video.jpg"]
+    except KeyError as e:
+        # Print the problematic sample for debugging
+        print(f"Missing key: {e} in sample with keys: {sample.keys()}")
+        print(f"Sample content: {sample}")
+        logging.error(f"Missing key: {e} in sample with keys: {sample.keys()}")
+        logging.error(f"Sample content: {sample}")
+        return None  # Skip this sample or handle it as needed
+    
     video, spec, start_frame, end_frame = cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_num=sample_num, shift_lb=shift_lb)
     # data_dict = {}
     # data_dict["spec"] = spec
