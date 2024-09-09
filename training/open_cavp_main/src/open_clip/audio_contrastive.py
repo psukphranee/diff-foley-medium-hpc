@@ -26,6 +26,12 @@ from torch.utils.checkpoint import checkpoint
 from torch.nn import functional as F
 from collections import OrderedDict
 
+import os
+
+home_path = os.path.expanduser("~")
+
+print("Home directory:", home_path)
+
 
 # ViVit:
 from .vit import ViViT, ViViT_mean
@@ -1994,7 +2000,13 @@ if __name__ == "__main__":
 
     # Load Pretrained:
     model = ResNet3dSlowOnly(depth=50, pretrained=None)
-    ckpt_path = "/public/MARS/Users/lsm/lsm_project/lsm_project/open_clip-main/src/pretrained_model/slowonly_r50_256p_4x16x1_256e_kinetics400_rgb_20200820-bea7701f.pth"
+    #===============
+    #9/9/24 Panya
+    project_directory = os.path.join(home_path, 'Diff-Foley')
+    ckpt_directory = os.path.join(project_directory, "training/open_cavp_main/src/pretrained_mode")
+    #===============
+    ckpt_path = os.path.join(ckpt_directory, "slowonly_r50_256p_4x16x1_256e_kinetics400_rgb_20200820-bea7701f.pth")
+    
     state_dict = torch.load(ckpt_path)['state_dict']
     new_state_dict = {}
     for key in state_dict.keys():
