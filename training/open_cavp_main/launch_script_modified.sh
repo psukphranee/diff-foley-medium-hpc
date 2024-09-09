@@ -1,3 +1,6 @@
+#!/bin/bash
+
+
 CUDA_VISIBLE_DEVICES=0 torchrun --nproc_per_node=1 -m src.training.main_wds_intra_contrast \
 --train-data audioset_vggsound_music --val-data 'Test/vggsound-{000000..000031}.tar' --train-num-samples 567980 \
 --batch-size 1 --precision amp --workers 1 --dataset-type vggsound_audioset_music_webdataset_intra_contrast \
