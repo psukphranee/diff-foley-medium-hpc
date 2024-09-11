@@ -37,6 +37,8 @@ except ImportError:
 
 #===============
 #9/11/24 Panya
+import os
+home_path = os.path.expanduser("~")
 diff_foley_main = os.path.join(home_path, 'Diff-Foley')
 ckpt_directory = os.path.join(diff_foley_main, "training/open_cavp_main/src/pretrained_model")
 #===============
