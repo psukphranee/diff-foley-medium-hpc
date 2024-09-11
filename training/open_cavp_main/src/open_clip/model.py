@@ -2,6 +2,8 @@
 
 Adapted from https://github.com/openai/CLIP. Originally MIT License, Copyright (c) 2021 OpenAI.
 """
+
+#/Users/920753844/Diff-Foley/training/open_cavp_main/src/pretrained_model
 from dataclasses import dataclass
 import logging
 import math
@@ -30,7 +32,7 @@ from .aug_utils import SpecAugmentation
 import os
 home_path = os.path.expanduser("~")
 diff_foley_main_directory = os.path.join(home_path, 'Diff-Foley')
-open_clip_directory = os.path.join(diff_foley_main_directory, "training/open_clip")
+open_clip_directory = os.path.join(diff_foley_main_directory, "training/open_cavp_main")
 ckpt_directory = os.path.join(diff_foley_main_directory, "training/open_cavp_main/src/pretrained_model")
 #===============
 
