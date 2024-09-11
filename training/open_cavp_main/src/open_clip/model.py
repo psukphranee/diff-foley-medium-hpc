@@ -581,7 +581,8 @@ class CLIP_Video_Spec(nn.Module):
         
         if self.audio_pretrained:
             # Load Audio pretrained:
-            ckpt_path = "/public/MARS/Users/lsm/lsm_project/lsm_project/open_clip-main/src/pretrained_model/Cnn14_16k_mAP=0.438.pth"
+            #ckpt_path = "/public/MARS/Users/lsm/lsm_project/lsm_project/open_clip-main/src/pretrained_model/Cnn14_16k_mAP=0.438.pth"
+            ckpt_path = os.path.join(open_clip_directory, "src/pretrained_model/Cnn14_16k_mAP=0.438.pth")
             state_dict = torch.load(ckpt_path)['model']
             self.spec_encoder.load_state_dict(state_dict, strict=False)
             print("====> Load Pretrained Audio Encoder Succes from: {}".format(ckpt_path))
@@ -1088,7 +1089,8 @@ class CLIP_Video_Spec_Intra_Mean(nn.Module):
         
         if self.audio_pretrained:
             # Load Audio pretrained:
-            ckpt_path = "/public/MARS/Users/lsm/lsm_project/lsm_project/open_clip-main/src/pretrained_model/Cnn14_16k_mAP=0.438.pth"
+            #ckpt_path = "/public/MARS/Users/lsm/lsm_project/lsm_project/open_clip-main/src/pretrained_model/Cnn14_16k_mAP=0.438.pth"
+            ckpt_path = os.path.join(open_clip_directory, "src/pretrained_model/Cnn14_16k_mAP=0.438.pth")
             state_dict = torch.load(ckpt_path)['model']
             self.spec_encoder.load_state_dict(state_dict, strict=False)
             print("====> Load Pretrained Audio Encoder Succes from: {}".format(ckpt_path))
