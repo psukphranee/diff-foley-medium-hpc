@@ -27,8 +27,9 @@ from .aug_utils import SpecAugmentation
 
 #===============
 #9/11/24 Panya
+import os
 diff_foley_main_directory = os.path.join(home_path, 'Diff-Foley')
-open_cavp_directory = os.path.join(diff_foley_main_directory, "training/open_cavp_main")
+open_clip_directory = os.path.join(diff_foley_main_directory, "training/open_clip")
 ckpt_directory = os.path.join(diff_foley_main_directory, "training/open_cavp_main/src/pretrained_model")
 #===============
 
@@ -563,7 +564,8 @@ class CLIP_Video_Spec(nn.Module):
         # Load Pretrained:
         if self.video_pretrained:
             # Load Video pretained:
-            ckpt_path = "/public/MARS/Users/lsm/lsm_project/lsm_project/open_clip-main/src/pretrained_model/slowonly_r50_256p_4x16x1_256e_kinetics400_rgb_20200820-bea7701f.pth"
+            #ckpt_path = "/public/MARS/Users/lsm/lsm_project/lsm_project/open_clip-main/src/pretrained_model/slowonly_r50_256p_4x16x1_256e_kinetics400_rgb_20200820-bea7701f.pth"
+            ckpt_path = os.path.join(open_clip_directory, "src/pretrained_model/slowonly_r50_256p_4x16x1_256e_kinetics400_rgb_20200820-bea7701f.pth")
             state_dict = torch.load(ckpt_path)['state_dict']
             new_state_dict = {}
             for key in state_dict.keys():
