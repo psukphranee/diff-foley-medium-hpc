@@ -28,6 +28,7 @@ from .aug_utils import SpecAugmentation
 #===============
 #9/11/24 Panya
 import os
+home_path = os.path.expanduser("~")
 diff_foley_main_directory = os.path.join(home_path, 'Diff-Foley')
 open_clip_directory = os.path.join(diff_foley_main_directory, "training/open_clip")
 ckpt_directory = os.path.join(diff_foley_main_directory, "training/open_cavp_main/src/pretrained_model")
