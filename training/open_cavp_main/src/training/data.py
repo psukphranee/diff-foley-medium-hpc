@@ -35,6 +35,12 @@ try:
 except ImportError:
     hvd = None
 
+#===============
+#9/11/24 Panya
+diff_foley_main = os.path.join(home_path, 'Diff-Foley')
+ckpt_directory = os.path.join(diff_foley_main, "training/open_cavp_main/src/pretrained_model")
+#===============
+
 
 class CsvDataset(Dataset):
     def __init__(self, input_filename, transforms, img_key, caption_key, sep="\t", tokenizer=None):
@@ -1503,7 +1509,9 @@ def get_wds_dataset_vggsound_audioset_music_intra_contrast(args, preprocess_img,
         # input_shards = ["/content/drive/MyDrive/Diff-Foley-Workspace/training/open_cavp_main/src/training_dummy_files_vgg/vggsound-{}.tar".format(str(i).zfill(6)) for i in range(32)
         input_shards = ["/content/drive/MyDrive/Diff-Foley-Workspace/video/archive_{}.tar".format(str(i)) for i in range(1,2)]
         #input_shards.extend(["/content/drive/MyDrive/Diff-Foley-Workspace/training/open_cavp_main/src/training_dummy_files_audioset/audioset-{}.tar".format(str(i).zfill(6)) for i in range(32)])
+        input_shards.extend([os.path.join(diff_foley_main,"training/open_cavp_main/src/training_dummy_files_audioset/audioset-{}.tar").format(str(i).zfill(6)) for i in range(32)])
         #input_shards.extend(["/content/drive/MyDrive/Diff-Foley-Workspace/training/open_cavp_main/src/training_dummy_files_audioset_music/audioset_music-{}.tar".format(str(i).zfill(6)) for i in range(8)])
+        input_shards.extend([os.path.join(diff_foley_main,"training/open_cavp_main/src/training_dummy_files_audioset_music/audioset_music-{}.tar").format(str(i).zfill(6)) for i in range(8)])
         print("Shard List: ", input_shards)    
 
     assert input_shards is not None
