@@ -2002,8 +2002,8 @@ if __name__ == "__main__":
     model = ResNet3dSlowOnly(depth=50, pretrained=None)
     #===============
     #9/9/24 Panya
-    project_directory = os.path.join(home_path, 'Diff-Foley')
-    ckpt_directory = os.path.join(project_directory, "training/open_cavp_main/src/pretrained_mode")
+    diff_foley_main = os.path.join(home_path, 'Diff-Foley')
+    ckpt_directory = os.path.join(diff_foley_main, "training/open_cavp_main/src/pretrained_model")
     #===============
     ckpt_path = os.path.join(ckpt_directory, "slowonly_r50_256p_4x16x1_256e_kinetics400_rgb_20200820-bea7701f.pth")
     

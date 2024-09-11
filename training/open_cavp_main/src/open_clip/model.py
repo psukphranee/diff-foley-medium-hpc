@@ -25,6 +25,13 @@ from .audio_contrastive import init_X3D, init_I3D, init_R2plus, Cnn10, Cnn14
 
 from .aug_utils import SpecAugmentation
 
+#===============
+#9/11/24 Panya
+diff_foley_main_directory = os.path.join(home_path, 'Diff-Foley')
+open_cavp_directory = os.path.join(diff_foley_main_directory, "training/open_cavp_main")
+ckpt_directory = os.path.join(diff_foley_main_directory, "training/open_cavp_main/src/pretrained_model")
+#===============
+
 @dataclass
 class CLIPVisionCfg:
     layers: Union[Tuple[int, int, int, int], int] = 12
