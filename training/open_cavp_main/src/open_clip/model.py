@@ -4,6 +4,8 @@ Adapted from https://github.com/openai/CLIP. Originally MIT License, Copyright (
 """
 
 #/Users/920753844/Diff-Foley/training/open_cavp_main/src/pretrained_model
+#_main/src/pretrained_model/slowonly_r50_256p_4x16x1_256e_kinetics400_rgb_20200820-bea7701f.pth'
+
 from dataclasses import dataclass
 import logging
 import math
@@ -568,7 +570,7 @@ class CLIP_Video_Spec(nn.Module):
         if self.video_pretrained:
             # Load Video pretained:
             #ckpt_path = "/public/MARS/Users/lsm/lsm_project/lsm_project/open_clip-main/src/pretrained_model/slowonly_r50_256p_4x16x1_256e_kinetics400_rgb_20200820-bea7701f.pth"
-            ckpt_path = os.path.join(open_clip_directory, "src/pretrained_model/slowonly_r50_256p_4x16x1_256e_kinetics400_rgb_20200820-bea7701f.pth")
+            ckpt_path = os.path.join(open_clip_directory, "src/pretrained_model/slowonly_r50_4x16x1_256e_8xb16_kinetics400-rgb_20220901-f6a40d08.pth")
             state_dict = torch.load(ckpt_path)['state_dict']
             new_state_dict = {}
             for key in state_dict.keys():
