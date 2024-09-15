@@ -2,7 +2,7 @@
 
 
 CUDA_VISIBLE_DEVICES=0 torchrun --nproc_per_node=1 -m src.training.main_wds_intra_contrast \
---train-data audioset_vggsound_music --val-data 'Test/vggsound-{000000..000031}.tar' --train-num-samples 567980 \
+--train-data audioset_vggsound_music --train-num-samples 32 \
 --batch-size 1 --precision amp --workers 1 --dataset-type vggsound_audioset_music_webdataset_intra_contrast \
 --model audio_contrastive_pretrained \
 --name lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1 --lr 8e-4 \

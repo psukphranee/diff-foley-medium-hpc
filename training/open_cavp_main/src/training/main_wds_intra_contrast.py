@@ -71,6 +71,7 @@ def get_latest_checkpoint(path: str, remote : bool):
 
 
 def main(args):
+    logging.info("DEBUG: Entering main() of main_wds_intra_contrast.py")
     args = parse_args(args)
 
     if torch.cuda.is_available():
@@ -215,6 +216,7 @@ def main(args):
         # arg is nargs, single (square) image size list -> int
         args.force_image_size = args.force_image_size[0]
     random_seed(args.seed, 0)
+    logging.info("Line 219 of main_wds_intra_contrast.py")
     model, preprocess_train, preprocess_val = create_model_and_transforms_video_spec(
         args,
         args.model,
