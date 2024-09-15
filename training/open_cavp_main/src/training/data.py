@@ -2154,7 +2154,7 @@ def get_wds_dataset_vggsound_audioset_intra_contrast(args, preprocess_img, is_tr
 def preprocess_vggsound_audioset_temporal_contrast(sample, sample_num=4, shift_lb=8):
     # image, json = sample
     # print(src)
-    print("-----------------debug----------------")
+    print("--------------debug-------------")
     print(sample.keys())
     try:
         spec = sample["spec.npy"]
@@ -2162,9 +2162,9 @@ def preprocess_vggsound_audioset_temporal_contrast(sample, sample_num=4, shift_l
     except KeyError as e:
         # Print the problematic sample for debugging
         print(f"Missing key: {e} in sample with keys: {sample.keys()}")
-        print(f"Sample content: {sample}")
+        # print(f"Sample content: {sample}")
         logging.error(f"Missing key: {e} in sample with keys: {sample.keys()}")
-        logging.error(f"Sample content: {sample}")
+        # logging.error(f"Sample content: {sample}")
         return None  # Skip this sample or handle it as needed
     
     video, spec, start_frame, end_frame = cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_num=sample_num, shift_lb=shift_lb)
