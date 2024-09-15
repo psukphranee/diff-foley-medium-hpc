@@ -379,7 +379,7 @@ def main(args):
         return
 
     loss = create_loss(args)
-
+    print("line 382 of main_wds_intra_contrast")
     for epoch in range(start_epoch, args.epochs):
         if is_master(args):
             logging.info(f'Start epoch {epoch}')
