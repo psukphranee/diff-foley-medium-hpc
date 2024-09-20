@@ -1399,6 +1399,7 @@ class VGGSound_audio_spec_Dataset_Bias(torch.utils.data.Dataset):
 
 def get_wds_dataset_vggsound_audioset(args, preprocess_img, is_train, epoch=0, floor=False, tokenizer=None):
     input_shards = args.train_data if is_train else args.val_data
+    print("get_wds_dataset_vggsound_audioset: ", str(is_train))
     print(input_shards)
     if is_train and args.train_data == "audioset_vggsound":
         input_shards = ["/localdata_ssd/lsm/contrastive_pretrain_webdataset/vggsound_contrastive_lightweight_webdataset/Train/vggsound-{}.tar".format(str(i).zfill(6)) for i in range(32)]
