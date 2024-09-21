@@ -77,6 +77,6 @@ def process_videos(videos_dir, output_dir):
             save_mel_spectrogram(mel_spec, spec_output_path)
 
 if __name__ == "__main__":
-    videos_dir = "/path/to/your/videos"  # Directory containing your video files
-    output_dir = "/path/to/output/specs"  # Directory to save generated Mel-spectrograms
+    videos_dir = "."  # Directory containing your video files
+    output_dir = "./mel-specs"  # Directory to save generated Mel-spectrograms
     process_videos(videos_dir, output_dir)
