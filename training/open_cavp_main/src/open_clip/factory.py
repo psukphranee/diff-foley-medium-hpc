@@ -511,7 +511,7 @@ def create_model_video_spec(
         cache_dir: Optional[str] = None,
         output_dict: Optional[bool] = None,
 ):
-    has_hf_hub_prefix = model_name.startswith(HF_HUB_PREFIX)
+    has_hf_hub_prefix = model_name.startswith(HF_HUB_PREFIX) #Panya (9.20.24 - this evaluates to false. the model name does not have prefix 'hf: ')
     if has_hf_hub_prefix:
         model_id = model_name[len(HF_HUB_PREFIX):]
         checkpoint_path = download_pretrained_from_hf(model_id, cache_dir=cache_dir)
