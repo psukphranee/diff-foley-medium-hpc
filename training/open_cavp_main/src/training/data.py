@@ -94,7 +94,7 @@ def get_dataset_size(shards):
     dir_path = os.path.dirname(shards_list[0])
     sizes_filename = os.path.join(dir_path, 'sizes.json')
     len_filename = os.path.join(dir_path, '__len__')
-    logging.info("a: get_dataset_size(): shards_list = %s, dir_path = %s, sizes_filename = %s, len_filename = %s", shards_list, dir_path, sizes_filename, len_filename)
+    logging.info("Panya: get_dataset_size(): shards_list = %s, dir_path = %s, sizes_filename = %s, len_filename = %s", shards_list, dir_path, sizes_filename, len_filename)
     if os.path.exists(sizes_filename):
         sizes = json.load(open(sizes_filename, 'r'))
         total_size = sum([int(sizes[os.path.basename(shard)]) for shard in shards_list])
