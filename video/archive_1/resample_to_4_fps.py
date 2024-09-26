@@ -26,20 +26,13 @@ for file in mp4_files:
 
     # Step 1: Resample the video to 4 fps
     resample_command = [
-        'ffmpeg', '-i', input_path, '-r', str(FRAME_RATE), resampled_file
+        'ffmpeg', '-v', 'verbose', '-i', input_path, '-r', str(FRAME_RATE), resampled_file
     ]
     subprocess.run(resample_command, check=True)
 
-    # Step 2: Split the resampled video into 4-second clips
-    clip_output_pattern = os.path.join(output_directory, f"{basename}_%03d.mp4")
-    split_command = [
-        'ffmpeg', '-i', resampled_file, '-c', 'copy', '-map', '0',
-        '-segment_time', str(SEGMENT_TIME), '-f', 'segment', '-reset_timestamps', '1', clip_output_pattern
-    ]
-    subprocess.run(split_command, check=True)
 
     # Optional: Remove the intermediate resampled file to save space
-    os.remove(resampled_file)
+    # os.remove(resampled_file)
 
 print("Processing complete!")
 
