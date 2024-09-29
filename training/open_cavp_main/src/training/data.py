@@ -189,7 +189,7 @@ def group_by_keys_nothrow(data, keys=base_plus_ext, lcase=True, suffixes=None, h
     current_sample = None
     for filesample in data:
         assert isinstance(filesample, dict)
-        print(f"assetion true. filesample type={type(filesample)}")
+        print(f"assetion true. filesample type={type(filesample)}. keys={filesample.keys()}")
         fname, value = filesample["fname"], filesample["data"]
         print(f"Panya: processing file {fname}")
         prefix, suffix = keys(fname)
