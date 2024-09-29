@@ -203,8 +203,8 @@ def group_by_keys_nothrow(data, keys=base_plus_ext, lcase=True, suffixes=None, h
             if valid_sample(current_sample):
                 print("yielding currrent sample", current_sample["__key__"])
                 yield current_sample
-            print("Setting currrent sample", current_sample["__key__"])
             current_sample = dict(__key__=prefix, __url__=filesample["__url__"])
+            print("Setting new sample", current_sample["__key__"])
         if suffixes is None or suffix in suffixes:
             print(f"Adding {suffix}")
             current_sample[suffix] = value
