@@ -2265,7 +2265,7 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     assert sample_num == 2 or sample_num == 3 or sample_num == 4 , "sample num must be [2,3,4]"
     start_frame_index_list, end_frame_index_list = sample_temporal_index(sample_num=sample_num, shift_lb=shift_lb)
     start_spec_list = []
-
+    print("Panya: cut_video_and_spec_vggsound_audioset_temporal_contrast:", str(start_frame_index_list), str(end_frame_index_list))
     truncate_sec = 4
     fps = 4
     sr = 16000
