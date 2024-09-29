@@ -22,5 +22,5 @@ loader = wds.WebLoader(dataset, batch_size=None)
 
 # Step 5: Iterate through the dataset
 for sample in loader:
-    print("Panya: key=",sample["__key__"], " | url=", sample["__url__"])
+    print("Panya: outputting sample with key=",sample["__key__"], " | url=", sample["__url__"])
     
