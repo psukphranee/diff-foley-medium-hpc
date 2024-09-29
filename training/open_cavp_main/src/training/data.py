@@ -212,8 +212,9 @@ def tarfile_to_samples_nothrow(src, handler=log_and_continue):
     # NOTE this is a re-impl of the webdataset impl with group_by_keys that doesn't throw
     streams = url_opener(src, handler=handler)
     files = tar_file_expander(streams, handler=handler)
-    samples = group_by_keys_nothrow(files, handler=handler)
-    return samples
+    #samples = group_by_keys_nothrow(files, handler=handler)
+    #return samples
+    return files
 
 
 def pytorch_worker_seed(increment=0):
