@@ -203,7 +203,7 @@ def group_by_keys_nothrow(data, keys=base_plus_ext, lcase=True, suffixes=None, h
         if current_sample is None or prefix != current_sample["__key__"] or suffix in current_sample:
             if valid_sample(current_sample):
                 count += 1
-                print("yielding currrent sample", current_sample.keys())
+                print("yielding currrent sample", current_sample["__key__"])
                 yield current_sample
             current_sample = dict(__key__=prefix, __url__=filesample["__url__"])
         if suffixes is None or suffix in suffixes:
