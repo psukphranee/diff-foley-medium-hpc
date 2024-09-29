@@ -191,7 +191,7 @@ def group_by_keys_nothrow(data, keys=base_plus_ext, lcase=True, suffixes=None, h
     for filesample in data:
         assert isinstance(filesample, dict)
         fname, value = filesample["fname"], filesample["data"]
-        print(f"Panya: count={count}, fname={fname}, current_sample keys={current_sample.keys() if current_sample else ''}")
+        print(f"Panya: count={count}, fname={fname}")
         prefix, suffix = keys(fname)
         if prefix is None:
             continue
@@ -207,6 +207,7 @@ def group_by_keys_nothrow(data, keys=base_plus_ext, lcase=True, suffixes=None, h
                 yield current_sample
             current_sample = dict(__key__=prefix, __url__=filesample["__url__"])
         if suffixes is None or suffix in suffixes:
+            print(f"Adding {suffix}")
             current_sample[suffix] = value
         
     if valid_sample(current_sample):
