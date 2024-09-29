@@ -22,4 +22,4 @@ loader = wds.WebLoader(dataset, batch_size=None)
 
 # Step 5: Iterate through the dataset
 for sample in loader:
-    print(sample)
+    print(sample.keys())
