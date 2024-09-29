@@ -2158,10 +2158,8 @@ def preprocess_vggsound_audioset_temporal_contrast(sample, sample_num=4, shift_l
     # print(src)
     print("Panya-debug-preprocess_vggsound_audioset_temporal_contrast-")
     try:
-        #spec = sample["spec.npy"]
-        #video = sample["video.jpg"]
-        spec = sample["npy"]
-        video = sample["mp4"]
+        spec = sample["spec.npy"]
+        video = sample["video.jpg"]
     except KeyError as e:
         # Print the problematic sample for debugging
         print(f"Missing key: {e} in sample with keys: {sample.keys()}")
