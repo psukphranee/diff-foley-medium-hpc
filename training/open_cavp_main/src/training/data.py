@@ -201,7 +201,7 @@ def group_by_keys_nothrow(data, keys=base_plus_ext, lcase=True, suffixes=None, h
         #  begins, rare, but can happen since prefix aren't unique across tar files in that dataset
         if current_sample is None or prefix != current_sample["__key__"] or suffix in current_sample:
             if valid_sample(current_sample):
-                print("yielding currrent sample", current_sample["__key__"])
+                print("yielding dictionary ", current_sample["__key__"])
                 yield current_sample
             current_sample = dict(__key__=prefix, __url__=filesample["__url__"])
             print("Setting new dictionary with key ", current_sample["__key__"])
