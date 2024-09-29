@@ -1520,7 +1520,7 @@ def get_wds_dataset_vggsound_audioset_music_intra_contrast(args, preprocess_img,
 
     assert input_shards is not None
     resampled = getattr(args, 'dataset_resampled', False) and is_train
-    logging.info("Line 1521. resampled: ", str(resampled))
+    logging.info(f"Panya: Value of 'resampled': {resampled}")
     num_samples, num_shards = get_dataset_size(input_shards)
     logging.info("Panya: num_samples= %d, num_shards=%d", num_samples, num_shards)
     if not num_samples:
