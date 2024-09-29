@@ -1,6 +1,6 @@
 import webdataset as wds
 
-dataset = wds.Dataset("/Users/920753844/Diff-Foley/video/goodarchive_1.tar")
+dataset = wds.WebDataset("/Users/920753844/Diff-Foley/video/goodarchive_1.tar")
 
 sample = next(iter(dataset))
 
