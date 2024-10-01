@@ -820,6 +820,7 @@ def cut_video_and_spec_filter(video, spec):
 
 
 # Augment:
+#Panya 10.1.24: According to ChatGPT, the 2nd definition overrides the first
 def cut_video_and_spec_filter(video, spec):
 
     spec_raw = spec
@@ -965,7 +966,7 @@ def preprocess_filter(sample):
     spec, video = sample["spec.npy"], sample["video.npy"]
     video, spec, start_frame, end_frame, flag = cut_video_and_spec_filter(video, spec)
     video_time = str(start_frame) + "_" + str(end_frame)
-    if flag:
+    if flag: #Panya 10.1.24 flag indicates that audio is not too low
         return spec, video, video_time
     else:
         return None
@@ -2269,7 +2270,7 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
         spec:  sample_num x Mel_num x T'
     Tempora Shift >= 8 Frames (2s)
     """
-
+    print("Panya: cut_video function. video is of type ", type(video))
     spec_raw = spec
     video_npy = video
     assert sample_num == 2 or sample_num == 3 or sample_num == 4 , "sample num must be [2,3,4]"
@@ -2295,6 +2296,7 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     spec_raw = numpy.lib.format.read_array(stream)
 
     stream = io.BytesIO(video_npy)
+    print("Panya: cut_video function. stream is of type ", type(stream))
     # video_npy = numpy.lib.format.read_array(stream)
     video_npy = Image.open(stream)
     video_npy = np.array(video_npy)
