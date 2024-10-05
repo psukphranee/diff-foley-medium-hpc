@@ -2167,7 +2167,7 @@ def get_wds_dataset_vggsound_audioset_intra_contrast(args, preprocess_img, is_tr
 def preprocess_vggsound_audioset_temporal_contrast(sample, sample_num=4, shift_lb=8):
     # image, json = sample
     # print(src)
-    print("Panya-debug-preprocess_vggsound_audioset_temporal_contrast-")
+    print("Panya-debug-preprocess_vggsound_audioset_temporal_contrast()")
     try:
         spec = sample["spec.npy"]
         video = sample["video.jpg"]
@@ -2297,8 +2297,8 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
 
     stream = io.BytesIO(video_npy)
     print("Panya: cut_video function. stream is of type ", type(stream))
-    # video_npy = numpy.lib.format.read_array(stream)
-    video_npy = Image.open(stream)
+    video_npy = numpy.lib.format.read_array(stream) #Panya 10.5.24 - This is commented out in the original code. see repo. we are uncommenting in addition to commenting out the following line to see if this helps with our issues
+    # video_npy = Image.open(stream) #Panya 10.5.24 Commenting this out to see if it helps with the error of stream not being an image
     video_npy = np.array(video_npy)
     # video transpose:
     video_npy = video_npy.reshape(shape_h, -1, shape_h, 3).transpose(1,3,0,2)    # T x 3 x H x W
