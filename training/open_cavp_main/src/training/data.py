@@ -2170,7 +2170,7 @@ def preprocess_vggsound_audioset_temporal_contrast(sample, sample_num=4, shift_l
     print("Panya-debug-preprocess_vggsound_audioset_temporal_contrast()")
     try:
         spec = sample["spec.npy"]
-        video = sample["video.jpg"]
+        video = sample["video.jpg"] # Panya 10.5.25 - why is this named video.jpg? it should be a video (either npy ormp4 binary)
     except KeyError as e:
         # Print the problematic sample for debugging
         print(f"Missing key: {e} in sample with keys: {sample.keys()}")
@@ -2179,7 +2179,9 @@ def preprocess_vggsound_audioset_temporal_contrast(sample, sample_num=4, shift_l
         # logging.error(f"Sample content: {sample}")
         return None  # Skip this sample or handle it as needed
     
+    # return sample_video_list, sample_spec_list, start_frame, end_frame
     video, spec, start_frame, end_frame = cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_num=sample_num, shift_lb=shift_lb)
+
     # data_dict = {}
     # data_dict["spec"] = spec
     # data_dict["video"] = video
@@ -2295,7 +2297,9 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     stream = io.BytesIO(spec_raw)
     spec_raw = numpy.lib.format.read_array(stream)
 
+    # 10.5.24 - is video_npy supposed to by numpy data or binary mp4 data?
     stream = io.BytesIO(video_npy)
+
     print("Panya: cut_video function. stream is of type ", type(stream))
     video_npy = numpy.lib.format.read_array(stream) #Panya 10.5.24 - This is commented out in the original code. see repo. we are uncommenting in addition to commenting out the following line to see if this helps with our issues
     # video_npy = Image.open(stream) #Panya 10.5.24 Commenting this out to see if it helps with the error of stream not being an image
@@ -2315,6 +2319,14 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
             sample_spec = spec_raw[:, spec_start : spec_start + spec_truncate]
         sample_spec_list.append(sample_spec[None])
     
+    # Panya 10.5.24:
+    '''
+    Summary of the Code:
+    This code is designed to extract video segments based on frame indices.
+    It repeats the video if it's too short to cover the required segment, ensuring that the requested number of frames is always available.
+    It applies transformations to the video (resizing, normalizing) and converts the video into PyTorch tensors for deep learning models.
+    The transformed segments are stored in a list, with each video segment reshaped to have a batch size of 1.
+    '''
     # Check Video npy: 
     sample_video_list = []
     for i in range(sample_num):
