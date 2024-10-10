@@ -2314,7 +2314,7 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     # Panya 10.5.24 - what is the shape of video_npy?
     log_str = f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast] video_npy shape {video_npy.shape}"
     logging.info(log_str)
-    print(log_str)
+    #print(log_str)
 
     # video transpose:
     video_npy = video_npy.reshape(shape_h, -1, shape_h, 3).transpose(1,3,0,2)    # T x 3 x H x W
