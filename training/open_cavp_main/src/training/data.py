@@ -2168,6 +2168,7 @@ def preprocess_vggsound_audioset_temporal_contrast(sample, sample_num=4, shift_l
     # image, json = sample
     # print(src)
     print("Panya-debug-preprocess_vggsound_audioset_temporal_contrast()")
+    logging.info("Panya-debug-preprocess_vggsound_audioset_temporal_contrast()")
     try:
         spec = sample["spec.npy"]
         video = sample["video.jpg"] # Panya 10.5.25 - why is this named video.jpg? it should be a video (either npy ormp4 binary)
@@ -2272,13 +2273,18 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
         spec:  sample_num x Mel_num x T'
     Tempora Shift >= 8 Frames (2s)
     """
-    print("Panya: cut_video function. video is of type ", type(video))
+    msg = f'Panya: cut_video function. video is of type:, {type(video)}'
+    print(msg)
+    logging.info(msg)
     spec_raw = spec
     video_npy = video
     assert sample_num == 2 or sample_num == 3 or sample_num == 4 , "sample num must be [2,3,4]"
     start_frame_index_list, end_frame_index_list = sample_temporal_index(sample_num=sample_num, shift_lb=shift_lb)
     start_spec_list = []
-    print("Panya: cut_video_and_spec_vggsound_audioset_temporal_contrast:", str(start_frame_index_list), str(end_frame_index_list))
+    msg = f'"Panya: cut_video_and_spec_vggsound_audioset_temporal_contrast: {str(start_frame_index_list)}, {str(end_frame_index_list)}'
+    print(msg)
+    logging.info(msg)
+    
     truncate_sec = 4
     fps = 4
     sr = 16000
