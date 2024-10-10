@@ -2167,7 +2167,7 @@ def get_wds_dataset_vggsound_audioset_intra_contrast(args, preprocess_img, is_tr
 def preprocess_vggsound_audioset_temporal_contrast(sample, sample_num=4, shift_lb=8):
     # image, json = sample
     # print(src)
-    print("Panya-debug-preprocess_vggsound_audioset_temporal_contrast()")
+    #print("Panya-debug-preprocess_vggsound_audioset_temporal_contrast()")
     logging.info("Panya-debug-preprocess_vggsound_audioset_temporal_contrast()")
     try:
         spec = sample["spec.npy"]
@@ -2274,7 +2274,7 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     Tempora Shift >= 8 Frames (2s)
     """
     msg = f'Panya: cut_video function. video is of type:, {type(video)}'
-    print(msg)
+    #print(msg)
     logging.info(msg)
     spec_raw = spec
     video_npy = video
