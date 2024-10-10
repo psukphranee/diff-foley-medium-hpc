@@ -2182,7 +2182,8 @@ def preprocess_vggsound_audioset_temporal_contrast(sample, sample_num=4, shift_l
     
     # return sample_video_list, sample_spec_list, start_frame, end_frame
     video, spec, start_frame, end_frame = cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_num=sample_num, shift_lb=shift_lb)
-    msg = f'Panya: Finsihed {sample["fname"]} '
+    msg = f'Panya: Finsihed {sample.keys()} '
+    logging.info(msg)
     # data_dict = {}
     # data_dict["spec"] = spec
     # data_dict["video"] = video
