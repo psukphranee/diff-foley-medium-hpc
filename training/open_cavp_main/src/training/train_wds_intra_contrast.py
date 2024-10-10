@@ -200,10 +200,10 @@ def train_one_epoch(model, data, loss, epoch, optimizer, scaler, scheduler, args
                 ]
             )
             logging.info(
-                f"Train Epoch: {epoch} [{num_samples:>{sample_digits}}/{samples_per_epoch} ({percent_complete:.0f}%)] "
-                f"Data (t): {data_time_m.avg:.3f} "
-                f"Batch (t): {batch_time_m.avg:.3f}, {args.accum_freq * args.batch_size * args.world_size / batch_time_m.val:#g}/s "
-                f"LR: {optimizer.param_groups[0]['lr']:5f} "
+                f"Train Epoch: {epoch} [{num_samples:>{sample_digits}}/{samples_per_epoch} ({percent_complete:.0f}%)] \n"
+                f"Data (t): {data_time_m.avg:.3f} \n"
+                f"Batch (t): {batch_time_m.avg:.3f}, {args.accum_freq * args.batch_size * args.world_size / batch_time_m.val:#g}/s \n"
+                f"LR: {optimizer.param_groups[0]['lr']:5f} \n"
                 f"Logit Scale: {logit_scale_scalar:.3f} " + loss_log
             )
 
