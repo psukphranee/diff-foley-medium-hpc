@@ -224,6 +224,9 @@ def train_one_epoch(model, data, loss, epoch, optimizer, scaler, scheduler, args
             # resetting batch / data time meters per log window
             batch_time_m.reset()
             data_time_m.reset()
+
+            #panya 10.10.24
+            logging.info(f'ending for loop {i}')
     # end for
 
 
