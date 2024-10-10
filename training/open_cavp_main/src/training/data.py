@@ -2282,7 +2282,7 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     start_frame_index_list, end_frame_index_list = sample_temporal_index(sample_num=sample_num, shift_lb=shift_lb)
     start_spec_list = []
     msg = f'"Panya: cut_video_and_spec_vggsound_audioset_temporal_contrast: {str(start_frame_index_list)}, {str(end_frame_index_list)}'
-    print(msg)
+    #print(msg)
     logging.info(msg)
     
     truncate_sec = 4
