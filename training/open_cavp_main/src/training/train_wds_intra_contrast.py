@@ -104,7 +104,7 @@ def train_one_epoch(model, data, loss, epoch, optimizer, scaler, scheduler, args
         video = video.reshape(bs * sample_num, t, c, h, w)
 
         #Panya 10.13.24 Debug
-        msg = f"Panya: [train_one_epoch]: spec type {type(spec)}, video type {type(video)}"
+        msg = f"Panya: [train_one_epoch]: spec type {spec.dtype}, video type {video.dtype}"
         logging.info(msg)
 
         data_time_m.update(time.time() - end)
