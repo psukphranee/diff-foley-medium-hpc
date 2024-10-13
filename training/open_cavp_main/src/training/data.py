@@ -2167,8 +2167,8 @@ def get_wds_dataset_vggsound_audioset_intra_contrast(args, preprocess_img, is_tr
 def preprocess_vggsound_audioset_temporal_contrast(sample, sample_num=4, shift_lb=8):
     # image, json = sample
     # print(src)
-    #print("Panya-debug-preprocess_vggsound_audioset_temporal_contrast()")
-    logging.info("Panya-debug-preprocess_vggsound_audioset_temporal_contrast()")
+    msg = f'Panya: [preprocess_vggsound_audioset_temporal_contrast]: cut_video function. video is of type:, {type(video)}'
+    logging.info(msg)
     try:
         spec = sample["spec.npy"]
         video = sample["video.jpg"] # Panya 10.5.25 - why is this named video.jpg? it should be a video (either npy ormp4 binary)
@@ -2182,7 +2182,7 @@ def preprocess_vggsound_audioset_temporal_contrast(sample, sample_num=4, shift_l
     
     # return sample_video_list, sample_spec_list, start_frame, end_frame
     video, spec, start_frame, end_frame = cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_num=sample_num, shift_lb=shift_lb)
-    msg = f'Panya: Finsihed {sample.keys()} '
+    msg = f'Panya: [preprocess_vggsound_audioset_temporal_contrast]: Finished taking slices of the sample with keys: {sample.keys()} '
     logging.info(msg)
     # data_dict = {}
     # data_dict["spec"] = spec
@@ -2274,15 +2274,14 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
         spec:  sample_num x Mel_num x T'
     Tempora Shift >= 8 Frames (2s)
     """
-    msg = f'Panya: cut_video function. video is of type:, {type(video)}'
-    #print(msg)
+    msg = f'Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: cut_video function. video is of type:, {type(video)}'
     logging.info(msg)
     spec_raw = spec
     video_npy = video
     assert sample_num == 2 or sample_num == 3 or sample_num == 4 , "sample num must be [2,3,4]"
     start_frame_index_list, end_frame_index_list = sample_temporal_index(sample_num=sample_num, shift_lb=shift_lb)
     start_spec_list = []
-    msg = f'"Panya: cut_video_and_spec_vggsound_audioset_temporal_contrast: {str(start_frame_index_list)}, {str(end_frame_index_list)}'
+    msg = f'Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: {str(start_frame_index_list)}, {str(end_frame_index_list)}'
     #print(msg)
     logging.info(msg)
     
@@ -2307,18 +2306,20 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     # 10.5.24 - is video_npy supposed to by numpy data or binary mp4 data?
     stream = io.BytesIO(video_npy)
 
-    print("Panya: cut_video function. stream is of type ", type(stream))
+    print("Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: stream is of type ", type(stream))
     video_npy = numpy.lib.format.read_array(stream) #Panya 10.5.24 - This is commented out in the original code. see repo. we are uncommenting in addition to commenting out the following line to see if this helps with our issues
     # video_npy = Image.open(stream) #Panya 10.5.24 Commenting this out to see if it helps with the error of stream not being an image
     video_npy = np.array(video_npy)
 
     # Panya 10.5.24 - what is the shape of video_npy?
-    log_str = f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast] video_npy shape {video_npy.shape}"
+    log_str = f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: video_npy shape after loading: {video_npy.shape}"
     logging.info(log_str)
     #print(log_str)
 
     # video transpose:
     video_npy = video_npy.reshape(shape_h, -1, shape_h, 3).transpose(1,3,0,2)    # T x 3 x H x W
+    log_str = f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: video_npy shape after transpose: {video_npy.shape}"
+    logging.info(log_str)
 
     # Check Spec_Raw and Crop Spec:
     sample_spec_list = []
@@ -2356,6 +2357,10 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     
     sample_spec_list = torch.from_numpy(np.concatenate(sample_spec_list, 0))    # sample_num x H x W
     sample_video_list = torch.cat(sample_video_list, 0)                         # sample_num x T x C x H x W
+
+    log_str = f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: exiting and returning: \n {sample_video_list}, {sample_spec_list}, {start_frame}, {end_frame}"
+    logging.info(log_str)
+
     return sample_video_list, sample_spec_list, start_frame, end_frame
 
 
