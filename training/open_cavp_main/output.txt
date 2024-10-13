@@ -1,4 +1,4 @@
-Home directory: /Users/920753844
+ome directory: /Users/920753844
 INFO:root:Running with a single process. Device cuda:0.
 2024-10-12,20:36:49 | INFO | Running with a single process. Device cuda:0.
 INFO:root:Line 219 of main_wds_intra_contrast.py
