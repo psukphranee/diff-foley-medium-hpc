@@ -219,13 +219,13 @@ def group_by_keys_nothrow(data, keys=base_plus_ext, lcase=True, suffixes=None, h
             logging.info(msg)
 
         if suffixes is None or suffix in suffixes:
-            msg = f"Panya: [group_by_keys_nothrow]: Adding suffix {suffix} to dictionary"
+            msg = f"Panya: [group_by_keys_nothrow]: Adding suffix {suffix} to {current_sample['__key__']}"
             logging.info(msg)
 
             current_sample[suffix] = value
         
     if valid_sample(current_sample):
-        msg = f"Panya: [group_by_keys_nothrow]: Yielding sample {current_sample}"
+        msg = f"Panya: [group_by_keys_nothrow]: Yielding sample {current_sample['__key__']}"
         yield current_sample
 
 
