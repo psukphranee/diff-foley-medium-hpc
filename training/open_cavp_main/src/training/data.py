@@ -189,12 +189,18 @@ def group_by_keys_nothrow(data, keys=base_plus_ext, lcase=True, suffixes=None, h
     current_sample = None
     for filesample in data:
         assert isinstance(filesample, dict)
-        print(f"Panya: [group_by_keys_nothrow]: assertion true. filesample type={type(filesample)}. keys={filesample.keys()}")
+
+        msg = f"Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type={type(filesample)}. keys={filesample.keys()}"
+        logging.info(msg)
+
         if not filesample.keys():
             print("Panya: [group_by_keys_nothrow]: no keys in filesample, breaking.")
             break
         fname, value = filesample["fname"], filesample["data"]
-        print(f"Panya: [group_by_keys_nothrow]: processing file {fname}")
+
+        msg = f"Panya: [group_by_keys_nothrow]: processing file {fname}"
+        logging.info(msg)
+
         prefix, suffix = keys(fname)
         if prefix is None:
             continue
@@ -208,12 +214,18 @@ def group_by_keys_nothrow(data, keys=base_plus_ext, lcase=True, suffixes=None, h
                 print("yielding dictionary ", current_sample["__key__"])
                 yield current_sample
             current_sample = dict(__key__=prefix, __url__=filesample["__url__"])
-            print("Setting new dictionary with key ", current_sample["__key__"])
+
+            msg = f'Panya: [group_by_keys_nothrow]: Setting new dictionary with key  {current_sample["__key__"]}'
+            logging.info(msg)
+
         if suffixes is None or suffix in suffixes:
-            print(f"Adding suffic {suffix} to dictionary")
+            msg = f"Panya: [group_by_keys_nothrow]: Adding suffix {suffix} to dictionary"
+            logging.info(msg)
+
             current_sample[suffix] = value
         
     if valid_sample(current_sample):
+        msg = f"Panya: [group_by_keys_nothrow]: Yielding sample {current_sample}"
         yield current_sample
 
 
