@@ -226,6 +226,8 @@ def group_by_keys_nothrow(data, keys=base_plus_ext, lcase=True, suffixes=None, h
         
     if valid_sample(current_sample):
         msg = f"Panya: [group_by_keys_nothrow]: Yielding sample {current_sample['__key__']}"
+        logging.info(msg)
+
         yield current_sample
 
 
@@ -2179,7 +2181,7 @@ def get_wds_dataset_vggsound_audioset_intra_contrast(args, preprocess_img, is_tr
 def preprocess_vggsound_audioset_temporal_contrast(sample, sample_num=4, shift_lb=8):
     # image, json = sample
     # print(src)
-    msg = f'Panya: [preprocess_vggsound_audioset_temporal_contrast]: cut_video function. video is of type:, {type(video)}'
+    msg = f'Panya: [preprocess_vggsound_audioset_temporal_contrast]: processing sample {sample["__keys__"]}'
     logging.info(msg)
     try:
         spec = sample["spec.npy"]
