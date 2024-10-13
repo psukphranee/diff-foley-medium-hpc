@@ -99,14 +99,20 @@ def train_one_epoch(model, data, loss, epoch, optimizer, scaler, scheduler, args
         # Reshape the Tensor:
         bs, sample_num, spec_h, spec_w = spec.shape
         bs, sample_num, t, c, h, w = video.shape
+        # Panya 10.13.24: appending .float() to the next two lines because of error of type mismatch
         spec = spec.reshape(bs * sample_num, spec_h, spec_w)
         video = video.reshape(bs * sample_num, t, c, h, w)
+
+        #Panya 10.13.24 Debug
+        msg = f"Panya: [train_one_epoch]: spec type {type(spec)}, video type {type(video)}"
+        logging.info(msg)
 
         data_time_m.update(time.time() - end)
         optimizer.zero_grad()
 
         if args.accum_freq == 1:
             #with autocast():
+            # Panya 10.13.24: Commented out top and replaced it with bottom because of deprecation warning
             with torch.amp.autocast('cuda'):
                 # model_out = model(images, texts)
                 model_out = model(video, spec, train=True)
