@@ -211,7 +211,8 @@ def group_by_keys_nothrow(data, keys=base_plus_ext, lcase=True, suffixes=None, h
         #  begins, rare, but can happen since prefix aren't unique across tar files in that dataset
         if current_sample is None or prefix != current_sample["__key__"] or suffix in current_sample:
             if valid_sample(current_sample):
-                print("yielding dictionary ", current_sample["__key__"])
+                msg = f"Panya: [group_by_keys_nothrow]: yielding sample {current_sample['__key__']}"
+                logging.info(msg)
                 yield current_sample
             current_sample = dict(__key__=prefix, __url__=filesample["__url__"])
 
