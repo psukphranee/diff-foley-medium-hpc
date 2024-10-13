@@ -100,8 +100,8 @@ def train_one_epoch(model, data, loss, epoch, optimizer, scaler, scheduler, args
         bs, sample_num, spec_h, spec_w = spec.shape
         bs, sample_num, t, c, h, w = video.shape
         # Panya 10.13.24: appending .float() to the next two lines because of error of type mismatch
-        spec = spec.reshape(bs * sample_num, spec_h, spec_w)
-        video = video.reshape(bs * sample_num, t, c, h, w)
+        spec = spec.reshape(bs * sample_num, spec_h, spec_w).float()
+        video = video.reshape(bs * sample_num, t, c, h, w).float()
 
         #Panya 10.13.24 Debug
         msg = f"Panya: [train_one_epoch]: spec type {spec.dtype}, video type {video.dtype}"
