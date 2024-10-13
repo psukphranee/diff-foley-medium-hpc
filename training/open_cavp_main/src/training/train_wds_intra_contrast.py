@@ -92,6 +92,10 @@ def train_one_epoch(model, data, loss, epoch, optimizer, scaler, scheduler, args
         video = video.to(device, dtype=cast_dtype, non_blocking=True)
         spec = spec.to(device, dtype=cast_dtype, non_blocking=True)
 
+        #Panya 10.13.24 Debug
+        msg = f"Panya: [train_one_epoch]: type of batch - {type(batch)}, shape of spec {spec.shape}, video shape {video.shape}"
+        logging.info(msg)
+
         # Reshape the Tensor:
         bs, sample_num, spec_h, spec_w = spec.shape
         bs, sample_num, t, c, h, w = video.shape
