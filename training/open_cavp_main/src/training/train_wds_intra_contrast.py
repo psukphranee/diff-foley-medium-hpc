@@ -106,7 +106,8 @@ def train_one_epoch(model, data, loss, epoch, optimizer, scaler, scheduler, args
         optimizer.zero_grad()
 
         if args.accum_freq == 1:
-            with autocast():
+            #with autocast():
+            with torch.amp.autocast('cuda'):
                 # model_out = model(images, texts)
                 model_out = model(video, spec, train=True)
                 logit_scale = model_out["logit_scale"]
