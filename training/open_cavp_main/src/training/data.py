@@ -94,7 +94,7 @@ def get_dataset_size(shards):
     dir_path = os.path.dirname(shards_list[0])
     sizes_filename = os.path.join(dir_path, 'sizes.json')
     len_filename = os.path.join(dir_path, '__len__')
-    logging.info("Panya: get_dataset_size(): shards_list = %s, dir_path = %s, sizes_filename = %s, len_filename = %s", shards_list, dir_path, sizes_filename, len_filename)
+    logging.info("Panya: [get_dataset_size]: \nshards_list = %s, \ndir_path = %s, \nsizes_filename = %s, \nlen_filename = %s", shards_list, dir_path, sizes_filename, len_filename)
     if os.path.exists(sizes_filename):
         sizes = json.load(open(sizes_filename, 'r'))
         total_size = sum([int(sizes[os.path.basename(shard)]) for shard in shards_list])
@@ -189,12 +189,12 @@ def group_by_keys_nothrow(data, keys=base_plus_ext, lcase=True, suffixes=None, h
     current_sample = None
     for filesample in data:
         assert isinstance(filesample, dict)
-        print(f"Panya: assetion true. filesample type={type(filesample)}. keys={filesample.keys()}")
+        print(f"Panya: [group_by_keys_nothrow]: assertion true. filesample type={type(filesample)}. keys={filesample.keys()}")
         if not filesample.keys():
-            print("Panya: no keys, breaking")
+            print("Panya: [group_by_keys_nothrow]: no keys in filesample, breaking.")
             break
         fname, value = filesample["fname"], filesample["data"]
-        print(f"Panya: processing file {fname}")
+        print(f"Panya: [group_by_keys_nothrow]: processing file {fname}")
         prefix, suffix = keys(fname)
         if prefix is None:
             continue
@@ -1531,9 +1531,9 @@ def get_wds_dataset_vggsound_audioset_music_intra_contrast(args, preprocess_img,
 
     assert input_shards is not None
     resampled = getattr(args, 'dataset_resampled', False) and is_train
-    logging.info(f"Panya: Value of 'resampled': {resampled}")
+    logging.info(f"Panya: [get_wds_dataset_vggsound_audioset_music_intra_contrast]: Value of 'resampled': {resampled}")
     num_samples, num_shards = get_dataset_size(input_shards)
-    logging.info("Panya: num_samples= %d, num_shards=%d", num_samples, num_shards)
+    logging.info("Panya: [get_wds_dataset_vggsound_audioset_music_intra_contrast]: num_samples= %d, num_shards=%d", num_samples, num_shards)
     if not num_samples:
         if is_train:
             num_samples = args.train_num_samples
@@ -2276,6 +2276,7 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     """
     msg = f'Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: cut_video function. video is of type:, {type(video)}'
     logging.info(msg)
+
     spec_raw = spec
     video_npy = video
     assert sample_num == 2 or sample_num == 3 or sample_num == 4 , "sample num must be [2,3,4]"
