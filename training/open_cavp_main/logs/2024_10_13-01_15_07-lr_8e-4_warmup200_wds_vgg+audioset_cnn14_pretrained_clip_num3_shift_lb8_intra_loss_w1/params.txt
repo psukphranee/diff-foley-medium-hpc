@@ -3,7 +3,7 @@ aug_cfg: {}
 batch_size: 2
 beta1: 0.9
 beta2: 0.999
-checkpoint_path: ./logs/2024_10_12-20_10_24-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/checkpoints
+checkpoint_path: ./logs/2024_10_13-01_15_07-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/checkpoints
 coca_caption_loss_weight: 2.0
 coca_contrastive_loss_weight: 1.0
 copy_codebase: False
@@ -49,7 +49,7 @@ lock_text_unlocked_layers: 0
 log_every_n_steps: 1
 log_level: 20
 log_local: False
-log_path: ./logs/2024_10_12-20_10_24-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/out.log
+log_path: ./logs/2024_10_13-01_15_07-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/out.log
 logs: ./logs/
 loss_type: clip_intra_contrast
 lr: 0.0008
@@ -57,7 +57,7 @@ lr_cooldown_end: 0.0
 lr_cooldown_power: 1.0
 lr_scheduler: cosine
 model: audio_contrastive_pretrained
-name: 2024_10_12-20_10_24-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1
+name: 2024_10_13-01_15_07-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1
 no_set_device_rank: False
 precision: amp
 pretrained: 
