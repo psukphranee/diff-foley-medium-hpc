@@ -352,6 +352,10 @@ def nondefault_trainer_args(opt):
 
 # Launch the Training:
 if __name__ == "__main__":
+
+    # Panya: Comment ---------------------------------- #
+    # This code is responsible for managing experiment names, resuming from checkpoints, and organizing logging directories based on user input and current time. This organization helps in tracking and managing training experiments effectively.
+
     now = datetime.datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
     parser = get_parser()   # --base config_path.yaml --name exper1 --gpus 0, 1, 2
     parser = Trainer.add_argparse_args(parser)
@@ -390,6 +394,10 @@ if __name__ == "__main__":
             cfg_fname = os.path.split(opt.base[0])[-1]
             cfg_name = os.path.splitext(cfg_fname)[0]
             name = "_" + cfg_name
+            # Panya: 10.28.24 results in _diff_foley_train
+            msg = f'Panya: name = {name}'
+            print(msg)
+        
         else:
             name = ""
         # now = datetime.datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
@@ -397,7 +405,7 @@ if __name__ == "__main__":
         # nowname = name + opt.postfix
         logdir = os.path.join(opt.logdir, nowname)      # LogDir
     
-
+    # ------------------------------------------------------------------------------- #
 
     ckptdir = os.path.join(logdir, "checkpoints")
     cfgdir = os.path.join(logdir, "configs")
