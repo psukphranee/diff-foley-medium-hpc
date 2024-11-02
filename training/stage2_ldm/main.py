@@ -486,7 +486,8 @@ if __name__ == "__main__":
         logger_cfg = OmegaConf.create()
     
     logger_cfg = OmegaConf.merge(default_logger_cfg, logger_cfg)
-    trainer_kwargs['logger'] = instantiate_from_config(logger_cfg)
+    # Panya: 11.2.24 Disable to try to get rid of error
+    #trainer_kwargs['logger'] = instantiate_from_config(logger_cfg)
 
     print(config)
     print('ckptpath',ckptdir)
