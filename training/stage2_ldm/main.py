@@ -450,15 +450,16 @@ if __name__ == "__main__":
         project_name = "audio_diffusion"
 
     default_logger_cfgs = {
-            "wandb": {
-                "target": "pytorch_lightning.loggers.WandbLogger",
-                "params": {
-                    "project": project_name,
-                    "name": nowname,
-                    "save_dir": os.path.join(root_dir, logdir),
-                    "id": nowname,
-                }
-            },
+            # Panya: 11.2.24 : Disable for errors
+            # "wandb": {
+            #     "target": "pytorch_lightning.loggers.WandbLogger",
+            #     "params": {
+            #         "project": project_name,
+            #         "name": nowname,
+            #         "save_dir": os.path.join(root_dir, logdir),
+            #         "id": nowname,
+            #     }
+            # },
             "testtube": {
                 "target": "pytorch_lightning.loggers.TestTubeLogger",
                 "params": {
@@ -476,9 +477,9 @@ if __name__ == "__main__":
             },
         }
 
-    # Panya 11.2.24: disable to try to get rid of wandb error
+    # Panya 11.2.24: disable wandb and enable tensorboard
     # default_logger_cfg = default_logger_cfgs["wandb"]
-    # default_logger_cfg = default_logger_cfgs["tensorboard"]
+    default_logger_cfg = default_logger_cfgs["tensorboard"]
 
     if "logger" in lightning_config:
         logger_cfg = lightning_config.logger
