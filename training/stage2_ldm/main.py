@@ -475,11 +475,19 @@ if __name__ == "__main__":
                     "save_dir": logdir,
                 }
             },
+            # Panya: 11.2.24 Added for simple logging
+            "csvlogger": {
+                "target": "pytorch_lightning.loggers.CSVLogger",
+                "params":{
+                    "name": nowname,
+                    "save_dir": logdir,
+                }
+            }
         }
 
-    # Panya 11.2.24: disable wandb and enable tensorboard
+    # Panya 11.2.24: disable wandb and enable tensorboard to csvlogger
     # default_logger_cfg = default_logger_cfgs["wandb"]
-    default_logger_cfg = default_logger_cfgs["tensorboard"]
+    default_logger_cfg = default_logger_cfgs["csvlogger"]
 
     if "logger" in lightning_config:
         logger_cfg = lightning_config.logger
