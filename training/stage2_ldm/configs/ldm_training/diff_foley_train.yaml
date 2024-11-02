@@ -85,8 +85,8 @@ data:
       params:
         dataset1:
           dataset_name: VGGSound
-          data_dir: /dataset/VGGSound
-          video_dir: /dataset/VGGSound           # Not Necessary Except for Inference
+          data_dir: /Users/920753844/Diff-Foley/video/goodarchive_1
+          video_dir: /Users/920753844/Diff-Foley/video/goodarchive_1          # Not Necessary Except for Inference
           split_txt_path: /dataset/VGGSound
 
         feat_type: CAVP_feat
