@@ -505,7 +505,8 @@ if __name__ == "__main__":
                 "verbose": True,
                 "save_last": True,
                 'save_top_k': 3,
-                'period': config.checkpoint.save_every_n_epochs,
+                # changed 'period' to 'every_n_train_steps'
+                'every_n_train_steps': config.checkpoint.save_every_n_epochs,
             }
     }
 
