@@ -476,7 +476,8 @@ if __name__ == "__main__":
             },
         }
 
-    default_logger_cfg = default_logger_cfgs["wandb"]
+    # Panya 11.2.24: disable to try to get rid of wandb error
+    # default_logger_cfg = default_logger_cfgs["wandb"]
     # default_logger_cfg = default_logger_cfgs["tensorboard"]
 
     if "logger" in lightning_config:
