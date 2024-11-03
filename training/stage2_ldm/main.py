@@ -96,7 +96,9 @@ class SetupCallback(Callback):
             OmegaConf.save(self.config, os.path.join(self.cfgdir, '{}-project.yaml'.format(self.now)))
 
             print('Lightning config')
-            print(self.lightning_config.pretty())
+            # Panya 12.2.24 Added next line and comment out one with pretty() because it doesn't exist
+            print(OmegaConf.to_yaml(self.lightning_config))
+            # print(self.lightning_config.pretty())
             OmegaConf.save(OmegaConf.create({'lightning': self.lightning_config}),
                            os.path.join(self.cfgdir, '{}-lightning.yaml'.format(self.now)))
 
