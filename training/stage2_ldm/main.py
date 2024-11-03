@@ -80,7 +80,9 @@ class SetupCallback(Callback):
         self.config = config
         self.lightning_config = lightning_config
 
-    def on_pretrain_routine_start(self, trainer, pl_module):
+    # Panya: 12.2.24 change this because of deprecation after 1.5.3
+    # def on_pretrain_routine_start(self, trainer, pl_module):
+    def on_fit_start(self, trainer, pl_module):
         if trainer.global_rank == 0:
             # Create logdirs and save configs
             os.makedirs(self.logdir, exist_ok=True)
