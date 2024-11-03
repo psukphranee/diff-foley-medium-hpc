@@ -599,7 +599,7 @@ if __name__ == "__main__":
     trainer.logdir = logdir  ## logdir
 
     # Maxepochs:
-    trainer.max_epochs = opt.epoch
+    # trainer.max_epochs = opt.epoch
 
     # Data:
     data = instantiate_from_config(config.data)
