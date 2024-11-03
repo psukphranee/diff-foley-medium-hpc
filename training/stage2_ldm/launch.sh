@@ -6,4 +6,5 @@ python main.py \
 --gpus 0,1,2,3 \
 --stage 2 \
 --epoch 250 \
---scale_lr False
+--scale_lr False \
+--max_epochs 5
