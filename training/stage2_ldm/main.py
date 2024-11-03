@@ -90,7 +90,9 @@ class SetupCallback(Callback):
             os.makedirs(self.cfgdir, exist_ok=True)
 
             print('Project config')
-            print(self.config.pretty())
+            # Panya 12.2.24 Added next line and comment out one with pretty() because it doesn't exist
+            print(OmegaConf.to_yaml(self.config))
+            # print(self.config.pretty())
             OmegaConf.save(self.config, os.path.join(self.cfgdir, '{}-project.yaml'.format(self.now)))
 
             print('Lightning config')
