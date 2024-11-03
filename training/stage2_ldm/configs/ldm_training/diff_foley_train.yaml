@@ -96,7 +96,9 @@ data:
         fps: 4
 
     validation:
-      target: adm.data.video_spec_fullset_contrastive_concat_vgg_audioset_w_music.audio_video_spec_fullset_Dataset_Valid
+      # Panya: 11.2.24 Modify target because path seems to be wrong
+      target: adm.data.video_spec_dataset.audio_video_spec_fullset_Dataset_Valid
+      # target: adm.data.video_spec_fullset_contrastive_concat_vgg_audioset_w_music.audio_video_spec_fullset_Dataset_Valid
       params:
         dataset1:
           dataset_name: VGGSound
