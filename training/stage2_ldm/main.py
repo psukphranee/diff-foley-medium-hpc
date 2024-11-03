@@ -421,7 +421,9 @@ if __name__ == "__main__":
     # merge trainer cli with config
     trainer_config = lightning_config.get("trainer", OmegaConf.create())
     # default to ddp: !!!
-    trainer_config['accelerator'] = 'ddp'
+    # Panya: 12.2.24 comment out ddp and added cuda
+    # trainer_config['accelerator'] = 'ddp'
+    trainer_config['accelerator'] = 'cuda'
     # Non Default trainer Config:
     for k in nondefault_trainer_args(opt):
         trainer_config[k] = getattr(opt, k)
