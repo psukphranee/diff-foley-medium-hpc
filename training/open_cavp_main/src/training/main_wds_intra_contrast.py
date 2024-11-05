@@ -324,7 +324,6 @@ def main(args):
             logging.info(f"=> loaded checkpoint '{args.resume}' (epoch {start_epoch})")
 
     # initialize datasets
-    logging.info("DEBUG: Line 327 of main()")
     data = get_data(args, (preprocess_train, preprocess_val), epoch=start_epoch, tokenizer=get_tokenizer(args.model))
     assert len(data), 'At least one train or eval dataset must be specified.'
 
@@ -382,7 +381,11 @@ def main(args):
         return
 
     loss = create_loss(args)
-    print("line 382 of main_wds_intra_contrast")
+    
+    # Panya: 11.4.24
+    msg = f'the key "train" is in "data" and evaulation is not going on. we start epochs...'
+    logging.info(msg)
+    
     for epoch in range(start_epoch, args.epochs):
         if is_master(args):
             logging.info(f'Start epoch {epoch}')

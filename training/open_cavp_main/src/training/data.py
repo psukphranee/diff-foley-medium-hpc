@@ -2265,6 +2265,7 @@ def cut_video_and_spec_vggsound_audioset(video, spec):
     
 
     # transpose:
+    # Panya 11.4.24 According to paper on page 13, video_npy is x_v. Look at dimensions
     video_npy = video_npy.reshape(shape_h, -1, shape_h, 3).transpose(1,3,0,2)    # T x 3 x H x W
 
     # Check Video npy:
