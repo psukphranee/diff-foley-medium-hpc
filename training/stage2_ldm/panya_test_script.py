@@ -4,7 +4,7 @@ import importlib.util
 import os
 
 # Path to decode_wrapper.py file
-module_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'modules', 'stage2_decode', 'decode_wrapper.py'))
+module_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'adm', 'modules', 'stage2_decode', 'decode_wrapper.py'))
 
 # Load the module
 spec = importlib.util.spec_from_file_location("decode_wrapper", module_path)
