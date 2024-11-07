@@ -1,6 +1,19 @@
 # test_decoder_wrapper.py
 import torch
-from decode_wrapper import Decoder_Wrapper
+import importlib.util
+import os
+
+# Path to decode_wrapper.py file
+module_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'modules', 'stage2_decode', 'decode_wrapper.py'))
+
+# Load the module
+spec = importlib.util.spec_from_file_location("decode_wrapper", module_path)
+decode_wrapper = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(decode_wrapper)
+
+# Access the Decoder_Wrapper class
+Decoder_Wrapper = decode_wrapper.Decoder_Wrapper
+
 
 # Define a test function to check basic functionality of Decoder_Wrapper
 def test_decoder_wrapper():
