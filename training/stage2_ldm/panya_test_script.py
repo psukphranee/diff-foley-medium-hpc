@@ -25,7 +25,7 @@ spec.loader.exec_module(decode_wrapper)
 # Access the Decoder_Wrapper class
 Decoder_Wrapper = decode_wrapper.Decoder_Wrapper
 
-first_stage_model = {
+first_stage_config = {
     "target" : '/Users/920753844/Diff-Foley/training/open_cavp_main/src/pretrained_model/slowonly_r50_4x16x1_256e_8xb16_kinetics400-rgb_20220901-f6a40d08.pth',
     "params" : None
 }
@@ -40,7 +40,7 @@ def test_decoder_wrapper():
     some_param = 512  # Hypothetical parameter
 
     # Instantiate the Decoder_Wrapper class
-    model = Decoder_Wrapper(first_stage_model=first_stage_model, param=some_param, 
+    model = Decoder_Wrapper(first_stage_config, param=some_param, 
                             first_stage_ckpt=first_stage_ckpt)
 
     # Generate dummy input data for testing
