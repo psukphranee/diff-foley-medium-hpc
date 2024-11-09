@@ -21,8 +21,11 @@ def test_decoder_wrapper():
     first_stage_model = None  # Replace with an actual model if required by the constructor
     some_param = 512  # Hypothetical parameter
     
+    first_stage_ckpt = '/Users/920753844/Diff-Foley/training/open_cavp_main/logs/2024_10_21-14_32_19-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/checkpoints/epoch_latest.pt'
+
     # Instantiate the Decoder_Wrapper class
-    model = Decoder_Wrapper(first_stage_model=first_stage_model, param=some_param)
+    model = Decoder_Wrapper(first_stage_model=first_stage_model, param=some_param, 
+                            first_stage_ckpt=first_stage_ckpt)
 
     # Generate dummy input data for testing
     input_data = torch.randn(1, 3, 256, 256)  # Modify dimensions as required by the model
