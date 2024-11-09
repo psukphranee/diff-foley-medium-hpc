@@ -40,8 +40,7 @@ def test_decoder_wrapper():
     some_param = 512  # Hypothetical parameter
 
     # Instantiate the Decoder_Wrapper class
-    model = Decoder_Wrapper(first_stage_config, param=some_param, 
-                            first_stage_ckpt=first_stage_ckpt)
+    model = Decoder_Wrapper(first_stage_config, None, None, None, first_stage_ckpt=first_stage_ckpt)
 
     # Generate dummy input data for testing
     input_data = torch.randn(1, 3, 256, 256)  # Modify dimensions as required by the model
