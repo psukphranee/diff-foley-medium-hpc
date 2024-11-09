@@ -26,8 +26,8 @@ spec.loader.exec_module(decode_wrapper)
 Decoder_Wrapper = decode_wrapper.Decoder_Wrapper
 
 first_stage_config = {
-    target : '/Users/920753844/Diff-Foley/training/open_cavp_main/logs/2024_10_21-14_32_19-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/checkpoints/epoch_latest.pt',
-    params : None
+    "target" : '/Users/920753844/Diff-Foley/training/open_cavp_main/logs/2024_10_21-14_32_19-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/checkpoints/epoch_latest.pt',
+    "params" : None
 }
 
 
