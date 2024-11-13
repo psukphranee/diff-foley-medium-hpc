@@ -15,7 +15,7 @@ from torch.utils.checkpoint import checkpoint
 
 # Panya 11.13.24 - Relative import issue. Adding the part before .clip_modules
 # from .clip_modules import ResNet3dSlowOnly, spec_encoder_resnet50, Spec_VIT, ViViT, ViViT_mean, Spec_VIT_mean, Cnn14
-from stage2_ldm.adm.modules.stage2_decode.clip_modules import ResNet3dSlowOnly, spec_encoder_resnet50, Spec_VIT, ViViT, ViViT_mean, Spec_VIT_mean, Cnn14
+from training.stage2_ldm.adm.modules.stage2_decode.clip_modules import ResNet3dSlowOnly, spec_encoder_resnet50, Spec_VIT, ViViT, ViViT_mean, Spec_VIT_mean, Cnn14
 
 
 # Revise CLIP: Video & Spec Model
