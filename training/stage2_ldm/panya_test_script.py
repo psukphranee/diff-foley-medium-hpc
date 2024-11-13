@@ -5,6 +5,7 @@
 import torch
 import importlib.util
 import os
+import sys
 
 # Ensure the `training` directory is in `sys.path` only once
 training_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
