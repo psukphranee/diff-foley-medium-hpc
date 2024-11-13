@@ -7,12 +7,13 @@ import importlib.util
 import os
 import sys
 
-# Ensure the `training` directory is in `sys.path` only once
-training_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-if training_dir not in sys.path:
-    sys.path.append(training_dir)
-from training.stage2_ldm.adm.modules.stage2_decode.clip_video_spec import CLIP_Video_Spec_v2
+# Add the directory where this script is located (stage2_ldm) to sys.path
+current_dir = os.path.abspath(os.path.dirname(__file__))
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
 
+# Import the CLIP_Video_Spec_v2 class from clip_video_spec.py
+from adm.modules.stage2_decode.clip_video_spec import CLIP_Video_Spec_v2
 
 first_stage_ckpt = '/Users/920753844/Diff-Foley/training/open_cavp_main/logs/2024_10_21-14_32_19-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/checkpoints/epoch_latest.pt'
 
