@@ -6,6 +6,10 @@ import torch
 import importlib.util
 import os
 
+# Ensure the `training` directory is in `sys.path` only once
+training_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+if training_dir not in sys.path:
+    sys.path.append(training_dir)
 from training.stage2_ldm.adm.modules.stage2_decode.clip_video_spec import CLIP_Video_Spec_v2
 
 
