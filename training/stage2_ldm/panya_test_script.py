@@ -6,16 +6,7 @@ import torch
 import importlib.util
 import os
 
-# Path to clip_video_spec.py file
-module_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'adm', 'modules', 'stage2_decode', 'clip_video_spec.py'))
-
-# Load the module
-spec = importlib.util.spec_from_file_location("clip_video_spec", module_path)
-clip_video_spec = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(clip_video_spec)
-
-# Access the CLIP_Video_Spec_v2 class
-CLIP_Video_Spec_v2 = clip_video_spec.CLIP_Video_Spec_v2
+from training.stage2_ldm.adm.modules.stage2_decode.clip_video_spec import CLIP_Video_Spec_v2
 
 
 first_stage_ckpt = '/Users/920753844/Diff-Foley/training/open_cavp_main/logs/2024_10_21-14_32_19-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/checkpoints/epoch_latest.pt'
