@@ -11,6 +11,8 @@ def main():
 
     first_stage_config = get_model_config("audio_contrastive_pretrained")
 
+    print(first_stage_config)
+
     # Create an instance of Decoder_Wrapper
     decoder_wrapper = Decoder_Wrapper(
         first_stage_config = config,
