@@ -1,16 +1,13 @@
 # import the module
 
 from adm.modules.stage2_decode.decode_wrapper import Decoder_Wrapper
+from open_clip.factory import get_model_config
 
 def main():
-    # Define a mock configuration for the instance
-    config = {
-        "target": "my_module.MyClass",  # Fully qualified class name
-        "params": {
-            "arg1": 10,
-            "arg2": "example"
-        }
-    }
+    
+    # Assert that the function is callable
+    assert callable(get_model_config), "get_model_config is not callable"
+    print("get_model_config is callable.")
 
 
     # Create an instance of Decoder_Wrapper
