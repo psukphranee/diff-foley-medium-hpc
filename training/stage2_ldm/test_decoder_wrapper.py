@@ -5,16 +5,20 @@ from adm.modules.stage2_decode.decode_wrapper import Decoder_Wrapper
 def main():
     # Define a mock configuration for the instance
     config = {
-        "first_stage_key": "first_stage",
-        "cond_stage_key": "condition_stage",
-        "num_training_steps": 100,
+        "target": "my_module.MyClass",  # Fully qualified class name
+        "params": {
+            "arg1": 10,
+            "arg2": "example"
+        }
     }
+
 
     # Create an instance of Decoder_Wrapper
     decoder_wrapper = Decoder_Wrapper(
-        first_stage_key=config["first_stage_key"],
-        cond_stage_key=config["cond_stage_key"],
-        num_training_steps=config["num_training_steps"],
+        first_stage_config = config,
+        decoder_config=None,
+        scheduler_config=None,
+        monitor=None
     )
 
     # Create mock input data
