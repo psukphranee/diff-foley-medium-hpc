@@ -9,6 +9,7 @@ def main():
     assert callable(get_model_config), "get_model_config is not callable"
     print("get_model_config is callable.")
 
+    first_stage_config = get_model_config("audio_contrastive_pretrained")
 
     # Create an instance of Decoder_Wrapper
     decoder_wrapper = Decoder_Wrapper(
