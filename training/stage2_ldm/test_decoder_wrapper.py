@@ -3,6 +3,8 @@
 from adm.modules.stage2_decode.decode_wrapper import Decoder_Wrapper
 from open_clip.factory import get_model_config
 
+import json
+
 def main():
     
     # Assert that the function is callable
@@ -11,7 +13,9 @@ def main():
 
     first_stage_config = get_model_config("audio_contrastive_pretrained")
 
-    print(first_stage_config)
+    # Pretty-printing the JSON
+    pretty_json = json.dumps(first_stage_config, indent=4, sort_keys=True)
+    print(pretty_json)
 
     # Create an instance of Decoder_Wrapper
     decoder_wrapper = Decoder_Wrapper(
