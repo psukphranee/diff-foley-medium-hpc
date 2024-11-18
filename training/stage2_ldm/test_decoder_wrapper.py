@@ -3,6 +3,8 @@
 from adm.modules.stage2_decode.decode_wrapper import Decoder_Wrapper
 from open_clip.factory import get_model_config, list_models
 
+from adm.modules.stage2_decode.clip_video_spec import CLIP_Video_Spec_v2
+
 import json
 
 def main():
@@ -20,7 +22,7 @@ def main():
     first_stage_config['target'] = modules.stage2_decode.clip_video_spec.CLIP_Video_Spec_v2
 
     # Debug
-    from adm.modules.stage2_decode.clip_video_spec import CLIP_Video_Spec_v2
+    
     print("PANYA:", CLIP_Video_Spec_v2)
 
     # Pretty-printing the JSON
