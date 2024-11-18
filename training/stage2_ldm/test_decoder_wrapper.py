@@ -19,7 +19,7 @@ def main():
 
     # Create an instance of Decoder_Wrapper
     decoder_wrapper = Decoder_Wrapper(
-        first_stage_config = config,
+        first_stage_config = first_stage_config,
         decoder_config=None,
         scheduler_config=None,
         monitor=None
