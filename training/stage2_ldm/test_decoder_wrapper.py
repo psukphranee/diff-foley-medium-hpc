@@ -1,7 +1,7 @@
 # import the module
 
 from adm.modules.stage2_decode.decode_wrapper import Decoder_Wrapper
-from open_clip.factory import get_model_config
+from open_clip.factory import get_model_config, list_models
 
 import json
 
@@ -9,7 +9,10 @@ def main():
     
     # Assert that the function is callable
     assert callable(get_model_config), "get_model_config is not callable"
-    print("get_model_config is callable.")
+    print("Import sucessful: get_model_config is callable.")
+
+    # List available model
+    print(list_models())
 
     first_stage_config = get_model_config("audio_contrastive_pretrained")
     first_stage_config['target'] = 'audio_constrastive_pretrained'
