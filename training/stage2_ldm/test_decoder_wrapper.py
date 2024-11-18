@@ -12,7 +12,9 @@ def main():
     print("Import sucessful: get_model_config is callable.")
 
     # List available model
-    print(list_models())
+    models_avail = list_models()
+    for model in models_avail:
+        print(model)
 
     first_stage_config = get_model_config("audio_contrastive_pretrained")
     first_stage_config['target'] = 'audio_constrastive_pretrained'
