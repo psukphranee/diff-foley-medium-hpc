@@ -17,7 +17,7 @@ def main():
         print(model)
 
     first_stage_config = get_model_config("audio_contrastive_pretrained")
-    first_stage_config['target'] = training.stage2_ldm.adm.modules.stage2_decode.clip_video_spec.CLIP_Video_Spec_v2
+    first_stage_config['target'] = adm.modules.stage2_decode.clip_video_spec.CLIP_Video_Spec_v2
 
     # Pretty-printing the JSON
     pretty_json = json.dumps(first_stage_config, indent=4, sort_keys=True)
