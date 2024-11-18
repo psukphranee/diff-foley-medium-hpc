@@ -19,6 +19,10 @@ def main():
     first_stage_config = get_model_config("audio_contrastive_pretrained")
     first_stage_config['target'] = modules.stage2_decode.clip_video_spec.CLIP_Video_Spec_v2
 
+    # Debug
+    from adm.modules.stage2_decode.clip_video_spec import CLIP_Video_Spec_v2
+    print("PANYA:", CLIP_Video_Spec_v2)
+
     # Pretty-printing the JSON
     pretty_json = json.dumps(first_stage_config, indent=4, sort_keys=True)
     print(pretty_json)
