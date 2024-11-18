@@ -1,0 +1,99 @@
+Home directory: /Users/920753844
+Import sucessful: get_model_config is callable.
+audio_contrastive
+audio_contrastive_dim1024
+audio_contrastive_pretrained
+audio_contrastive_spec_aug
+coca_base
+coca_roberta-ViT-B-32
+coca_ViT-B-32
+coca_ViT-L-14
+convnext_base
+convnext_base_w
+convnext_base_w_320
+convnext_large
+convnext_large_d
+convnext_small
+convnext_tiny
+convnext_xlarge
+convnext_xxlarge
+convnext_xxlarge_320
+mt5-base-ViT-B-32
+mt5-xl-ViT-H-14
+RN50
+RN50-quickgelu
+RN50x4
+RN50x16
+RN50x64
+RN101
+RN101-quickgelu
+roberta-ViT-B-32
+swin_base_patch4_window7_224
+ViT-B-16
+ViT-B-16-plus
+ViT-B-16-plus-240
+ViT-B-32
+ViT-B-32-plus-256
+ViT-B-32-quickgelu
+ViT-bigG-14
+ViT-e-14
+ViT-g-14
+ViT-H-14
+ViT-H-16
+ViT-L-14
+ViT-L-14-280
+ViT-L-14-336
+ViT-L-16
+ViT-L-16-320
+ViT-M-16
+ViT-M-16-alt
+ViT-M-32
+ViT-M-32-alt
+ViT-S-16
+ViT-S-16-alt
+ViT-S-32
+ViT-S-32-alt
+vit_medium_patch16_gap_256
+vit_relpos_medium_patch16_cls_224
+xlm-roberta-base-ViT-B-32
+xlm-roberta-large-ViT-H-14
+PANYA: <class 'adm.modules.stage2_decode.clip_video_spec.CLIP_Video_Spec_v2'>
+{
+    "audio_pretrained": true,
+    "embed_dim": 512,
+    "target": "adm.modules.stage2_decode.clip_video_spec.CLIP_Video_Spec_v2",
+    "text_cfg": {
+        "context_length": 77,
+        "heads": 8,
+        "layers": 12,
+        "vocab_size": 49408,
+        "width": 512
+    },
+    "video_pretrained": true,
+    "vision_cfg": {
+        "image_size": 224,
+        "layers": [
+            3,
+            4,
+            6,
+            3
+        ],
+        "patch_size": null,
+        "width": 64
+    }
+}
+Traceback (most recent call last):
+  File "/Users/920753844/Diff-Foley/training/stage2_ldm/test_decoder_wrapper.py", line 55, in <module>
+    main()
+  File "/Users/920753844/Diff-Foley/training/stage2_ldm/test_decoder_wrapper.py", line 33, in main
+    decoder_wrapper = Decoder_Wrapper(
+                      ^^^^^^^^^^^^^^^^
+  File "/Users/920753844/Diff-Foley/training/stage2_ldm/adm/modules/stage2_decode/decode_wrapper.py", line 54, in __init__
+    self.instantiate_first_stage(first_stage_config)
+  File "/Users/920753844/Diff-Foley/training/stage2_ldm/adm/modules/stage2_decode/decode_wrapper.py", line 77, in instantiate_first_stage
+    model = instantiate_from_config(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/920753844/Diff-Foley/training/stage2_ldm/adm/modules/stage2_decode/decode_wrapper.py", line 34, in instantiate_from_config
+    return get_obj_from_str(config["target"])(**config.get("params", dict()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: CLIP_Video_Spec_v2.__init__() missing 3 required positional arguments: 'video_encode', 'spec_encode', and 'embed_dim'
