@@ -12,6 +12,7 @@ def main():
     print("get_model_config is callable.")
 
     first_stage_config = get_model_config("audio_contrastive_pretrained")
+    first_stage_config['target'] = 'audio_constrastive_pretrained'
 
     # Pretty-printing the JSON
     pretty_json = json.dumps(first_stage_config, indent=4, sort_keys=True)
