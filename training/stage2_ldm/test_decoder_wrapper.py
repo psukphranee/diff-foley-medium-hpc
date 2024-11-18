@@ -11,23 +11,27 @@ def main():
     
     # Assert that the function is callable
     assert callable(get_model_config), "get_model_config is not callable"
-    print("Import sucessful: get_model_config is callable.")
+    print("Import sucessful: get_model_config() is callable.")
 
     # List available model
+    print("Listing Available Models: -------------------------------------")
     models_avail = list_models()
     for model in models_avail:
         print(model)
+    print("---------------------------------------------------------------")
 
     first_stage_config = get_model_config("audio_contrastive_pretrained")
     first_stage_config['target'] = 'adm.modules.stage2_decode.clip_video_spec.CLIP_Video_Spec_v2'
 
     # Debug
     
-    print("PANYA:", CLIP_Video_Spec_v2)
+    print("Assert that CLIP_Video_Spec_v2 is importable.", CLIP_Video_Spec_v2)
 
     # Pretty-printing the JSON
+    print("Loading configuration of audio_contrastive_pretrained: ----")
     pretty_json = json.dumps(first_stage_config, indent=4, sort_keys=True)
     print(pretty_json)
+    print("---------------------------------------------------------------")
 
     # Create an instance of Decoder_Wrapper
     decoder_wrapper = Decoder_Wrapper(
