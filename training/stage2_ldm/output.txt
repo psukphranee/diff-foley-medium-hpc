@@ -1,5 +1,6 @@
 Home directory: /Users/920753844
-Import sucessful: get_model_config is callable.
+Import sucessful: get_model_config() is callable.
+Listing Available Models: -------------------------------------
 audio_contrastive
 audio_contrastive_dim1024
 audio_contrastive_pretrained
@@ -57,7 +58,9 @@ vit_medium_patch16_gap_256
 vit_relpos_medium_patch16_cls_224
 xlm-roberta-base-ViT-B-32
 xlm-roberta-large-ViT-H-14
-PANYA: <class 'adm.modules.stage2_decode.clip_video_spec.CLIP_Video_Spec_v2'>
+---------------------------------------------------------------
+Assert that CLIP_Video_Spec_v2 is importable. <class 'adm.modules.stage2_decode.clip_video_spec.CLIP_Video_Spec_v2'>
+Loading configuration of audio_contrastive_pretrained: ----
 {
     "audio_pretrained": true,
     "embed_dim": 512,
@@ -82,10 +85,11 @@ PANYA: <class 'adm.modules.stage2_decode.clip_video_spec.CLIP_Video_Spec_v2'>
         "width": 64
     }
 }
+---------------------------------------------------------------
 Traceback (most recent call last):
-  File "/Users/920753844/Diff-Foley/training/stage2_ldm/test_decoder_wrapper.py", line 55, in <module>
+  File "/Users/920753844/Diff-Foley/training/stage2_ldm/test_decoder_wrapper.py", line 59, in <module>
     main()
-  File "/Users/920753844/Diff-Foley/training/stage2_ldm/test_decoder_wrapper.py", line 33, in main
+  File "/Users/920753844/Diff-Foley/training/stage2_ldm/test_decoder_wrapper.py", line 37, in main
     decoder_wrapper = Decoder_Wrapper(
                       ^^^^^^^^^^^^^^^^
   File "/Users/920753844/Diff-Foley/training/stage2_ldm/adm/modules/stage2_decode/decode_wrapper.py", line 54, in __init__
