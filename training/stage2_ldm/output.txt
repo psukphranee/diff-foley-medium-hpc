@@ -64,6 +64,11 @@ Loading configuration of audio_contrastive_pretrained: ----
 {
     "audio_pretrained": true,
     "embed_dim": 512,
+    "params": {
+        "embed_dim": 512,
+        "spec_encode": "cnn14_pool",
+        "video_encode": "Slowonly"
+    },
     "target": "adm.modules.stage2_decode.clip_video_spec.CLIP_Video_Spec_v2",
     "text_cfg": {
         "context_length": 77,
@@ -86,18 +91,15 @@ Loading configuration of audio_contrastive_pretrained: ----
     }
 }
 ---------------------------------------------------------------
+Video Pretrained: False  Audio Pretrained: False
+Video Pretrained: False  Audio Pretrained: False
 Traceback (most recent call last):
-  File "/Users/920753844/Diff-Foley/training/stage2_ldm/test_decoder_wrapper.py", line 59, in <module>
+  File "/Users/920753844/Diff-Foley/training/stage2_ldm/test_decoder_wrapper.py", line 66, in <module>
     main()
-  File "/Users/920753844/Diff-Foley/training/stage2_ldm/test_decoder_wrapper.py", line 37, in main
-    decoder_wrapper = Decoder_Wrapper(
-                      ^^^^^^^^^^^^^^^^
-  File "/Users/920753844/Diff-Foley/training/stage2_ldm/adm/modules/stage2_decode/decode_wrapper.py", line 54, in __init__
-    self.instantiate_first_stage(first_stage_config)
-  File "/Users/920753844/Diff-Foley/training/stage2_ldm/adm/modules/stage2_decode/decode_wrapper.py", line 77, in instantiate_first_stage
-    model = instantiate_from_config(config)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/920753844/Diff-Foley/training/stage2_ldm/adm/modules/stage2_decode/decode_wrapper.py", line 34, in instantiate_from_config
-    return get_obj_from_str(config["target"])(**config.get("params", dict()))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: CLIP_Video_Spec_v2.__init__() missing 3 required positional arguments: 'video_encode', 'spec_encode', and 'embed_dim'
+  File "/Users/920753844/Diff-Foley/training/stage2_ldm/test_decoder_wrapper.py", line 60, in main
+    output = decoder_wrapper.forward(input_data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/920753844/Diff-Foley/training/stage2_ldm/adm/modules/stage2_decode/decode_wrapper.py", line 157, in forward
+    x = x.permute(0, 2, 1).unsqueeze(2) 
+        ^^^^^^^^^^^^^^^^^^
+RuntimeError: permute(sparse_coo): number of dimensions in the tensor input does not match the length of the desired ordering of dimensions i.e. input.dim() = 4 is not equal to len(dims) = 3
