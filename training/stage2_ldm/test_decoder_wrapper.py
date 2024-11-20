@@ -5,7 +5,7 @@ import torch
 from adm.modules.stage2_decode.decode_wrapper import Decoder_Wrapper
 from open_clip.factory import get_model_config, list_models
 
-from adm.modules.stage2_decode.clip_video_spec import CLIP_Video_Spec_v2
+from adm.modules.stage2_decode.clip_video_spec import CLIP_Video_Spec_v2, CLIP_Video_Spec
 
 import json
 
@@ -23,7 +23,7 @@ def main():
     print("---------------------------------------------------------------")
 
     first_stage_config = get_model_config("audio_contrastive_pretrained")
-    first_stage_config['target'] = 'adm.modules.stage2_decode.clip_video_spec.CLIP_Video_Spec_v2'
+    first_stage_config['target'] = 'adm.modules.stage2_decode.clip_video_spec.CLIP_Video_Spec'
     first_stage_config['params'] = {
         "video_encode": "Slowonly",
         "spec_encode": "cnn14_pool",
@@ -33,6 +33,7 @@ def main():
     # Debug
     
     print("Assert that CLIP_Video_Spec_v2 is importable.", CLIP_Video_Spec_v2)
+    print("Assert that CLIP_Video_Spec is importable.", CLIP_Video_Spec)
 
     # Pretty-printing the JSON
     print("Loading configuration of audio_contrastive_pretrained: ----")
