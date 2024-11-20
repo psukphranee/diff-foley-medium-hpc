@@ -25,7 +25,7 @@ def main():
     first_stage_config['params'] = {
         "video_encode": "Slowonly",
         "spec_encode": "cnn14_pool",
-        "embed_dim": 256
+        "embed_dim": 512
     }
 
     # Debug
