@@ -55,12 +55,7 @@ def main():
     width = 64
     input_data = torch.randn(batch_size, channels, height, width)
 
-    # Example usage: Call forward or similar method (if implemented)
-    try:
-        output = decoder_wrapper.forward(input_data)
-        print("Output from Decoder_Wrapper instance:", output)
-    except AttributeError as e:
-        print("The forward method is not implemented or cannot be used:", e)
+    
 
 if __name__ == "__main__":
     main()
