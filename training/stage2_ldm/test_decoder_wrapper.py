@@ -22,6 +22,9 @@ def main():
 
     first_stage_config = get_model_config("audio_contrastive_pretrained")
     first_stage_config['target'] = 'adm.modules.stage2_decode.clip_video_spec.CLIP_Video_Spec_v2'
+    first_stage_config['params'] = {
+        "video_encode" = "Slowonly"
+    }
 
     # Debug
     
