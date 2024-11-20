@@ -1,4 +1,6 @@
 # import the module
+import torch
+
 
 from adm.modules.stage2_decode.decode_wrapper import Decoder_Wrapper
 from open_clip.factory import get_model_config, list_models
