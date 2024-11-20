@@ -36,8 +36,8 @@ def main():
     # Create an instance of Decoder_Wrapper
     decoder_wrapper = Decoder_Wrapper(
         first_stage_config = first_stage_config,
-        decoder_config=None,
-        scheduler_config=None,
+        decoder_config=first_stage_config,
+        scheduler_config=first_stage_config,
         monitor=None
     )
 
