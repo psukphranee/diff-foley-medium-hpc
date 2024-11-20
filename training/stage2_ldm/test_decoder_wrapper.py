@@ -48,12 +48,10 @@ def main():
         monitor=None
     )
 
-    # Create mock input data
-    batch_size = 4
-    channels = 3
-    height = 64
-    width = 64
-    input_data = torch.randn(batch_size, channels, height, width)
+    # load one input video
+    sample_video = "/Users/920753844/Diff-Foley/video/goodarchive_1/YwZOeyAQC8.video.jpg"
+
+    sample_video_out = decoder_wrapper.encode_first_stage_video(sample_video)
 
     
 
