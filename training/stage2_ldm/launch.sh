@@ -3,7 +3,7 @@
 python main.py \
 --base ./configs/ldm_training/diff_foley_train.yaml \
 -t --name diff_foley_experiment  \
---gpus 0,1,2,3 \
+--gpus 0 \
 --stage 2 \
 --epoch 250 \
 --scale_lr False \

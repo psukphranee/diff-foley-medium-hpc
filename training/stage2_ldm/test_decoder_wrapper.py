@@ -27,7 +27,8 @@ def main():
     first_stage_config['params'] = {
         "video_encode": "Slowonly",
         "spec_encode": "cnn14_pool",
-        "embed_dim": 512
+        "embed_dim": 512,
+        "state_dict": "/Users/920753844/Diff-Foley/training/open_cavp_main/logs/2024_10_21-14_32_19-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/checkpoints/epoch_latest.pt"
     }
 
     # Debug
