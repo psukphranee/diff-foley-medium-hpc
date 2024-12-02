@@ -82,6 +82,8 @@ class Decoder_Wrapper(pl.LightningModule):
     
     def init_first_from_ckpt(self, path):
         model = torch.load(path, map_location="cpu")
+        # 12.1.24 Panya: Loaded model from checkpoint in decode_wrapper.py
+        print("Panya: Loaded model from checkpoint in decode_wrapper.py")
         if "state_dict" in list(model.keys()):
             model = model["state_dict"]
         # Remove: module prefix

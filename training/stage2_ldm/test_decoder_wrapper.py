@@ -27,12 +27,12 @@ def main():
     first_stage_config['params'] = {
         "video_encode": "Slowonly",
         "spec_encode": "cnn14_pool",
-        "embed_dim": 512,
-        "state_dict": "/Users/920753844/Diff-Foley/training/open_cavp_main/logs/2024_10_21-14_32_19-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/checkpoints/epoch_latest.pt"
+        "embed_dim": 512
     }
 
+    first_stage_ckpt_path = "/Users/920753844/Diff-Foley/training/open_cavp_main/logs/2024_10_21-14_32_19-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/checkpoints/epoch_latest.pt"
+
     # Debug
-    
     print("Assert that CLIP_Video_Spec_v2 is importable.", CLIP_Video_Spec_v2)
     print("Assert that CLIP_Video_Spec is importable.", CLIP_Video_Spec)
 
@@ -47,7 +47,8 @@ def main():
         first_stage_config = first_stage_config,
         decoder_config=first_stage_config,
         scheduler_config=first_stage_config,
-        monitor=None
+        monitor=None,
+        first_stage_ckpt=first_stage_ckpt_path
     )
 
     # load one input video
