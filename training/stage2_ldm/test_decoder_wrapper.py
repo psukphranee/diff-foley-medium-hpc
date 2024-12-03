@@ -59,7 +59,7 @@ def main():
     # 12/2/24 Panya
     print(sample_video_tensor.shape)
 
-    # sample_video_out = decoder_wrapper.encode_first_stage_video_intra(sample_video_tensor)
+    sample_video_out = decoder_wrapper.encode_first_stage_video_intra(sample_video_tensor)
 
     
 
