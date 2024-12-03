@@ -1,6 +1,6 @@
 # import the module
 import torch
-
+import numpy as np
 
 from adm.modules.stage2_decode.decode_wrapper import Decoder_Wrapper
 from open_clip.factory import get_model_config, list_models
@@ -52,8 +52,9 @@ def main():
     )
 
     # load one input video
-    sample_video = "/Users/920753844/Diff-Foley/video/goodarchive_1/YwZOeyAQC8.video.jpg"
-    sample_video_out = decoder_wrapper.encode_first_stage_video_intra(sample_video)
+    sample_video_path = "/Users/920753844/Diff-Foley/video/goodarchive_1/YwZOeyAQC8.video.jpg"
+    sample_video_np = np.load(sample_video_path)
+    sample_video_out = decoder_wrapper.encode_first_stage_video_intra(sample_video_np)
 
     
 
