@@ -52,8 +52,8 @@ def main():
     )
 
     # load one input video
-    # sample_video = "/Users/920753844/Diff-Foley/video/goodarchive_1/YwZOeyAQC8.video.jpg"
-    # sample_video_out = decoder_wrapper.encode_first_stage_video(sample_video)
+    sample_video = "/Users/920753844/Diff-Foley/video/goodarchive_1/YwZOeyAQC8.video.jpg"
+    sample_video_out = decoder_wrapper.encode_first_stage_video(sample_video)
 
     
 
