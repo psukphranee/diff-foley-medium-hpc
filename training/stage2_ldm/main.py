@@ -425,7 +425,9 @@ if __name__ == "__main__":
     configs = [OmegaConf.load(cfg) for cfg in opt.base]
 
     # Panya: 12.11.24
-    print("Panya: ", json.dumps(configs))
+    print("Panya: Debug configs ------")
+    for cfg in configs:
+        print(OmegaConf.pretty(cfg))
 
     cli = OmegaConf.from_dotlist(unknown)
     print(cli)  # ?
