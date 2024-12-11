@@ -62,6 +62,8 @@ def main():
     print("PyTorch tensor shape after:", sample_video_tensor.shape)
 
     sample_video_out = decoder_wrapper.encode_first_stage_video_intra(sample_video_tensor)
+    
+    np.savez('sample_video_out.npz', sample_video_out.numpy())
 
     
 
