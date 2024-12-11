@@ -57,7 +57,8 @@ def main():
     sample_video_tensor = torch.tensor(sample_video_np)#.unsqueeze(0)
 
     # 12/2/24 Panya
-    print(sample_video_tensor.shape)
+    print("Tensor shape:", sample_video_tensor.shape)
+
 
     sample_video_out = decoder_wrapper.encode_first_stage_video_intra(sample_video_tensor)
 
