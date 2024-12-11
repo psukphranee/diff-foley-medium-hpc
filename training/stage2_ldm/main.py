@@ -9,6 +9,9 @@ from torch.utils.data import DataLoader, Dataset
 from pytorch_lightning.callbacks import ModelCheckpoint, Callback, LearningRateMonitor
 import time
 from pytorch_lightning.utilities import rank_zero_info
+
+import json #Panya 12.11.24
+
 import numpy as np
     # model:
     #   base_learning_rate: float
@@ -420,6 +423,10 @@ if __name__ == "__main__":
 
     # Init and Save Configs:  # DDP
     configs = [OmegaConf.load(cfg) for cfg in opt.base]
+
+    # Panya: 12.11.24
+    print("Panya: ", json.dumps(configs))
+
     cli = OmegaConf.from_dotlist(unknown)
     print(cli)  # ?
     config = OmegaConf.merge(*configs, cli)
