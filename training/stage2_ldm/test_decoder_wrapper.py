@@ -56,7 +56,8 @@ def main():
     sample_video_np = np.load(sample_video_path)
     print("Numpy tensor shape:", sample_video_np.shape)
 
-    sample_video_tensor = torch.tensor(sample_video_np)#.unsqueeze(0)
+    sample_video_tensor = torch.tensor(sample_video_np).unsqueeze(0)
+    sample_video_tensor.permute(0,1,4,2,3)
 
     # 12/2/24 Panya
     print("PyTorch tensor shape:", sample_video_tensor.shape)
