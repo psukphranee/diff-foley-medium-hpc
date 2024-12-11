@@ -58,7 +58,7 @@ def main():
 
     sample_video_tensor = torch.tensor(sample_video_np).unsqueeze(0)
     print("PyTorch tensor shape before:", sample_video_tensor.shape)
-    sample_video_tensor.permute(0,1,4,2,3)
+    sample_video_tensor = sample_video_tensor.permute(0,1,4,2,3)
     print("PyTorch tensor shape after:", sample_video_tensor.shape)
 
     #sample_video_out = decoder_wrapper.encode_first_stage_video_intra(sample_video_tensor)
