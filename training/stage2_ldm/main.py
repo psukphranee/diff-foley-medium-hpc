@@ -427,7 +427,7 @@ if __name__ == "__main__":
     # Panya: 12.11.24
     print("Panya: Debug configs ------")
     for cfg in configs:
-        print(OmegaConf.pretty(cfg))
+        print(cfg)
 
     cli = OmegaConf.from_dotlist(unknown)
     print(cli)  # ?
