@@ -56,7 +56,7 @@ def main():
     sample_video_np = np.load(sample_video_path)
     print("Numpy tensor shape:", sample_video_np.shape)
 
-    sample_video_tensor = torch.tensor(sample_video_np).unsqueeze(0)
+    sample_video_tensor = torch.tensor(sample_video_np).to(torch.float32).unsqueeze(0)
     print("PyTorch tensor shape before:", sample_video_tensor.shape)
     sample_video_tensor = sample_video_tensor.permute(0,1,4,2,3)
     print("PyTorch tensor shape after:", sample_video_tensor.shape)
