@@ -53,14 +53,16 @@ def main():
 
     # load one input video
     sample_video_path = "/Users/920753844/Diff-Foley/video/goodarchive_1/YwZOeyAQC8.video.jpg"
-    sample_video_np = torch.load(sample_video_path)
+    sample_video_np = np.load(sample_video_path)
+    print("Numpy tensor shape:", sample_video_np.shape)
+
     sample_video_tensor = torch.tensor(sample_video_np)#.unsqueeze(0)
 
     # 12/2/24 Panya
-    print("Tensor shape:", sample_video_tensor.shape)
+    print("PyTorch tensor shape:", sample_video_tensor.shape)
 
 
-    sample_video_out = decoder_wrapper.encode_first_stage_video_intra(sample_video_tensor)
+    #sample_video_out = decoder_wrapper.encode_first_stage_video_intra(sample_video_tensor)
 
     
 
