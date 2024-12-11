@@ -453,7 +453,7 @@ if __name__ == "__main__":
 
     # Model:
     # 12.11.24 Panya
-    print("Panya: Instantiating model in main: ", config.model)
+    print("Panya: Instantiating model in main. instantiate_from_config prints out the target model below: ")
     model = instantiate_from_config(config.model)
 
 
