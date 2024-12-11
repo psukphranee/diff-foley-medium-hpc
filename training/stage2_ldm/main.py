@@ -452,6 +452,8 @@ if __name__ == "__main__":
     # max_epochs=20
 
     # Model:
+    # 12.11.24 Panya
+    print("Panya: Instantiating model in main: ", config.model)
     model = instantiate_from_config(config.model)
 
 
