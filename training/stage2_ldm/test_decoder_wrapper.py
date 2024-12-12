@@ -1,6 +1,7 @@
 # import the module
 import torch
 import numpy as np
+import argparse
 
 from adm.modules.stage2_decode.decode_wrapper import Decoder_Wrapper
 from open_clip.factory import get_model_config, list_models
@@ -9,7 +10,7 @@ from adm.modules.stage2_decode.clip_video_spec import CLIP_Video_Spec_v2, CLIP_V
 
 import json
 
-def main():
+def main(args):
     
     # Assert that the function is callable
     assert callable(get_model_config), "get_model_config is not callable"
@@ -52,7 +53,8 @@ def main():
     )
 
     # load one input video
-    sample_video_path = "/Users/920753844/Diff-Foley/video/goodarchive_1/YwZOeyAQC8.video.jpg"
+    # sample_video_path = "/Users/920753844/Diff-Foley/video/goodarchive_1/YwZOeyAQC8.video.jpg"
+    sample_video_path = args.input_file
     sample_video_np = np.load(sample_video_path)
     print("Numpy tensor shape:", sample_video_np.shape)
 
@@ -63,9 +65,26 @@ def main():
 
     sample_video_out = decoder_wrapper.encode_first_stage_video_intra(sample_video_tensor)
     
-    np.savez('sample_video_out.npz', sample_video_out.numpy())
+    if args.output_file:
+        output_file = args.output_file
+    else:
+        output_file = args.input_file.rsplit('.', 1)[0] + ".npz"
 
-    
+    np.savez(output_file, sample_video_out.numpy())
+
+
 
 if __name__ == "__main__":
-    main()
+    # Create the argument parser
+    parser = argparse.ArgumentParser(description="A script that demonstrates command-line arguments.")
+
+    # Define the command-line arguments
+    parser.add_argument("--input_file", type=str, required=True, help="Path to the input file.")
+    parser.add_argument("--output_file", type=str, required=False, help="Path to the output file.")
+    parser.add_argument("--verbose", action="store_true", help="Enable verbose mode.")
+
+    # Parse the command-line arguments
+    args = parser.parse_args()
+
+    # Call the main function with the parsed arguments
+    main(args)
