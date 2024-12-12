@@ -16,7 +16,8 @@ model:
     monitor: val/loss_simple_ema
     scale_factor: 0.18215
     use_ema: False
-    ckpt_path: "./pretrained_model/sd-v1-4-full-ema.ckpt"
+    ckpt_path: "/Users/920753844/Diff-Foley/training/open_cavp_main/logs/2024_10_21-14_32_19-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/checkpoints/epoch_latest.pt"
+    # ckpt_path: "./pretrained_model/sd-v1-4-full-ema.ckpt"
 
     scheduler_config: # 10000 warmup steps
       target: adm.lr_scheduler.LambdaLinearScheduler
