@@ -94,13 +94,13 @@ class SetupCallback(Callback):
 
             print('Project config')
             # Panya 12.2.24 Added next line and comment out one with pretty() because it doesn't exist
-            print(OmegaConf.to_yaml(self.config))
+            # print(OmegaConf.to_yaml(self.config))
             # print(self.config.pretty())
             OmegaConf.save(self.config, os.path.join(self.cfgdir, '{}-project.yaml'.format(self.now)))
 
             print('Lightning config')
             # Panya 12.2.24 Added next line and comment out one with pretty() because it doesn't exist
-            print(OmegaConf.to_yaml(self.lightning_config))
+            # print(OmegaConf.to_yaml(self.lightning_config))
             # print(self.lightning_config.pretty())
             OmegaConf.save(OmegaConf.create({'lightning': self.lightning_config}),
                            os.path.join(self.cfgdir, '{}-lightning.yaml'.format(self.now)))
@@ -455,7 +455,7 @@ if __name__ == "__main__":
     print("Panya: 0----------------------")
     # Model:
     # 12.11.24 Panya
-    print("Panya: Instantiating model in main. config.model=", config.model)
+    # print("Panya: Instantiating model in main. config.model=", config.model)
     model = instantiate_from_config(config.model) # Panya: prints the target 
 
 
