@@ -430,7 +430,9 @@ if __name__ == "__main__":
         print(i, ": ", cfg)
 
     cli = OmegaConf.from_dotlist(unknown)
+    print("Panya: unknown arguments------")
     print(cli)  # ?
+    print("------------------------------")
     config = OmegaConf.merge(*configs, cli)
     lightning_config = config.pop("lightning", OmegaConf.create())
     # merge trainer cli with config
