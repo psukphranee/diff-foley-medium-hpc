@@ -460,6 +460,8 @@ if __name__ == "__main__":
     # trainer and callbacks:
     trainer_kwargs = dict()
     
+    
+    print("Panya: 1----------------------")
     root_dir = os.getcwd()
 
     # default logger configs:
@@ -468,6 +470,7 @@ if __name__ == "__main__":
     else:
         project_name = "audio_diffusion"
 
+    print("Panya: 2----------------------")
     default_logger_cfgs = {
             # Panya: 11.2.24 : Disable for errors
             # "wandb": {
@@ -508,6 +511,9 @@ if __name__ == "__main__":
     # default_logger_cfg = default_logger_cfgs["wandb"]
     default_logger_cfg = default_logger_cfgs["csvlogger"]
 
+    
+    print("Panya: 3----------------------")
+
     if "logger" in lightning_config:
         logger_cfg = lightning_config.logger
     else:
@@ -522,7 +528,6 @@ if __name__ == "__main__":
     # Model Checkpoint:
 
 
-    print("Panya: asdfghjkl----------------------")
 
     default_modelckpt_cfg = {
             "target": "pytorch_lightning.callbacks.ModelCheckpoint",
