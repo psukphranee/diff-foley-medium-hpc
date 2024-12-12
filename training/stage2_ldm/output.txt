@@ -1,99 +1,60 @@
-/Users/920753844/Diff-Foley/training/stage2_ldm/adm/modules/stage2_decode/decode_wrapper.py:84: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
-  model = torch.load(path, map_location="cpu")
-Home directory: /Users/920753844
-Import sucessful: get_model_config() is callable.
-Listing Available Models: -------------------------------------
-audio_contrastive
-audio_contrastive_dim1024
-audio_contrastive_pretrained
-audio_contrastive_spec_aug
-coca_base
-coca_roberta-ViT-B-32
-coca_ViT-B-32
-coca_ViT-L-14
-convnext_base
-convnext_base_w
-convnext_base_w_320
-convnext_large
-convnext_large_d
-convnext_small
-convnext_tiny
-convnext_xlarge
-convnext_xxlarge
-convnext_xxlarge_320
-mt5-base-ViT-B-32
-mt5-xl-ViT-H-14
-RN50
-RN50-quickgelu
-RN50x4
-RN50x16
-RN50x64
-RN101
-RN101-quickgelu
-roberta-ViT-B-32
-swin_base_patch4_window7_224
-ViT-B-16
-ViT-B-16-plus
-ViT-B-16-plus-240
-ViT-B-32
-ViT-B-32-plus-256
-ViT-B-32-quickgelu
-ViT-bigG-14
-ViT-e-14
-ViT-g-14
-ViT-H-14
-ViT-H-16
-ViT-L-14
-ViT-L-14-280
-ViT-L-14-336
-ViT-L-16
-ViT-L-16-320
-ViT-M-16
-ViT-M-16-alt
-ViT-M-32
-ViT-M-32-alt
-ViT-S-16
-ViT-S-16-alt
-ViT-S-32
-ViT-S-32-alt
-vit_medium_patch16_gap_256
-vit_relpos_medium_patch16_cls_224
-xlm-roberta-base-ViT-B-32
-xlm-roberta-large-ViT-H-14
----------------------------------------------------------------
-Assert that CLIP_Video_Spec_v2 is importable. <class 'adm.modules.stage2_decode.clip_video_spec.CLIP_Video_Spec_v2'>
-Assert that CLIP_Video_Spec is importable. <class 'adm.modules.stage2_decode.clip_video_spec.CLIP_Video_Spec'>
-Loading configuration of audio_contrastive_pretrained: ----
-{
-    "audio_pretrained": true,
-    "embed_dim": 512,
-    "params": {
-        "embed_dim": 512,
-        "spec_encode": "cnn14_pool",
-        "video_encode": "Slowonly"
-    },
-    "target": "adm.modules.stage2_decode.clip_video_spec.CLIP_Video_Spec",
-    "text_cfg": {
-        "context_length": 77,
-        "heads": 8,
-        "layers": 12,
-        "vocab_size": 49408,
-        "width": 512
-    },
-    "video_pretrained": true,
-    "vision_cfg": {
-        "image_size": 224,
-        "layers": [
-            3,
-            4,
-            6,
-            3
-        ],
-        "patch_size": null,
-        "width": 64
-    }
-}
----------------------------------------------------------------
-Panya: Loaded model from checkpoint in decode_wrapper.py
-Restored from /Users/920753844/Diff-Foley/training/open_cavp_main/logs/2024_10_21-14_32_19-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/checkpoints/epoch_latest.pt with 0 missing and 81 unexpected keys
-Unexpected Keys: ['spec_encoder.bn.weight', 'spec_encoder.bn.bias', 'spec_encoder.bn.running_mean', 'spec_encoder.bn.running_var', 'spec_encoder.bn.num_batches_tracked', 'spec_encoder.conv_block1.conv1.weight', 'spec_encoder.conv_block1.conv2.weight', 'spec_encoder.conv_block1.bn1.weight', 'spec_encoder.conv_block1.bn1.bias', 'spec_encoder.conv_block1.bn1.running_mean', 'spec_encoder.conv_block1.bn1.running_var', 'spec_encoder.conv_block1.bn1.num_batches_tracked', 'spec_encoder.conv_block1.bn2.weight', 'spec_encoder.conv_block1.bn2.bias', 'spec_encoder.conv_block1.bn2.running_mean', 'spec_encoder.conv_block1.bn2.running_var', 'spec_encoder.conv_block1.bn2.num_batches_tracked', 'spec_encoder.conv_block2.conv1.weight', 'spec_encoder.conv_block2.conv2.weight', 'spec_encoder.conv_block2.bn1.weight', 'spec_encoder.conv_block2.bn1.bias', 'spec_encoder.conv_block2.bn1.running_mean', 'spec_encoder.conv_block2.bn1.running_var', 'spec_encoder.conv_block2.bn1.num_batches_tracked', 'spec_encoder.conv_block2.bn2.weight', 'spec_encoder.conv_block2.bn2.bias', 'spec_encoder.conv_block2.bn2.running_mean', 'spec_encoder.conv_block2.bn2.running_var', 'spec_encoder.conv_block2.bn2.num_batches_tracked', 'spec_encoder.conv_block3.conv1.weight', 'spec_encoder.conv_block3.conv2.weight', 'spec_encoder.conv_block3.bn1.weight', 'spec_encoder.conv_block3.bn1.bias', 'spec_encoder.conv_block3.bn1.running_mean', 'spec_encoder.conv_block3.bn1.running_var', 'spec_encoder.conv_block3.bn1.num_batches_tracked', 'spec_encoder.conv_block3.bn2.weight', 'spec_encoder.conv_block3.bn2.bias', 'spec_encoder.conv_block3.bn2.running_mean', 'spec_encoder.conv_block3.bn2.running_var', 'spec_encoder.conv_block3.bn2.num_batches_tracked', 'spec_encoder.conv_block4.conv1.weight', 'spec_encoder.conv_block4.conv2.weight', 'spec_encoder.conv_block4.bn1.weight', 'spec_encoder.conv_block4.bn1.bias', 'spec_encoder.conv_block4.bn1.running_mean', 'spec_encoder.conv_block4.bn1.running_var', 'spec_encoder.conv_block4.bn1.num_batches_tracked', 'spec_encoder.conv_block4.bn2.weight', 'spec_encoder.conv_block4.bn2.bias', 'spec_encoder.conv_block4.bn2.running_mean', 'spec_encoder.conv_block4.bn2.running_var', 'spec_encoder.conv_block4.bn2.num_batches_tracked', 'spec_encoder.conv_block5.conv1.weight', 'spec_encoder.conv_block5.conv2.weight', 'spec_encoder.conv_block5.bn1.weight', 'spec_encoder.conv_block5.bn1.bias', 'spec_encoder.conv_block5.bn1.running_mean', 'spec_encoder.conv_block5.bn1.running_var', 'spec_encoder.conv_block5.bn1.num_batches_tracked', 'spec_encoder.conv_block5.bn2.weight', 'spec_encoder.conv_block5.bn2.bias', 'spec_encoder.conv_block5.bn2.running_mean', 'spec_encoder.conv_block5.bn2.running_var', 'spec_encoder.conv_block5.bn2.num_batches_tracked', 'spec_encoder.conv_block6.conv1.weight', 'spec_encoder.conv_block6.conv2.weight', 'spec_encoder.conv_block6.bn1.weight', 'spec_encoder.conv_block6.bn1.bias', 'spec_encoder.conv_block6.bn1.running_mean', 'spec_encoder.conv_block6.bn1.running_var', 'spec_encoder.conv_block6.bn1.num_batches_tracked', 'spec_encoder.conv_block6.bn2.weight', 'spec_encoder.conv_block6.bn2.bias', 'spec_encoder.conv_block6.bn2.running_mean', 'spec_encoder.conv_block6.bn2.running_var', 'spec_encoder.conv_block6.bn2.num_batches_tracked', 'spec_encoder.fc1.weight', 'spec_encoder.fc1.bias', 'spec_encoder.final_project.weight', 'spec_encoder.final_project.bias']
+[rank: 0] Global seed set to 72
+/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/pytorch_lightning/utilities/distributed.py:258: LightningDeprecationWarning: `pytorch_lightning.utilities.distributed.rank_zero_only` has been deprecated in v1.8.1 and will be removed in v2.0.0. You can import it from `pytorch_lightning.utilities` instead.
+  rank_zero_deprecation(
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+Panya: unknown arguments------
+{}
+------------------------------
+Running on GPUs 0,1,2
+Panya: 0----------------------
+adm.models.diffusion.sd_ddpm_scale.LatentDiffusion
+LatentDiffusion: Running in eps-prediction mode
+DiffusionWrapper has 859.52 M params.
+self.instantiate_first_stage(first_stage_config) in LatentDiffusion constructor------------------------------------------------------------
+making attention of type 'vanilla' with 512 in_channels
+Working with z of shape (1, 4, 32, 32) = 4096 dimensions.
+making attention of type 'vanilla' with 512 in_channels
+self.instantiate_cond_stage(cond_stage_config) in LatentDiffusion constructor------------------------------------------------------------
+LatentDiffusion -------------------------
+Panya: 1----------------------
+Panya: 2----------------------
+Panya: 3----------------------
+{'model': {'base_learning_rate': 0.0001, 'target': 'adm.models.diffusion.sd_ddpm_scale.LatentDiffusion', 'params': {'linear_start': 0.00085, 'linear_end': 0.012, 'num_timesteps_cond': 1, 'log_every_t': 200, 'timesteps': 1000, 'first_stage_key': 'mix_spec', 'cond_stage_key': 'mix_video_feat', 'image_size': 64, 'channels': 4, 'cond_stage_trainable': True, 'conditioning_key': 'crossattn', 'monitor': 'val/loss_simple_ema', 'scale_factor': 0.18215, 'use_ema': False, 'scheduler_config': {'target': 'adm.lr_scheduler.LambdaLinearScheduler', 'params': {'warm_up_steps': [1000], 'cycle_lengths': [10000000000000], 'f_start': [1e-06], 'f_max': [1.0], 'f_min': [1.0]}}, 'unet_config': {'target': 'adm.modules.diffusionmodules.openai_unetmodel.UNetModel', 'params': {'image_size': 32, 'in_channels': 4, 'out_channels': 4, 'model_channels': 320, 'attention_resolutions': [4, 2, 1], 'num_res_blocks': 2, 'channel_mult': [1, 2, 4, 4], 'num_heads': 8, 'use_spatial_transformer': True, 'transformer_depth': 1, 'context_dim': 768, 'use_checkpoint': True, 'legacy': False}}, 'first_stage_config': {'target': 'adm.models.autoencoder_img.AutoencoderKL', 'params': {'embed_dim': 4, 'monitor': 'val/rec_loss', 'ddconfig': {'double_z': True, 'z_channels': 4, 'resolution': 256, 'in_channels': 3, 'out_ch': 3, 'ch': 128, 'ch_mult': [1, 2, 4, 4], 'num_res_blocks': 2, 'attn_resolutions': [], 'dropout': 0.0}, 'lossconfig': {'target': 'torch.nn.Identity'}}}, 'cond_stage_config': {'target': 'adm.modules.cond_stage.video_feat_encoder.Video_Feat_Encoder_Posembed', 'params': {'origin_dim': 512, 'embed_dim': 768, 'seq_len': 40}}}}, 'data': {'target': 'main.DataModuleFromConfig', 'params': {'batch_size': 220, 'num_workers': 32, 'wrap': True, 'train': {'target': 'adm.data.video_spec_dataset.audio_video_spec_fullset_Dataset_Train', 'params': {'dataset1': {'dataset_name': 'VGGSound', 'data_dir': '/Users/920753844/Diff-Foley/video/goodarchive_1', 'video_dir': '/Users/920753844/Diff-Foley/video/goodarchive_1', 'split_txt_path': '/Users/920753844/Diff-Foley/video/goodarchive_1'}, 'feat_type': 'CAVP_feat', 'sr': 16000, 'duration': 10, 'truncate': 131072, 'fps': 4}}, 'validation': {'target': 'adm.data.video_spec_dataset.audio_video_spec_fullset_Dataset_Valid', 'params': {'dataset1': {'dataset_name': 'VGGSound', 'data_dir': '/Users/920753844/Diff-Foley/video/goodarchive_1(data_dir)', 'video_dir': '/Users/920753844/Diff-Foley/video/goodarchive_1(video_dir)', 'split_txt_path': '/Users/920753844/Diff-Foley/video/goodarchive_1(split_txt_path)'}, 'feat_type': 'CAVP_feat', 'sr': 16000, 'duration': 10, 'truncate': 131072, 'fps': 4}}}}, 'checkpoint': {'save_every_n_epochs': 4}, 'callback': {'logger_name': 'sound_logger', 'target': 'adm.logger.SoundLogger_concat_fullset', 'params': {'train_batch_frequency': 1000, 'val_batch_frequency': 1000, 'max_sound_num': 6, 'sr': 16000, 'fps': 4, 'guidance_scale': 6.5}}}
+ckptpath logs/2024-12-11T17-08-37_diff_foley_experiment/checkpoints
+Yes !!!!!!!!!!!!!!!!!!!!!!!! Monitor
+Monitoring val/loss_simple_ema as checkpoint metric.
+config.checkpoint.save_every_n_epochs 4
+val/loss_simple_ema
+pytorch_lightning.callbacks.ModelCheckpoint
+<pytorch_lightning.callbacks.model_checkpoint.ModelCheckpoint object at 0x7f5ae80f61d0>
+Traceback (most recent call last):
+  File "/Users/920753844/Diff-Foley/training/stage2_ldm/main.py", line 634, in <module>
+main.SetupCallback
+adm.logger.SoundLogger_concat_fullset
+sr:  16000
+Guidance Scale:  6.5
+Uncond cond:  None
+main.CUDACallback
+main.DataModuleFromConfig
+adm.data.video_spec_dataset.audio_video_spec_fullset_Dataset_Train
+Fix Frames: False
+Split: train  Sample Num: 6
+adm.data.video_spec_dataset.audio_video_spec_fullset_Dataset_Valid
+Fix Frames: False
+    data.prepare_data()
+  File "/Users/920753844/Diff-Foley/training/stage2_ldm/main.py", line 143, in prepare_data
+    instantiate_from_config_input_dict(data_cfg)        # !! input dict
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/920753844/Diff-Foley/training/stage2_ldm/main.py", line 351, in instantiate_from_config_input_dict
+    return get_obj_from_str(config['target'])(config.get('params', dict()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/920753844/Diff-Foley/training/stage2_ldm/adm/data/video_spec_dataset.py", line 199, in __init__
+    super().__init__(split='valid', **dataset_cfg)
+  File "/Users/920753844/Diff-Foley/training/stage2_ldm/adm/data/video_spec_dataset.py", line 45, in __init__
+    with open(os.path.join(split_txt_path, '{}.txt'.format(self.split)), "r") as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/920753844/Diff-Foley/video/goodarchive_1(split_txt_path)/Test.txt'
+srun: error: gpu01: task 0: Exited with exit code 1
