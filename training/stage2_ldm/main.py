@@ -424,11 +424,13 @@ if __name__ == "__main__":
     # Init and Save Configs:  # DDP
     configs = [OmegaConf.load(cfg) for cfg in opt.base]
 
+    '''
     # Panya: 12.11.24
     print("Panya: Debug configs ------")
     for (i,cfg) in enumerate(configs):
         print(i, ": ", cfg)
-
+    '''
+    
     cli = OmegaConf.from_dotlist(unknown)
     print("Panya: unknown arguments------")
     print(cli)  # ?
