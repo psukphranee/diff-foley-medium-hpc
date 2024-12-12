@@ -454,7 +454,7 @@ if __name__ == "__main__":
     # Model:
     # 12.11.24 Panya
     print("Panya: Instantiating model in main. instantiate_from_config prints out the target model below: ")
-    model = instantiate_from_config(config.model)
+    model = instantiate_from_config(config.model) # Panya: prints the target 
 
 
     # trainer and callbacks:
@@ -521,6 +521,8 @@ if __name__ == "__main__":
     print('ckptpath',ckptdir)
     # Model Checkpoint:
 
+
+    print("Panya: asdfghjkl----------------------")
 
     default_modelckpt_cfg = {
             "target": "pytorch_lightning.callbacks.ModelCheckpoint",
