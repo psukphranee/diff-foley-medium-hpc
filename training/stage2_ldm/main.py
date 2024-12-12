@@ -426,9 +426,9 @@ if __name__ == "__main__":
 
     # Panya: 12.11.24
     print("Panya: Debug configs ------")
-    for cfg in configs:
-        print(cfg)
-    
+    for (i,cfg) in enumerate(configs):
+        print(i, ": ", cfg)
+
     cli = OmegaConf.from_dotlist(unknown)
     print(cli)  # ?
     config = OmegaConf.merge(*configs, cli)
@@ -453,7 +453,7 @@ if __name__ == "__main__":
     print("Panya: 0----------------------")
     # Model:
     # 12.11.24 Panya
-    print("Panya: Instantiating model in main. instantiate_from_config prints out the target model below: ")
+    print("Panya: Instantiating model in main. config.model=", config.model)
     model = instantiate_from_config(config.model) # Panya: prints the target 
 
 
