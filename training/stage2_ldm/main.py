@@ -430,7 +430,7 @@ if __name__ == "__main__":
     for (i,cfg) in enumerate(configs):
         print(i, ": ", cfg)
     '''
-    
+
     cli = OmegaConf.from_dotlist(unknown)
     print("Panya: unknown arguments------")
     print(cli)  # ?
@@ -640,6 +640,8 @@ if __name__ == "__main__":
     # configure learning rate:
     bs, base_lr = config.data.params.batch_size, config.model.base_learning_rate
     if not cpu:
+        # Panya Debug 12.11.24
+        print("Panya lightning_config.trainer.gpus: ", lightning_config.trainer.gpus)
         ngpu = len(lightning_config.trainer.gpus.strip(",").split(','))
     else:
         ngpu = 1
