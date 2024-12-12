@@ -470,15 +470,16 @@ class LatentDiffusion(DDPM):
         else:
             self.register_buffer('scale_factor', torch.tensor(scale_factor))
         # Panya 12.11.24 debug print
-        print("self.instantiate_first_stage(first_stage_config) in LatentDiffusion constructor")
+        print("self.instantiate_first_stage(first_stage_config) in LatentDiffusion constructor------------------------------------------------------------")
         self.instantiate_first_stage(first_stage_config)
         
-        print("self.instantiate_cond_stage(cond_stage_config) in LatentDiffusion constructor")
+        print("self.instantiate_cond_stage(cond_stage_config) in LatentDiffusion constructor------------------------------------------------------------")
         self.instantiate_cond_stage(cond_stage_config)
         self.cond_stage_forward = cond_stage_forward
         self.clip_denoised = False
         self.bbox_tokenizer = None  
 
+        print("LatentDiffusion -------------------------")
         self.restarted_from_ckpt = False
         if ckpt_path is not None:
             self.init_from_ckpt(ckpt_path, ignore_keys)
