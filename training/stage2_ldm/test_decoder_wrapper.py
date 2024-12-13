@@ -66,25 +66,22 @@ def main(args):
 
     sample_video_out = decoder_wrapper.encode_first_stage_video_intra(sample_video_tensor)
     
-    # if args.output_file:
-    #     output_file = args.output_file
-    # else:
-    #     output_file = args.input_file.rsplit('.', 1)[0] + ".npz"
-
-    # np.savez(output_file, sample_video_out.numpy())
     # Get the directory of the current script
     script_directory = os.path.dirname(os.path.abspath(__file__))
-    print("Script directory: ", script_directory)
 
     if args.output_file:
-        output_file = os.path.join(script_directory, args.output_file)
+        # Ensure output_file is saved in the script's directory
+        output_file = os.path.join(script_directory, os.path.basename(args.output_file))
     else:
+        # Get the base name of the input file (strip the path)
+        input_file_basename = os.path.basename(args.input_file)
+        # Replace extension and save in the script's directory
         output_file = os.path.join(
             script_directory,
-            args.input_file.rsplit('.', 1)[0] + ".npz"
+            input_file_basename.rsplit('.', 1)[0] + ".npz"
         )
 
-    # Save the file in the current directory of the script
+    # Save the file in the determined output path
     print("Saving to: ", output_file)
     np.savez(output_file, sample_video_out.numpy())
 
