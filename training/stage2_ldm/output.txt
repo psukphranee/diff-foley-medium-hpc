@@ -5,6 +5,27 @@ GPU available: True (cuda), used: True
 TPU available: False, using: 0 TPU cores
 IPU available: False, using: 0 IPUs
 HPU available: False, using: 0 HPUs
+[rank: 0] Global seed set to 72
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/1
+----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 1 processes
+----------------------------------------------------------------------------------------------------
+
+You are using a CUDA device ('NVIDIA A100 80GB PCIe') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+
+  | Name              | Type                        | Params
+------------------------------------------------------------------
+0 | model             | DiffusionWrapper            | 859 M 
+1 | first_stage_model | AutoencoderKL               | 83.7 M
+2 | cond_stage_model  | Video_Feat_Encoder_Posembed | 424 K 
+------------------------------------------------------------------
+859 M     Trainable params
+83.7 M    Non-trainable params
+943 M     Total params
+3,774.398 Total estimated model params size (MB)
+SLURM auto-requeueing enabled. Setting signal handlers.
 Panya: unknown arguments------
 {}
 ------------------------------
@@ -22,16 +43,14 @@ LatentDiffusion -------------------------
 Panya: 1----------------------
 Panya: 2----------------------
 Panya: 3----------------------
-{'model': {'base_learning_rate': 0.0001, 'target': 'adm.models.diffusion.sd_ddpm_scale.LatentDiffusion', 'params': {'linear_start': 0.00085, 'linear_end': 0.012, 'num_timesteps_cond': 1, 'log_every_t': 200, 'timesteps': 1000, 'first_stage_key': 'mix_spec', 'cond_stage_key': 'mix_video_feat', 'image_size': 64, 'channels': 4, 'cond_stage_trainable': True, 'conditioning_key': 'crossattn', 'monitor': 'val/loss_simple_ema', 'scale_factor': 0.18215, 'use_ema': False, 'scheduler_config': {'target': 'adm.lr_scheduler.LambdaLinearScheduler', 'params': {'warm_up_steps': [1000], 'cycle_lengths': [10000000000000], 'f_start': [1e-06], 'f_max': [1.0], 'f_min': [1.0]}}, 'unet_config': {'target': 'adm.modules.diffusionmodules.openai_unetmodel.UNetModel', 'params': {'image_size': 32, 'in_channels': 4, 'out_channels': 4, 'model_channels': 320, 'attention_resolutions': [4, 2, 1], 'num_res_blocks': 2, 'channel_mult': [1, 2, 4, 4], 'num_heads': 8, 'use_spatial_transformer': True, 'transformer_depth': 1, 'context_dim': 768, 'use_checkpoint': True, 'legacy': False}}, 'first_stage_config': {'target': 'adm.models.autoencoder_img.AutoencoderKL', 'params': {'embed_dim': 4, 'monitor': 'val/rec_loss', 'ddconfig': {'double_z': True, 'z_channels': 4, 'resolution': 256, 'in_channels': 3, 'out_ch': 3, 'ch': 128, 'ch_mult': [1, 2, 4, 4], 'num_res_blocks': 2, 'attn_resolutions': [], 'dropout': 0.0}, 'lossconfig': {'target': 'torch.nn.Identity'}}}, 'cond_stage_config': {'target': 'adm.modules.cond_stage.video_feat_encoder.Video_Feat_Encoder_Posembed', 'params': {'origin_dim': 512, 'embed_dim': 768, 'seq_len': 40}}}}, 'data': {'target': 'main.DataModuleFromConfig', 'params': {'batch_size': 220, 'num_workers': 32, 'wrap': True, 'train': {'target': 'adm.data.video_spec_dataset.audio_video_spec_fullset_Dataset_Train', 'params': {'dataset1': {'dataset_name': 'VGGSound', 'data_dir': '/Users/920753844/Diff-Foley/video/goodarchive_1', 'video_dir': '/Users/920753844/Diff-Foley/video/goodarchive_1', 'split_txt_path': '/Users/920753844/Diff-Foley/video/goodarchive_1'}, 'feat_type': 'CAVP_feat', 'sr': 16000, 'duration': 10, 'truncate': 131072, 'fps': 4}}, 'validation': {'target': 'adm.data.video_spec_dataset.audio_video_spec_fullset_Dataset_Valid', 'params': {'dataset1': {'dataset_name': 'VGGSound', 'data_dir': '/Users/920753844/Diff-Foley/video/goodarchive_1(data_dir)', 'video_dir': '/Users/920753844/Diff-Foley/video/goodarchive_1(video_dir)', 'split_txt_path': '/Users/920753844/Diff-Foley/video/goodarchive_1(split_txt_path)'}, 'feat_type': 'CAVP_feat', 'sr': 16000, 'duration': 10, 'truncate': 131072, 'fps': 4}}}}, 'checkpoint': {'save_every_n_epochs': 4}, 'callback': {'logger_name': 'sound_logger', 'target': 'adm.logger.SoundLogger_concat_fullset', 'params': {'train_batch_frequency': 1000, 'val_batch_frequency': 1000, 'max_sound_num': 6, 'sr': 16000, 'fps': 4, 'guidance_scale': 6.5}}}
-ckptpath logs/2024-12-11T17-08-37_diff_foley_experiment/checkpoints
+{'model': {'base_learning_rate': 0.0001, 'target': 'adm.models.diffusion.sd_ddpm_scale.LatentDiffusion', 'params': {'linear_start': 0.00085, 'linear_end': 0.012, 'num_timesteps_cond': 1, 'log_every_t': 200, 'timesteps': 1000, 'first_stage_key': 'mix_spec', 'cond_stage_key': 'mix_video_feat', 'image_size': 64, 'channels': 4, 'cond_stage_trainable': True, 'conditioning_key': 'crossattn', 'monitor': 'val/loss_simple_ema', 'scale_factor': 0.18215, 'use_ema': False, 'scheduler_config': {'target': 'adm.lr_scheduler.LambdaLinearScheduler', 'params': {'warm_up_steps': [1000], 'cycle_lengths': [10000000000000], 'f_start': [1e-06], 'f_max': [1.0], 'f_min': [1.0]}}, 'unet_config': {'target': 'adm.modules.diffusionmodules.openai_unetmodel.UNetModel', 'params': {'image_size': 32, 'in_channels': 4, 'out_channels': 4, 'model_channels': 320, 'attention_resolutions': [4, 2, 1], 'num_res_blocks': 2, 'channel_mult': [1, 2, 4, 4], 'num_heads': 8, 'use_spatial_transformer': True, 'transformer_depth': 1, 'context_dim': 768, 'use_checkpoint': True, 'legacy': False}}, 'first_stage_config': {'target': 'adm.models.autoencoder_img.AutoencoderKL', 'params': {'embed_dim': 4, 'monitor': 'val/rec_loss', 'ddconfig': {'double_z': True, 'z_channels': 4, 'resolution': 256, 'in_channels': 3, 'out_ch': 3, 'ch': 128, 'ch_mult': [1, 2, 4, 4], 'num_res_blocks': 2, 'attn_resolutions': [], 'dropout': 0.0}, 'lossconfig': {'target': 'torch.nn.Identity'}}}, 'cond_stage_config': {'target': 'adm.modules.cond_stage.video_feat_encoder.Video_Feat_Encoder_Posembed', 'params': {'origin_dim': 512, 'embed_dim': 768, 'seq_len': 40}}}}, 'data': {'target': 'main.DataModuleFromConfig', 'params': {'batch_size': 220, 'num_workers': 32, 'wrap': True, 'train': {'target': 'adm.data.video_spec_dataset.audio_video_spec_fullset_Dataset_Train', 'params': {'dataset1': {'dataset_name': 'VGGSound', 'data_dir': '/Users/920753844/Diff-Foley/video/goodarchive_1', 'video_dir': '/Users/920753844/Diff-Foley/video/goodarchive_1', 'split_txt_path': '/Users/920753844/Diff-Foley/video/goodarchive_1'}, 'feat_type': 'CAVP_feat', 'sr': 16000, 'duration': 10, 'truncate': 131072, 'fps': 4}}, 'validation': {'target': 'adm.data.video_spec_dataset.audio_video_spec_fullset_Dataset_Valid', 'params': {'dataset1': {'dataset_name': 'VGGSound', 'data_dir': '/Users/920753844/Diff-Foley/video/goodarchive_1', 'video_dir': '/Users/920753844/Diff-Foley/video/goodarchive_1', 'split_txt_path': '/Users/920753844/Diff-Foley/video/goodarchive_1'}, 'feat_type': 'CAVP_feat', 'sr': 16000, 'duration': 10, 'truncate': 131072, 'fps': 4}}}}, 'checkpoint': {'save_every_n_epochs': 4}, 'callback': {'logger_name': 'sound_logger', 'target': 'adm.logger.SoundLogger_concat_fullset', 'params': {'train_batch_frequency': 1000, 'val_batch_frequency': 1000, 'max_sound_num': 6, 'sr': 16000, 'fps': 4, 'guidance_scale': 6.5}}}
+ckptpath logs/2024-12-12T17-57-30_diff_foley_experiment/checkpoints
 Yes !!!!!!!!!!!!!!!!!!!!!!!! Monitor
 Monitoring val/loss_simple_ema as checkpoint metric.
 config.checkpoint.save_every_n_epochs 4
 val/loss_simple_ema
 pytorch_lightning.callbacks.ModelCheckpoint
-<pytorch_lightning.callbacks.model_checkpoint.ModelCheckpoint object at 0x7f5ae80f61d0>
-Traceback (most recent call last):
-  File "/Users/920753844/Diff-Foley/training/stage2_ldm/main.py", line 634, in <module>
+<pytorch_lightning.callbacks.model_checkpoint.ModelCheckpoint object at 0x7fbc5c13aad0>
 main.SetupCallback
 adm.logger.SoundLogger_concat_fullset
 sr:  16000
@@ -44,17 +63,107 @@ Fix Frames: False
 Split: train  Sample Num: 6
 adm.data.video_spec_dataset.audio_video_spec_fullset_Dataset_Valid
 Fix Frames: False
-    data.prepare_data()
-  File "/Users/920753844/Diff-Foley/training/stage2_ldm/main.py", line 143, in prepare_data
-    instantiate_from_config_input_dict(data_cfg)        # !! input dict
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/920753844/Diff-Foley/training/stage2_ldm/main.py", line 351, in instantiate_from_config_input_dict
-    return get_obj_from_str(config['target'])(config.get('params', dict()))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/920753844/Diff-Foley/training/stage2_ldm/adm/data/video_spec_dataset.py", line 199, in __init__
-    super().__init__(split='valid', **dataset_cfg)
-  File "/Users/920753844/Diff-Foley/training/stage2_ldm/adm/data/video_spec_dataset.py", line 45, in __init__
-    with open(os.path.join(split_txt_path, '{}.txt'.format(self.split)), "r") as f:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: '/Users/920753844/Diff-Foley/video/goodarchive_1(split_txt_path)/Test.txt'
-srun: error: gpu01: task 0: Exited with exit code 1
+Split: valid  Sample Num: 6
+adm.data.video_spec_dataset.audio_video_spec_fullset_Dataset_Train
+Fix Frames: False
+Split: train  Sample Num: 6
+adm.data.video_spec_dataset.audio_video_spec_fullset_Dataset_Valid
+Fix Frames: False
+Split: valid  Sample Num: 6
+### Data ###
+train, WrappedDataset, 6
+validation, WrappedDataset, 6
+Panya lightning_config.trainer.gpus:  <class 'str'>
++++ Not Using LR Scaling ++++
+Setting learning rate to 1.00e-04
+adm.data.video_spec_dataset.audio_video_spec_fullset_Dataset_Train
+Fix Frames: False
+Split: train  Sample Num: 6
+adm.data.video_spec_dataset.audio_video_spec_fullset_Dataset_Valid
+Fix Frames: False
+Split: valid  Sample Num: 6
+adm.data.video_spec_dataset.audio_video_spec_fullset_Dataset_Train
+Fix Frames: False
+Split: train  Sample Num: 6
+adm.data.video_spec_dataset.audio_video_spec_fullset_Dataset_Valid
+Fix Frames: False
+Split: valid  Sample Num: 6
+LatentDiffusion: Also optimizing conditioner params!
+Setting up LambdaLR scheduler...
+Project config
+Lightning config
+Sanity Checking: 0it [00:00, ?it/s]Summoning checkpoint
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/Users/920753844/Diff-Foley/training/stage2_ldm/main.py", line 685, in <module>
+[rank0]:     trainer.fit(model, data)
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 608, in fit
+[rank0]:     call._call_and_handle_interrupt(
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/pytorch_lightning/trainer/call.py", line 38, in _call_and_handle_interrupt
+[rank0]:     return trainer_fn(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 650, in _fit_impl
+[rank0]:     self._run(model, ckpt_path=self.ckpt_path)
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 1103, in _run
+[rank0]:     results = self._run_stage()
+[rank0]:               ^^^^^^^^^^^^^^^^^
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 1182, in _run_stage
+[rank0]:     self._run_train()
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 1195, in _run_train
+[rank0]:     self._run_sanity_check()
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 1267, in _run_sanity_check
+[rank0]:     val_loop.run()
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/pytorch_lightning/loops/loop.py", line 199, in run
+[rank0]:     self.advance(*args, **kwargs)
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/pytorch_lightning/loops/dataloader/evaluation_loop.py", line 152, in advance
+[rank0]:     dl_outputs = self.epoch_loop.run(self._data_fetcher, dl_max_batches, kwargs)
+[rank0]:                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/pytorch_lightning/loops/loop.py", line 199, in run
+[rank0]:     self.advance(*args, **kwargs)
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 121, in advance
+[rank0]:     batch = next(data_fetcher)
+[rank0]:             ^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/pytorch_lightning/utilities/fetching.py", line 184, in __next__
+[rank0]:     return self.fetching_function()
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/pytorch_lightning/utilities/fetching.py", line 265, in fetching_function
+[rank0]:     self._fetch_next_batch(self.dataloader_iter)
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/pytorch_lightning/utilities/fetching.py", line 280, in _fetch_next_batch
+[rank0]:     batch = next(iterator)
+[rank0]:             ^^^^^^^^^^^^^^
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+[rank0]:     data = self._next_data()
+[rank0]:            ^^^^^^^^^^^^^^^^^
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/utils/data/dataloader.py", line 1344, in _next_data
+[rank0]:     return self._process_data(data)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/utils/data/dataloader.py", line 1370, in _process_data
+[rank0]:     data.reraise()
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/_utils.py", line 706, in reraise
+[rank0]:     raise exception
+[rank0]: FileNotFoundError: Caught FileNotFoundError in DataLoader worker process 0.
+[rank0]: Original Traceback (most recent call last):
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/utils/data/_utils/worker.py", line 309, in _worker_loop
+[rank0]:     data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+[rank0]:     data = [self.dataset[idx] for idx in possibly_batched_index]
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+[rank0]:     data = [self.dataset[idx] for idx in possibly_batched_index]
+[rank0]:             ~~~~~~~~~~~~^^^^^
+[rank0]:   File "/Users/920753844/Diff-Foley/training/stage2_ldm/main.py", line 177, in __getitem__
+[rank0]:     return self.data[idx]
+[rank0]:            ~~~~~~~~~^^^^^
+[rank0]:   File "/Users/920753844/Diff-Foley/training/stage2_ldm/adm/data/video_spec_dataset.py", line 171, in __getitem__
+[rank0]:     spec1, video_feat1 = self.load_spec_and_feat(spec_npy_path1, video_feat_path1)
+[rank0]:                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/Users/920753844/Diff-Foley/training/stage2_ldm/adm/data/video_spec_dataset.py", line 85, in load_spec_and_feat
+[rank0]:     video_feat = np.load(video_feat_path)['feat'].astype(np.float32)
+[rank0]:                  ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/numpy/lib/npyio.py", line 427, in load
+[rank0]:     fid = stack.enter_context(open(os_fspath(file), "rb"))
+[rank0]:                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: FileNotFoundError: [Errno 2] No such file or directory: '/Users/920753844/Diff-Foley/video/goodarchive_1/CAVP_feat/Test/ZeMV790MXE.spec.npy.npz'
+
+[rank0]:[W1212 17:57:47.674859541 ProcessGroupNCCL.cpp:1168] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+                                   srun: error: gpu01: task 0: Exited with exit code 1
