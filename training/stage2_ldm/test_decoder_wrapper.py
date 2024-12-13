@@ -84,6 +84,7 @@ def main(args):
         )
 
     # Save the file in the current directory of the script
+    print("Saving to: ", output_file)
     np.savez(output_file, sample_video_out.numpy())
 
 
