@@ -74,6 +74,7 @@ def main(args):
     # np.savez(output_file, sample_video_out.numpy())
     # Get the directory of the current script
     script_directory = os.path.dirname(os.path.abspath(__file__))
+    print("Script directory: ", script_directory)
 
     if args.output_file:
         output_file = os.path.join(script_directory, args.output_file)
