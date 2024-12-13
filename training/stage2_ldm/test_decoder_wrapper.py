@@ -2,6 +2,7 @@
 import torch
 import numpy as np
 import argparse
+import os
 
 from adm.modules.stage2_decode.decode_wrapper import Decoder_Wrapper
 from open_clip.factory import get_model_config, list_models
@@ -65,13 +66,25 @@ def main(args):
 
     sample_video_out = decoder_wrapper.encode_first_stage_video_intra(sample_video_tensor)
     
+    # if args.output_file:
+    #     output_file = args.output_file
+    # else:
+    #     output_file = args.input_file.rsplit('.', 1)[0] + ".npz"
+
+    # np.savez(output_file, sample_video_out.numpy())
+    # Get the directory of the current script
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+
     if args.output_file:
-        output_file = args.output_file
+        output_file = os.path.join(script_directory, args.output_file)
     else:
-        output_file = args.input_file.rsplit('.', 1)[0] + ".npz"
+        output_file = os.path.join(
+            script_directory,
+            args.input_file.rsplit('.', 1)[0] + ".npz"
+        )
 
+    # Save the file in the current directory of the script
     np.savez(output_file, sample_video_out.numpy())
-
 
 
 if __name__ == "__main__":
