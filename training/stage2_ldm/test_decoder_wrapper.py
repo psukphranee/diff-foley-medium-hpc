@@ -56,6 +56,9 @@ def main(args):
     # This section tests the video enconding part of the decoder wrapper class (which inits CLIPV2 -----------------------------)
     # load one input video
     # sample_video_path = "/Users/920753844/Diff-Foley/video/goodarchive_1/YwZOeyAQC8.video.jpg"
+
+    # PANYA COMMENT TEMP 
+    '''
     sample_video_path = args.input_video_file
     sample_video_np = np.load(sample_video_path)
     print("Numpy tensor shape (video):", sample_video_np.shape)
@@ -86,6 +89,7 @@ def main(args):
     print("Saving to: ", output_file)
     np.savez(output_file, sample_video_out.numpy())
     # ---------------------------------------------------------------------------------------------------------------------------
+    '''
 
     # This section tests the AUDIO enconding part of the decoder wrapper class (which inits CLIPV2 -----------------------------)
     # load one input spec
