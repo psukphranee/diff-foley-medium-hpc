@@ -53,11 +53,12 @@ def main(args):
         first_stage_ckpt=first_stage_ckpt_path
     )
 
+    # This section tests the video enconding part of the decoder wrapper class (which inits CLIPV2 -----------------------------)
     # load one input video
     # sample_video_path = "/Users/920753844/Diff-Foley/video/goodarchive_1/YwZOeyAQC8.video.jpg"
-    sample_video_path = args.input_file
+    sample_video_path = args.input_video_file
     sample_video_np = np.load(sample_video_path)
-    print("Numpy tensor shape:", sample_video_np.shape)
+    print("Numpy tensor shape (video):", sample_video_np.shape)
 
     sample_video_tensor = torch.tensor(sample_video_np).to(torch.float32).unsqueeze(0)
     print("PyTorch tensor shape before:", sample_video_tensor.shape)
@@ -74,16 +75,50 @@ def main(args):
         output_file = os.path.join(script_directory, os.path.basename(args.output_file))
     else:
         # Get the base name of the input file (strip the path)
-        input_file_basename = os.path.basename(args.input_file)
+        input_video_file_basename = os.path.basename(args.input_video_file)
         # Replace extension and save in the script's directory
         output_file = os.path.join(
             script_directory,
-            input_file_basename.rsplit('.', -1)[0] + ".npz"
+            input_video_file_basename.rsplit('.', -1)[0] + ".npz"
         )
 
     # Save the file in the determined output path
     print("Saving to: ", output_file)
     np.savez(output_file, sample_video_out.numpy())
+    # ---------------------------------------------------------------------------------------------------------------------------
+
+    # This section tests the AUDIO enconding part of the decoder wrapper class (which inits CLIPV2 -----------------------------)
+    # load one input spec
+    sample_audio_path = args.input_audio_file
+    sample_audio_np = np.load(sample_audio_path)
+    print("Numpy tensor shape (audio):", sample_audio_np.shape)
+
+    sample_audio_tensor = torch.tensor(sample_audio_np).to(torch.float32).unsqueeze(0)
+    print("PyTorch tensor shape before:", sample_audio_tensor.shape)
+    sample_audio_tensor = sample_audio_tensor.permute(0,1,4,2,3)
+    print("PyTorch tensor shape after:", sample_audio_tensor.shape)
+
+    sample_audio_out = decoder_wrapper.encode_first_stage_audio_intra(sample_audio_tensor)
+    
+    # Get the directory of the current script
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+
+    if args.output_file:
+        # Ensure output_file is saved in the script's directory
+        output_file = os.path.join(script_directory, os.path.basename(args.output_file))
+    else:
+        # Get the base name of the input file (strip the path)
+        input_audio_file_basename = os.path.basename(args.input_audio_file)
+        # Replace extension and save in the script's directory
+        output_file = os.path.join(
+            script_directory,
+            input_audio_file_basename.rsplit('.', -1)[0] + ".spec.npz"
+        )
+
+    # Save the file in the determined output path
+    print("Saving to: ", output_file)
+    np.savez(output_file, sample_audio_out.numpy())
+    # ---------------------------------------------------------------------------------------------------------------------------
 
 
 if __name__ == "__main__":
@@ -91,7 +126,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="A script that demonstrates command-line arguments.")
 
     # Define the command-line arguments
-    parser.add_argument("--input_file", type=str, required=True, help="Path to the input file.")
+    parser.add_argument("--input_video_file", type=str, required=False, help="Path to the input video file.")
+    parser.add_argument("--input_audio_file", type=str, required=False, help="Path to the input audio file.")
     parser.add_argument("--output_file", type=str, required=False, help="Path to the output file.")
     parser.add_argument("--verbose", action="store_true", help="Enable verbose mode.")
 
