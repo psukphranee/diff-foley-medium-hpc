@@ -171,6 +171,7 @@ class audio_video_spec_fullset_Dataset(torch.utils.data.Dataset):
             video_path2 = self.video_list[random_idx]
 
         # Load the Spec and Feat:
+        print("Panya: spec_npy_path1, video_feat_path1: ", spec_npy_path1, video_feat_path1)
         spec1, video_feat1 = self.load_spec_and_feat(spec_npy_path1, video_feat_path1)
 
         if flag:
