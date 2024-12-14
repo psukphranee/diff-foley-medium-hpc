@@ -121,7 +121,7 @@ def main(args):
 
     # Save the file in the determined output path
     print("Saving to: ", output_file)
-    np.savez(output_file, sample_audio_out.numpy())
+    np.savez(output_file, sample_audio_np.numpy())
     # ---------------------------------------------------------------------------------------------------------------------------
 
 
