@@ -116,7 +116,7 @@ def main(args):
         # Replace extension and save in the script's directory
         output_file = os.path.join(
             script_directory,
-            input_audio_file_basename.rsplit('.', -1)[0] + ".npz"
+            input_audio_file_basename.rsplit('.', 0)[0] + ".npz"
         )
 
     # Save the file in the determined output path
