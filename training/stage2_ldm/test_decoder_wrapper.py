@@ -98,9 +98,9 @@ def main(args):
     print("Numpy tensor shape (audio):", sample_audio_np.shape)
 
     # sample_audio_tensor = torch.tensor(sample_audio_np).to(torch.float32).unsqueeze(0)
-    print("PyTorch tensor shape before:", sample_audio_tensor.shape)
+    # print("PyTorch tensor shape before:", sample_audio_tensor.shape)
     # sample_audio_tensor = sample_audio_tensor.permute(0,1,4,2,3)
-    print("PyTorch tensor shape after:", sample_audio_tensor.shape)
+    # print("PyTorch tensor shape after:", sample_audio_tensor.shape)
 
     # sample_audio_out = decoder_wrapper.encode_first_stage_audio_intra(sample_audio_tensor)
     
