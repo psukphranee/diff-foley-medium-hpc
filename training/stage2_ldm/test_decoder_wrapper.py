@@ -97,12 +97,12 @@ def main(args):
     sample_audio_np = np.load(sample_audio_path)
     print("Numpy tensor shape (audio):", sample_audio_np.shape)
 
-    sample_audio_tensor = torch.tensor(sample_audio_np).to(torch.float32).unsqueeze(0)
+    # sample_audio_tensor = torch.tensor(sample_audio_np).to(torch.float32).unsqueeze(0)
     print("PyTorch tensor shape before:", sample_audio_tensor.shape)
-    sample_audio_tensor = sample_audio_tensor.permute(0,1,4,2,3)
+    # sample_audio_tensor = sample_audio_tensor.permute(0,1,4,2,3)
     print("PyTorch tensor shape after:", sample_audio_tensor.shape)
 
-    sample_audio_out = decoder_wrapper.encode_first_stage_audio_intra(sample_audio_tensor)
+    # sample_audio_out = decoder_wrapper.encode_first_stage_audio_intra(sample_audio_tensor)
     
     # Get the directory of the current script
     script_directory = os.path.dirname(os.path.abspath(__file__))
@@ -116,7 +116,7 @@ def main(args):
         # Replace extension and save in the script's directory
         output_file = os.path.join(
             script_directory,
-            input_audio_file_basename.rsplit('.', -1)[0] + ".spec.npz"
+            input_audio_file_basename.rsplit('.', -1)[0] + ".npz"
         )
 
     # Save the file in the determined output path
