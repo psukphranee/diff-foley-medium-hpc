@@ -2,10 +2,10 @@
 
 
 CUDA_VISIBLE_DEVICES=0 torchrun --nproc_per_node=1 -m src.training.main_wds_intra_contrast \
---batch-size 2 \
+--batch-size 1 \
 --data_dir '/Users/920753844/Diff-Foley/video' \
 --dataset-type vggsound_audioset_music_webdataset_intra_contrast \
---epochs 1 \
+--epochs 2 \
 --intra_clip_num 3 \
 --intra_contrast_weight 1 \
 --loss_type clip_intra_contrast \
@@ -20,7 +20,7 @@ CUDA_VISIBLE_DEVICES=0 torchrun --nproc_per_node=1 -m src.training.main_wds_intr
 --subset_num 400 \
 --temporal_mix_weight 1 \
 --train-data audioset_vggsound_music \
---train-num-samples 500 \
+--train-num-samples 6 \
 --val-frequency 2 \
 --video_encode Slowonly_pool \
 --warmup 100 \
