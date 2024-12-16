@@ -491,6 +491,10 @@ class CLIP_Video_Spec(nn.Module):
 
         self.use_spec_aug = use_spec_aug
 
+
+        logging.info("Panya: Loading model CLIP_Video_Spec in stage 1.")
+        print("Panya: Loading model CLIP_Video_Spec in stage 1.")
+
         # video_pretrained:
         self.video_pretrained = video_pretrained
         self.audio_pretrained = audio_pretrained
