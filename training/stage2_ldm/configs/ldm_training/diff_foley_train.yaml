@@ -95,8 +95,7 @@ data:
         duration: 10
         truncate: 131072
         fps: 4
-    '''
-    Panya comment out 12.16.24
+
     validation:
       # Panya: 11.2.24 Modify target because path seems to be wrong
       target: adm.data.video_spec_dataset.audio_video_spec_fullset_Dataset_Valid
@@ -113,7 +112,7 @@ data:
         duration: 10
         truncate: 131072
         fps: 4
-    '''
+
 checkpoint:
   save_every_n_epochs: 4
 
