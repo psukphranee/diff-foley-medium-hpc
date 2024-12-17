@@ -88,6 +88,9 @@ def main(args):
 
     print(data['val'])
 
+    for i, j in enumerate(data.val):
+        print(i,j)
+
     '''
     if torch.cuda.is_available():
         # This enables tf32 on Ampere GPUs which is only 8% slower than
