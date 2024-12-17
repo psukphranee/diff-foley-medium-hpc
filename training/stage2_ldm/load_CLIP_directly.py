@@ -88,8 +88,7 @@ def main(args):
 
     dataloader = data['val'].dataloader
 
-    for e in dataloader:
-        print(e)
+    print(dataloader.num_samples, dataloader.num_shards)
 
     '''
     if torch.cuda.is_available():
