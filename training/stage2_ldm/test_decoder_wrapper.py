@@ -54,7 +54,7 @@ def main(args):
     )
 
     # This section tests the video enconding part of the decoder wrapper class (which inits CLIPV2 -----------------------------)
-    load one input video
+    # load one input video
     sample_video_path = "/Users/920753844/Diff-Foley/video/goodarchive_1/YwZOeyAQC8.video.jpg"
 
     # PANYA COMMENT TEMP 
