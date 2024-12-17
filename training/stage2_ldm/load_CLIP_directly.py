@@ -72,7 +72,7 @@ def get_latest_checkpoint(path: str, remote : bool):
 
 def main(args):
 
-    logging.info("DEBUG: Entering main() of load_CLIP_directly.py")
+    print("DEBUG: Entering main() of load_CLIP_directly.py")
     args = parse_args(args)
 
     args.model = "audio_contrastive_pretrained"
@@ -86,11 +86,8 @@ def main(args):
     data = get_data(args, (None, None), epoch=start_epoch, tokenizer=get_tokenizer(args.model))
     assert len(data), 'At least one train or eval dataset must be specified.'
 
-    print(data['val'])
-
-    for i, j in enumerate(data.val):
-        print(i,j)
-
+    dataloader = data.dataloader
+    
     '''
     if torch.cuda.is_available():
         # This enables tf32 on Ampere GPUs which is only 8% slower than
