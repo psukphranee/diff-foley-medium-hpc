@@ -81,7 +81,7 @@ def main(args):
 
     samples = tarfile_to_samples_nothrow(shard_list)
     for i in samples:
-        print(i.key())
+        print(i.keys)
 
     
 if __name__ == "__main__":
