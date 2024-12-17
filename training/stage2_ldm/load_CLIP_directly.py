@@ -86,8 +86,8 @@ def main(args):
     data = get_data(args, (None, None), epoch=start_epoch, tokenizer=get_tokenizer(args.model))
     assert len(data), 'At least one train or eval dataset must be specified.'
 
-    dataloader = data.dataloader
-    
+    print(data)
+
     '''
     if torch.cuda.is_available():
         # This enables tf32 on Ampere GPUs which is only 8% slower than
