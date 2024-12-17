@@ -80,6 +80,7 @@ def main(args):
     args.train_data = "audioset_vggsound_music"
     args.dataset_type = "vggsound_audioset_music_webdataset_intra_contrast"
     args.workers = 1
+    args.data_dir '/Users/920753844/Diff-Foley/video'
 
     
     data = get_data(args, (None, None), epoch=start_epoch, tokenizer=get_tokenizer(args.model))
