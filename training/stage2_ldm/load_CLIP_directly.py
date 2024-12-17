@@ -79,6 +79,7 @@ def main(args):
     start_epoch = 1
     args.train_data = "audioset_vggsound_music"
     args.dataset_type = "vggsound_audioset_music_webdataset_intra_contrast"
+    args.workers = 1
 
     
     data = get_data(args, (None, None), epoch=start_epoch, tokenizer=get_tokenizer(args.model))
