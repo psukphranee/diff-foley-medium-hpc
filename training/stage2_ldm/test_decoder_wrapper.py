@@ -59,7 +59,7 @@ def main(args):
 
     # PANYA COMMENT TEMP 
     
-    sample_video_path = args.input_video_file
+    # sample_video_path = args.input_video_file
     sample_video_np = np.load(sample_video_path)
     print("Numpy tensor shape (video):", sample_video_np.shape)
 
