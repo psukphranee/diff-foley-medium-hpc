@@ -83,7 +83,7 @@ class audio_video_spec_fullset_Dataset(torch.utils.data.Dataset):
         """Load audio spec and video feat"""
         spec_raw = np.load(spec_path).astype(np.float32)                    # channel: 1
         # Panya 12.13.24 
-        print("Panya: ", '\n', video_feat_path)
+        print("Panya: video_feat_path: ", video_feat_path)
 
         video_feat = np.load(video_feat_path)['feat'].astype(np.float32)
         
