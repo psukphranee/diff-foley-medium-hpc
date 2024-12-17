@@ -67,7 +67,7 @@ def main(args):
     args.val_data = "audioset_vggsound_music"
     args.dataset_type = "vggsound_audioset_music_webdataset_intra_contrast"
     args.workers = 1
-    args.data_dir = "/Users/920753844/Diff-Foley/video"
+    args.data_dir = "/Users/920753844/Diff-Foley/video/goodarchive_1.tar"
     args.batch_size = 1
 
     
