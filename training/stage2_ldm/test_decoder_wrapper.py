@@ -28,7 +28,7 @@ def main(args):
     first_stage_config['target'] = 'adm.modules.stage2_decode.clip_video_spec.CLIP_Video_Spec_v2'
     first_stage_config['params'] = {
         "video_encode": "Slowonly",
-        "spec_encode": "cnn14",
+        "spec_encode": "cnn14_pool",
         "embed_dim": 512
     }
 
