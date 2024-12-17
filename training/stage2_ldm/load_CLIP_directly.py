@@ -77,7 +77,8 @@ def main(args):
     dataloader = data['val'].dataloader
 
     samples = tarfile_to_samples_nothrow(args.data_dir)
-    print(samples)
+    for i in samples:
+        print(i)
 
     
 if __name__ == "__main__":
