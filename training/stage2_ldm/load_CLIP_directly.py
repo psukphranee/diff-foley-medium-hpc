@@ -86,7 +86,10 @@ def main(args):
     data = get_data(args, (None, None), epoch=start_epoch, tokenizer=get_tokenizer(args.model))
     assert len(data), 'At least one train or eval dataset must be specified.'
 
-    print(data['val'].dataloader)
+    dataloader = data['val'].dataloader
+
+    for e in dataloader:
+        print(e)
 
     '''
     if torch.cuda.is_available():
