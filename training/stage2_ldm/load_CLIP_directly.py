@@ -5,6 +5,7 @@ import re
 import subprocess
 import sys
 import random
+import webdataset as wds
 from datetime import datetime
 
 import numpy as np
@@ -76,7 +77,9 @@ def main(args):
 
     dataloader = data['val'].dataloader
 
-    samples = tarfile_to_samples_nothrow(args.data_dir)
+    shard_list = wds.SimpleShardList([args.data_dir])
+
+    samples = tarfile_to_samples_nothrow(shard_list)
     for i in samples:
         print(i)
 
