@@ -434,7 +434,7 @@ if __name__ == "__main__":
     cli = OmegaConf.from_dotlist(unknown)
     print("Panya: -----------------------")
     print("Known args:")
-    print(OmegaConf.from_dotlist(opt))
+    print(opt)
     print("Unknown args:")
     print(cli)  # ?
     print("------------------------------")
