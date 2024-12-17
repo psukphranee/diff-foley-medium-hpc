@@ -432,7 +432,10 @@ if __name__ == "__main__":
     '''
 
     cli = OmegaConf.from_dotlist(unknown)
-    print("Panya: unknown arguments------")
+    print("Panya: -----------------------")
+    print("Known args:")
+    print(OmegaConf.from_dotlist(opt))
+    print("Unknown args:")
     print(cli)  # ?
     print("------------------------------")
     config = OmegaConf.merge(*configs, cli)
