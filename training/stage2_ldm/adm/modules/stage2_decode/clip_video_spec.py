@@ -549,7 +549,7 @@ class CLIP_Video_Spec_v2(nn.Module):
         spec_features = self.encode_spec(spec, normalize=True, train=train)
 
         # Panya 12.18.2024
-        msg = "CLIP_Video_Spec_v2 video_features.shape: " + video_features.shape
+        msg = "CLIP_Video_Spec_v2 video_features.shape: " + str(video_features.shape)
 
         if output_dict:
             return {
