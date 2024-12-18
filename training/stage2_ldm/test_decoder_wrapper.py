@@ -77,7 +77,7 @@ def main(args):
 
     # -------------------- call forward directly
 
-    output_dict = decode_wrapper.model.forward(sample_video_tensor, spec_dummy)
+    output_dict = decoder_wrapper.model.forward(sample_video_tensor, spec_dummy)
     print("Panya: output_dict keys: ", output_dict.keys())
 
 
