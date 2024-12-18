@@ -53,25 +53,35 @@ def main(args):
         first_stage_ckpt=first_stage_ckpt_path
     )
 
+    # -------------- Load video _----------------------------
     # This section tests the video enconding part of the decoder wrapper class (which inits CLIPV2 -----------------------------)
     # load one input video
-    sample_video_path = "/Users/920753844/Diff-Foley/video/goodarchive_1/YwZOeyAQC8.video.jpg"
+    # sample_video_path = "/Users/920753844/Diff-Foley/video/goodarchive_1/YwZOeyAQC8.video.jpg"
 
-    # PANYA COMMENT TEMP 
-    
+    # Specify input video in cmd line arg
+    # 12.18.24 Add dimension and permute tensor to match argument requirements. We may have to adjust this
     sample_video_path = args.input_video_file
     sample_video_np = np.load(sample_video_path)
     print("Numpy tensor shape (video):", sample_video_np.shape)
 
     sample_video_tensor = torch.tensor(sample_video_np).to(torch.float32).unsqueeze(0)
-    print("PyTorch tensor shape before:", sample_video_tensor.shape)
+    print("PyTorch tensor shape before (video):", sample_video_tensor.shape)
     sample_video_tensor = sample_video_tensor.permute(0,1,4,2,3)
-    print("PyTorch tensor shape after:", sample_video_tensor.shape)
-
-    # Panya 12.18.24 try the forward() instead of directly encoding.
-    # sample_video_out = decoder_wrapper.encode_first_stage_video_intra(sample_video_tensor)
-    sample_video_out = decoder_wrapper(sample_video_tensor)
+    print("PyTorch tensor shape after (video):", sample_video_tensor.shape)
     
+    
+    # -------------- Generate dummy audio -----------------------------------
+    spec_dummy = torch.zeros(1, 128, 256)
+
+    # -----------------------------------------------------------------------
+
+    # -------------------- call forward directly
+
+    output_dict = decode_wrapper.model.forward(sample_video_tensor, spec_dummy)
+    print("Panya: output_dict keys: ", output_dict.keys())
+
+
+    # ----------------Save output -----------------------------------------
     # Get the directory of the current script
     script_directory = os.path.dirname(os.path.abspath(__file__))
 
@@ -90,6 +100,9 @@ def main(args):
     # Save the file in the determined output path
     print("Saving to: ", output_file)
     np.savez(output_file, sample_video_out.numpy())
+    
+    
+    
     # ---------------------------------------------------------------------------------------------------------------------------
     
     '''
