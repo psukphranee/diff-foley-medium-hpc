@@ -543,7 +543,7 @@ class CLIP_Video_Spec_v2(nn.Module):
         # Panya 12.18.2024
         msg = "CLIP_Video_Spec_v2 forward(). (video.shape, spec.shape): " + str(video.shape) + ", " + str(spec.shape)
         print(msg)
-
+        logging.info(msg)
 
         video_features = self.encode_video(video, normalize=True, train=train)
         spec_features = self.encode_spec(spec, normalize=True, train=train)
