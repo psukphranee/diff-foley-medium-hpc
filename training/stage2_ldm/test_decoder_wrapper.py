@@ -99,7 +99,7 @@ def main(args):
 
     # Save the file in the determined output path
     print("Saving to: ", output_file)
-    np.savez(output_file, sample_video_out.numpy())
+    np.savez(output_file, output_dict.numpy())
     
     
     
