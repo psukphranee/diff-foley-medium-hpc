@@ -100,7 +100,7 @@ def main(args):
     # Save the file in the determined output path
     print("Saving to: ", output_file)
     # Save each key-value pair in the dictionary as a separate entry in the .npz file
-    np.savez(output_file, **{key: value.numpy() for key, value in output_dict.items()})
+    np.savez(output_file, **{key: value.detach().numpy() for key, value in output_dict.items()})
 
     
     
