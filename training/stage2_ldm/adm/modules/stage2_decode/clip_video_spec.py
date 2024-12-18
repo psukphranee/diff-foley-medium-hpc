@@ -550,6 +550,7 @@ class CLIP_Video_Spec_v2(nn.Module):
 
         # Panya 12.18.2024
         msg = "CLIP_Video_Spec_v2 video_features.shape: " + str(video_features.shape)
+        print(msg)
 
         if output_dict:
             return {
