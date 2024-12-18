@@ -628,6 +628,9 @@ class CLIP_Video_Spec(nn.Module):
             video_feat = video_feat.reshape(bs, c, t).permute(0, 2, 1)
             video_feat = self.video_project_head(video_feat)
             video_feat = self.video_pool(video_feat.permute(0,2,1)).squeeze(2)
+
+            # Panya 12.18.24
+            msg = 'CLIP_Video_Spec: encode_video: video_feat.shape: ' + str(video_feat.shape) 
         
         elif self.video_encode == "I3D_pool" or self.video_encode == "X3D_L_pool":
             video = video.permute(0, 2, 1, 3, 4)
