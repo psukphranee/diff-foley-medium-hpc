@@ -318,6 +318,7 @@ class CLIP_Video_Spec_Temporal(nn.Module):
 
 
     def forward(self, video, spec, output_dict=True):
+        
         video_temporal_features, video_mean_features = self.encode_video(video, normalize=True)       # B x T x C
         spec_temporal_features, spec_mean_features = self.encode_spec(spec, normalize=True)          # B x T x C
         if output_dict:
@@ -538,6 +539,12 @@ class CLIP_Video_Spec_v2(nn.Module):
 
 
     def forward(self, video, spec, output_dict=True, train=False):
+
+        # Panya 12.18.2024
+        msg = "CLIP_Video_Spec_v2 forward(). (video.shape, spec.shape): " + str(video.shape) + ", " + str(spec.shape)
+        print(msg)
+
+
         video_features = self.encode_video(video, normalize=True, train=train)
         spec_features = self.encode_spec(spec, normalize=True, train=train)
         if output_dict:
