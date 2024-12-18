@@ -1,5 +1,0 @@
-model:
-  base_learning_rate: 1.0e-4
-  target: adm.models.diffusion.sd_ddpm_scale.LatentDiffusion
-  params:
-
