@@ -624,6 +624,7 @@ class CLIP_Video_Spec(nn.Module):
         elif self.video_encode == "Slowonly_pool" or self.video_encode == "Slowonly_pool_fps8":
             video = video.permute(0, 2, 1, 3, 4)
             msg = "video in encode_video() of CLIP_Video_Spec. This is what will be encoded: " + str(video.shape)
+            msg = "*****************************"
             logging.info(msg)
 
             video_feat = self.video_encoder(video)
