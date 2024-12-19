@@ -694,7 +694,8 @@ class CLIP_Video_Spec(nn.Module):
 
     def forward(self, video, spec, output_dict=True, train=False):
         video_features = self.encode_video(video, normalize=True, train=train)
-        print("video_features in forward() of CLIP_Video_Spec", str(video_features.shape))
+        msg = "video_features in forward() of CLIP_Video_Spec: " + str(video_features.shape)
+        logging.info(msg)
 
         spec_features = self.encode_spec(spec, normalize=True, train=train)
         if self.output_dict:
