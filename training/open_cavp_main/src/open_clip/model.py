@@ -626,10 +626,14 @@ class CLIP_Video_Spec(nn.Module):
             video_feat = self.video_encoder(video)
             bs, c, t, _, _ = video_feat.shape
             video_feat = video_feat.reshape(bs, c, t).permute(0, 2, 1)
-            print("video_feat in encode_video() of CLIP_Video_Spec", str(video_feat.shape))
+            msg = "video_feat in encode_video() of CLIP_Video_Spec" + str(video_feat.shape)
+            logging.info(msg)
+            print(msg)
 
             video_feat = self.video_project_head(video_feat)
-            print("video_feat in encode_video() of CLIP_Video_Spec after video_project_head", str(video_feat.shape))
+            msg = "video_feat in encode_video() of CLIP_Video_Spec after video_project_head" + str(video_feat.shape)
+            logging.info(msg)
+            print(msg)
 
             video_feat = self.video_pool(video_feat.permute(0,2,1)).squeeze(2)
 
