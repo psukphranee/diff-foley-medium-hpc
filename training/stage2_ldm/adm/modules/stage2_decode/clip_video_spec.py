@@ -462,12 +462,25 @@ class CLIP_Video_Spec_v2(nn.Module):
         # Video: B x T x 3 x H x W
         if self.video_encode == "Slowonly":
             video = video.permute(0, 2, 1, 3, 4)
+            msg = "video (not video_feat ) in encode_video() of CLIP_Video_Spec. This is what will be encoded: " + str(video.shape)
+            logging.info(msg)
+
             video_feat = self.video_encoder(video)
+            msg = "video_feat in encode_video() of CLIP_Video_Spec after video_encoder: " + str(video_feat.shape)
+            logging.info(msg)
+
             bs, c, t, _, _ = video_feat.shape
             video_feat = video_feat.reshape(bs, c, t).permute(0, 2, 1)
+            msg = "video_feat in encode_video() of CLIP_Video_Spec after reshape and permute: " + str(video_feat.shape)
+            logging.info(msg)
+
             video_feat = self.video_project_head(video_feat)
+            msg = "video_feat in encode_video() of CLIP_Video_Spec after video_project_head: " + str(video_feat.shape)
+            logging.info(msg)
             # Avg:
-            video_feat = video_feat.mean(dim=1)
+            # Panya 12.18.2024 comment dim=1 and put dim=0
+            # video_feat = video_feat.mean(dim=1)
+            video_feat = video_feat.mean(dim=0)
         
         elif self.video_encode == "R2plus1D_pool":
             video = video.permute(0, 2, 1, 3, 4)
