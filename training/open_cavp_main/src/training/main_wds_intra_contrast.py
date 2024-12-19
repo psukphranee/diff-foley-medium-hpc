@@ -393,7 +393,7 @@ def main(args):
         train_one_epoch(model, data, loss, epoch, optimizer, scaler, scheduler, args, tb_writer=writer)
         completed_epoch = epoch + 1
         
-        print("line 390")
+        print("line 396")
         if any(v in data for v in ('val', 'imagenet-val', 'imagenet-v2')):
             print("Evaluating line 398 in main_wds_intra_contrast.py")
             evaluate(model, data, completed_epoch, args, writer)
