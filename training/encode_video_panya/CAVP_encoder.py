@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-from open_cavp_main.src.open_clip.factory import get_model_config, list_models
+from open_clip.factory import get_model_config, list_models
 from stage2_ldm.adm.modules.stage2_decode.clip_video_spec import CLIP_Video_Spec_v2
 
 # load stage 1 config
