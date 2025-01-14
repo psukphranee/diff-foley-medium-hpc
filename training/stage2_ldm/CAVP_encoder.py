@@ -19,7 +19,8 @@ def init_first_from_ckpt(path):
     for key in model.keys():
         new_key = key.replace("module.","")
         new_model[new_key] = model[key]
-    missing, unexpected = self.first_stage_model.load_state_dict(new_model, strict=False)
+
+    missing, unexpected = model.load_state_dict(new_model, strict=False)
     print(f"Restored from {path} with {len(missing)} missing and {len(unexpected)} unexpected keys")
     if len(missing) > 0:
         print(f"Missing Keys: {missing}")
