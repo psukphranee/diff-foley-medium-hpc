@@ -1,6 +1,13 @@
 import torch
 import torch.nn as nn
 
+import os
+
+print("Current file path:", os.path.abspath(__file__))
+print("Parent directory:", os.path.dirname(os.path.abspath(__file__)))
+print("Root directory candidate:", os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+
 from open_clip.factory import get_model_config, list_models
 from training.stage2_ldm.adm.modules.stage2_decode.clip_video_spec import CLIP_Video_Spec_v2, CLIP_Video_Spec
 
