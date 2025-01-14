@@ -27,9 +27,9 @@ def instantiate_from_config(config):
 # initialize stage 1 model
 def instantiate_first_stage(config):
     model = instantiate_from_config(config)
-    self.first_stage_model = model.eval()
-    self.first_stage_model.train = disabled_train
-    for param in self.first_stage_model.parameters():
+    first_stage_model = model.eval()
+    first_stage_model.train = disabled_train
+    for param in first_stage_model.parameters():
         param.requires_grad = False
 
 def init_first_from_ckpt(path):
