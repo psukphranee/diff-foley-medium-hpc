@@ -56,7 +56,7 @@ class Encoder_Wrapper(pl.LightningModule):
         if self.first_stage_ckpt is not None:
             self.init_first_from_ckpt(self.first_stage_ckpt)
 
-        self.model = instantiate_from_config(decoder_config)
+        # self.model = instantiate_from_config(decoder_config)
 
         self.mse_loss = torch.nn.MSELoss()
         self.first_stage_key = first_stage_key
