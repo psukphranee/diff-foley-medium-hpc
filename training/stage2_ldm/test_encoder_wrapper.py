@@ -45,7 +45,7 @@ def main(args):
     print("---------------------------------------------------------------")
 
     # Create an instance of Encoder_Wrapper
-    Encoder_Wrapper = Encoder_Wrapper(
+    encoder_wrapper = Encoder_Wrapper(
         first_stage_config = first_stage_config,
         decoder_config=first_stage_config,
         scheduler_config=first_stage_config,
