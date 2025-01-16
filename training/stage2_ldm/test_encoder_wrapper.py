@@ -4,7 +4,7 @@ import numpy as np
 import argparse
 import os
 
-from adm.modules.stage2_decode.decode_wrapper import Encoder_Wrapper
+from adm.modules.stage2_decode.cavp_wrapper import Encoder_Wrapper
 from open_clip.factory import get_model_config, list_models
 
 from adm.modules.stage2_decode.clip_video_spec import CLIP_Video_Spec_v2, CLIP_Video_Spec
