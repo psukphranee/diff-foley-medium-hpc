@@ -624,7 +624,11 @@ class CLIP_Video_Spec_v2_Panya(CLIP_Video_Spec_v2):
             logging.info(msg)
             print(msg)
             
+
+            # jan 23 2025 check this PANYA
             video_feat = video_feat.mean(dim=0)
+
+            return video_feat
 
     def forward(self, video, output_dict=True, train=False):
 
