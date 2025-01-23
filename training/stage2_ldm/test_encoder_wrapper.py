@@ -52,7 +52,9 @@ def main(args):
         first_stage_ckpt=first_stage_ckpt_path
     )
 
-    x,y,z = encoder_wrapper(args.input_video_file)
+    spec_dummy = torch.zeros(1, 128, 256)
+
+    x,y,z = encoder_wrapper(args.input_video_file, spec_dummy)
 
     
 
