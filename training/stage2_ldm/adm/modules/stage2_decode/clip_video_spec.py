@@ -581,8 +581,23 @@ class CLIP_Video_Spec_v2(nn.Module):
 
 class CLIP_Video_Spec_v2_Panya(CLIP_Video_Spec_v2):
 
-    def __init__(self, args):
-        super(CLIP_Video_Spec_v2, self).__init__(args)
+    def __init__(
+            self,
+            video_encode,
+            spec_encode,
+            embed_dim: int,
+            use_spec_aug: bool = False,
+            video_pretrained: bool = False,
+            audio_pretrained: bool = False
+    ):
+        super(CLIP_Video_Spec_v2_Panya, self).__init__(
+            video_encode,
+            spec_encode,
+            embed_dim,
+            use_spec_aug,
+            video_pretrained,
+            audio_pretrained
+        )
 
     def encode_video(self, video, normalize: bool = False, train=False, pool=True):
 
