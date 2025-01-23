@@ -579,7 +579,7 @@ class CLIP_Video_Spec_v2(nn.Module):
         return video_features, spec_features, self.logit_scale.exp()
     
 
-class CLIP_Video_Spec_v2_Panya(nn.Module):
+class CLIP_Video_Spec_v2_Panya(CLIP_Video_Spec_v2):
 
     def __init__(self, args):
         super(CLIP_Video_Spec_v2, self).__init__(args)
