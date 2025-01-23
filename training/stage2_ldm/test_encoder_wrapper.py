@@ -60,7 +60,7 @@ def main(args):
     sample_video_tensor = sample_video_tensor.permute(0,1,4,2,3)
     x = encoder_wrapper(sample_video_tensor)
 
-    np.savez(x, "E_v")
+    np.savez(x, "./E_v.npz")
 
 
 if __name__ == "__main__":
