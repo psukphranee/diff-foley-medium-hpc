@@ -5,4 +5,14 @@ python3 test_decoder_wrapper.py --input_video "/Users/920753844/Diff-Foley/video
 python3 test_decoder_wrapper.py --input_video "/Users/920753844/Diff-Foley/video/goodarchive_1/ZHUMfueO0.video.jpg"
 python3 test_decoder_wrapper.py --input_video "/Users/920753844/Diff-Foley/video/goodarchive_1/ZobEDvRtD8.video.jpg"
 
+python3 test_encoder_wrapper.py --input_video "/Users/920753844/Diff-Foley/video/goodarchive_1/YwZOeyAQC8.video.jpg"
+python3 test_encoder_wrapper.py --input_video "/Users/920753844/Diff-Foley/video/goodarchive_1/YX_rSjCexE.video.jpg"
+python3 test_encoder_wrapper.py --input_video "/Users/920753844/Diff-Foley/video/goodarchive_1/zcZ5Zj2yP8.video.jpg"
+python3 test_encoder_wrapper.py --input_video "/Users/920753844/Diff-Foley/video/goodarchive_1/ZeMV790MXE.video.jpg"
+python3 test_encoder_wrapper.py --input_video "/Users/920753844/Diff-Foley/video/goodarchive_1/ZHUMfueO0.video.jpg"
+python3 test_encoder_wrapper.py --input_video "/Users/920753844/Diff-Foley/video/goodarchive_1/ZobEDvRtD8.video.jpg"
+
+
+
+
 
