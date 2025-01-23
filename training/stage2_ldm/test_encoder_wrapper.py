@@ -54,7 +54,9 @@ def main(args):
 
     spec_dummy = torch.zeros(1, 128, 256)
 
-    x,y,z = encoder_wrapper(args.input_video_file)
+    sample_video_path = args.input_video_file
+    sample_video_np = np.load(sample_video_path)
+    x,y,z = encoder_wrapper(sample_video_np)
 
     
 
