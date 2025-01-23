@@ -7,7 +7,7 @@ import os
 from adm.modules.stage2_decode.cavp_wrapper import Encoder_Wrapper
 from open_clip.factory import get_model_config, list_models
 
-from adm.modules.stage2_decode.clip_video_spec import CLIP_Video_Spec_v2, CLIP_Video_Spec
+from adm.modules.stage2_decode.clip_video_spec import CLIP_Video_Spec_v2_Panya
 
 import json
 
@@ -35,8 +35,8 @@ def main(args):
     first_stage_ckpt_path = "/Users/920753844/Diff-Foley/training/open_cavp_main/logs/2024_10_21-14_32_19-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/checkpoints/epoch_latest.pt"
 
     # Debug
-    print("Assert that CLIP_Video_Spec_v2 is importable.", CLIP_Video_Spec_v2)
-    print("Assert that CLIP_Video_Spec is importable.", CLIP_Video_Spec)
+    print("Assert that CLIP_Video_Spec_v2 is importable.", CLIP_Video_Spec_v2_Panya)
+    print("Assert that CLIP_Video_Spec is importable.", CLIP_Video_Spec_v2_Panya)
 
     # Pretty-printing the JSON
     print("Loading configuration of audio_contrastive_pretrained: ----")

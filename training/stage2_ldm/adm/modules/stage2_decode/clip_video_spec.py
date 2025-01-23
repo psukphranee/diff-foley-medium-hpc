@@ -335,6 +335,7 @@ class CLIP_Video_Spec_Temporal(nn.Module):
 
 ## Version2:
 class CLIP_Video_Spec_v2(nn.Module):
+
     output_dict: torch.jit.Final[bool]
 
     def __init__(
@@ -482,9 +483,8 @@ class CLIP_Video_Spec_v2(nn.Module):
             logging.info(msg)
             print(msg)
             # Avg:
-            # Panya 12.18.2024 comment dim=1 and put dim=0
-            # video_feat = video_feat.mean(dim=1)
-            video_feat = video_feat.mean(dim=0)
+            
+            video_feat = video_feat.mean(dim=1)
         
         elif self.video_encode == "R2plus1D_pool":
             video = video.permute(0, 2, 1, 3, 4)
@@ -557,6 +557,7 @@ class CLIP_Video_Spec_v2(nn.Module):
 
     def forward(self, video, spec, output_dict=True, train=False):
 
+
         # Panya 12.18.2024
         msg = "CLIP_Video_Spec_v2 forward(). (video.shape, spec.shape): " + str(video.shape) + ", " + str(spec.shape)
         print(msg)
@@ -576,3 +577,36 @@ class CLIP_Video_Spec_v2(nn.Module):
                 "logit_scale": self.logit_scale.exp()
             }
         return video_features, spec_features, self.logit_scale.exp()
+    
+
+class CLIP_Video_Spec_v2_Panya(nn.Module):
+
+    def __init__(self):
+        super(CLIP_Video_Spec_v2).__init()__
+
+    def encode_video(self, video, normalize: bool = False, train=False, pool=True):
+
+        # Video: B x T x 3 x H x W
+        if self.video_encode == "Slowonly":
+            video = video.permute(0, 2, 1, 3, 4)
+            msg = "video (not video_feat ) in encode_video() of CLIP_Video_Spec_v2_Panya. This is what will be encoded: " + str(video.shape)
+            logging.info(msg)
+            print(msg)
+
+            video_feat = self.video_encoder(video)
+            msg = "video_feat in encode_video() of CLIP_Video_Spec_v2_Panya after video_encoder: " + str(video_feat.shape)
+            logging.info(msg)
+            print(msg)
+
+            bs, c, t, _, _ = video_feat.shape
+            video_feat = video_feat.reshape(bs, c, t).permute(0, 2, 1)
+            msg = "video_feat in encode_video() of CLIP_Video_Spec_v2_Panya after reshape and permute: " + str(video_feat.shape)
+            logging.info(msg)
+            print(msg)
+
+            video_feat = self.video_project_head(video_feat)
+            msg = "video_feat in encode_video() of CLIP_Video_Spec_v2_Panya after video_project_head: " + str(video_feat.shape)
+            logging.info(msg)
+            print(msg)
+            
+            video_feat = video_feat.mean(dim=0)
