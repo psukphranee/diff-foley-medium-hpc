@@ -97,4 +97,10 @@ class Encoder_Wrapper(pl.LightningModule):
             print(f"Missing Keys: {missing}")
         if len(unexpected) > 0:
             print(f"Unexpected Keys: {unexpected}")
+
+    def forward(self, x):
+         
+        x_rec = self.model(x)
+        
+        return x_rec
     
