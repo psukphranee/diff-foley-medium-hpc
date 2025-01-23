@@ -100,7 +100,7 @@ class Encoder_Wrapper(pl.LightningModule):
 
     def forward(self, x):
          
-        x_rec = self.model(x)
-        
+        x_rec = self.first_stage_model(x)
+
         return x_rec
     
