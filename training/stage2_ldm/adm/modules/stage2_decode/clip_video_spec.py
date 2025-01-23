@@ -625,3 +625,23 @@ class CLIP_Video_Spec_v2_Panya(CLIP_Video_Spec_v2):
             print(msg)
             
             video_feat = video_feat.mean(dim=0)
+
+    def forward(self, video, output_dict=True, train=False):
+
+
+        # Panya 12.18.2024
+        msg = "CLIP_Video_Spec_v2 forward(). (video.shape, spec.shape): " + str(video.shape) + ", " + str(spec.shape)
+        print(msg)
+        logging.info(msg)
+
+        video_features = self.encode_video(video, normalize=True, train=train)
+
+        # Panya 12.18.2024
+        msg = "CLIP_Video_Spec_v2 video_features.shape: " + str(video_features.shape)
+        print(msg)
+
+        if output_dict:
+            return {
+                "video_features": video_features
+            }
+        return video_features
