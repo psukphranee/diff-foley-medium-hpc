@@ -56,7 +56,9 @@ def main(args):
 
     sample_video_path = args.input_video_file
     sample_video_np = np.load(sample_video_path)
-    x,y,z = encoder_wrapper(sample_video_np)
+    sample_video_tensor = torch.tensor(sample_video_np).to(torch.float32).unsqueeze(0)
+    sample_video_tensor = sample_video_tensor.permute(0,1,4,2,3)
+    x,y,z = encoder_wrapper(sample_video_tensor)
 
     
 
