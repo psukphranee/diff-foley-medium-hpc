@@ -61,7 +61,7 @@ def main(args):
     sample_video_np = np.load(sample_video_path)
     sample_video_tensor = torch.tensor(sample_video_np).to(torch.float32).unsqueeze(0)
     sample_video_tensor = sample_video_tensor.permute(0,1,4,2,3)
-    output_file = encoder_wrapper(sample_video_tensor)
+    output_video = encoder_wrapper(sample_video_tensor)
 
 
     # ----------------Save output -----------------------------------------
@@ -75,15 +75,15 @@ def main(args):
         # Get the base name of the input file (strip the path)
         input_video_file_basename = os.path.basename(args.input_video_file)
         # Replace extension and save in the script's directory
-        output_file = os.path.join(
+        output_filename = os.path.join(
             script_directory,
             input_video_file_basename.rsplit('.', -1)[0] + ".npz"
         )
 
     # Save the file in the determined output path
-    print("Saving to: ", output_file)
+    print("Saving to: ", output_filename)
     # Save each key-value pair in the dictionary as a separate entry in the .npz file
-    np.savez(output_file, **{key: value.detach().numpy() for key, value in output_dict.items()})
+    np.savez(output_filename, output_video)
     # ---------------------------------------------------------------------------------------------------------------------------
 
 
