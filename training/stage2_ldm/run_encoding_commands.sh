@@ -6,4 +6,4 @@ do
   echo "Running command: $line"
   # Run the command
   $line
-done < "commands.txt"
+done < "encoding_commands.txt"
