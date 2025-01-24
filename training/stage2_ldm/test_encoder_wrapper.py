@@ -86,9 +86,6 @@ def main(args):
     np.savez(output_file, **{key: value.detach().numpy() for key, value in output_dict.items()})
     # ---------------------------------------------------------------------------------------------------------------------------
 
-    
-
-    np.savez("./E_v.npz", x=x)
 
 
 if __name__ == "__main__":
