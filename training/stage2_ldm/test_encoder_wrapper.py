@@ -83,7 +83,7 @@ def main(args):
     # Save the file in the determined output path
     print("Saving to: ", output_filename)
     # Save each key-value pair in the dictionary as a separate entry in the .npz file
-    np.savez(output_filename, output_video)
+    np.savez(output_filename, video_features=output_video)
     # ---------------------------------------------------------------------------------------------------------------------------
 
 
