@@ -59,7 +59,7 @@ spec_dummy = torch.zeros(1, 128, 256)
 
 # -----------------------------------------------------------------------
 
-sample_video_path = args.input_video_file
+sample_video_path = args['input_video_file']
 sample_video_np = np.load(sample_video_path)
 sample_video_tensor = torch.tensor(sample_video_np).to(torch.float32).unsqueeze(0)
 sample_video_tensor = sample_video_tensor.permute(0,1,4,2,3)
