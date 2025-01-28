@@ -42,7 +42,7 @@ print("Assert that CLIP_Video_Spec_v2_Panya is importable.", CLIP_Video_Spec_v2_
 # Pretty-printing the JSON
 print("Loading configuration of audio_contrastive_pretrained: ----")
 pretty_json = json.dumps(first_stage_config, indent=4, sort_keys=True)
-print(pretty_json)
+# print(pretty_json)
 print("---------------------------------------------------------------")
 
 # Create an instance of Encoder_Wrapper
