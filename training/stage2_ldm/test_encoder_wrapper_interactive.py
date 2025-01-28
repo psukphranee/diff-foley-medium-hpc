@@ -12,7 +12,7 @@ from adm.modules.stage2_decode.clip_video_spec import CLIP_Video_Spec_v2_Panya
 import json
 
 args = {
-    'input_video_file' : './ZeMV790MXE.npz'
+    'input_video_file' : '/Users/920753844/Diff-Foley/video/goodarchive_1/YwZOeyAQC8.video.jpg'
 }
 
 # Assert that the function is callable
