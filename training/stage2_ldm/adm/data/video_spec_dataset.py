@@ -89,7 +89,8 @@ class audio_video_spec_fullset_Dataset(torch.utils.data.Dataset):
 
         # Panya 12.18.2024 : Comment out following and change key to correspond to decoder_wrapper_forwards output
         # video_feat = np.load(video_feat_path)['feat'].astype(np.float32)
-        video_feat = np.load(video_feat_path)['video_features'].astype(np.float32)
+        # Panya 1.27.25 : Set allow_pickle=True because we're running into errors
+        video_feat = np.load(video_feat_path, allow_pickle=True)['video_features'].astype(np.float32)
 
         # Padding the samples:
         spec_len = self.sr * self.duration / self.hop_len
