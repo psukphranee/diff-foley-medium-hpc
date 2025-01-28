@@ -63,6 +63,11 @@ def main(args):
     sample_video_tensor = sample_video_tensor.permute(0,1,4,2,3)
     output_video = encoder_wrapper(sample_video_tensor)
 
+    # save output_video as numpy
+    video_features_np = output_video.numpy()  # Convert PyTorch tensor to NumPy array
+    video_features_np = video_features_np.astype(np.float32)
+
+
 
     # ----------------Save output -----------------------------------------
     # Get the directory of the current script
@@ -83,7 +88,7 @@ def main(args):
     # Save the file in the determined output path
     print("Saving to: ", output_filename)
     # Save each key-value pair in the dictionary as a separate entry in the .npz file
-    np.savez(output_filename, video_features=output_video, allow_pickle=True)
+    np.savez(output_filename, video_features=video_features_np, allow_pickle=True)
     # ---------------------------------------------------------------------------------------------------------------------------
 
 
