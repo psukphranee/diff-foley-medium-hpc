@@ -68,7 +68,7 @@ output_video = encoder_wrapper(sample_video_tensor)
 print("Panya: output_video is of type: ", type(output_video))
 
 # save output_video as numpy
-video_features_np = output_video.numpy()  # Convert PyTorch tensor to NumPy array
+video_features_np = output_video['video_features'].numpy()  # Convert PyTorch tensor to NumPy array
 video_features_np = video_features_np.astype(np.float32)
 
 
