@@ -65,7 +65,8 @@ class CUDACallback(Callback):
 
         self.start_time = time.time()
 
-    def on_train_epoch_end(self, trainer, pl_module, outputs):
+    # Panya Jan 29, 2025 set default of outputs to []
+    def on_train_epoch_end(self, trainer, pl_module, outputs=[]):
         # Panya jan 27 2025, changing below due to deprecation
         # torch.cuda.synchronize(trainer.root_gpu)
         torch.cuda.synchronize(trainer.strategy.root_device.index)
