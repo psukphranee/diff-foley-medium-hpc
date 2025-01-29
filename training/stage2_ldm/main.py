@@ -699,7 +699,6 @@ if __name__ == "__main__":
     # Run the Model:
     if opt.train:
         try:
-            pdb.set_trace()
             trainer.fit(model, data)
         except Exception:
             melk()
