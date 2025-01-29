@@ -1366,8 +1366,8 @@ class SoundLogger_concat_fullset(Callback):
             else:
                 return False
 
-
-    def on_train_batch_end(self, trainer, pl_module, outputs, batch, batch_idx, dataloader_idx):
+    # Panya Jan 29, 2025: set dataloader_idx=1 to take care of errors
+    def on_train_batch_end(self, trainer, pl_module, outputs, batch, batch_idx, dataloader_idx=1):
         # if not self.disabled and (pl_module.global_step > 0 or self.log_first_step):
         if not self.disabled and (pl_module.global_step % self.train_vis_frequency == 0) and pl_module.global_step > 0:
             self.log_sound_steps(pl_module, batch, batch_idx, split="train")
