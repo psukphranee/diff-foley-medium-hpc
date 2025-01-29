@@ -496,9 +496,10 @@ class LatentDiffusion(DDPM):
         ids = torch.round(torch.linspace(0, self.num_timesteps - 1, self.num_timesteps_cond)).long()
         self.cond_ids[:self.num_timesteps_cond] = ids
 
+    # Panya Jan 29, 2025: setting dataloader_idx=1 to try to get rid of error
     @rank_zero_only
     @torch.no_grad()
-    def on_train_batch_start(self, batch, batch_idx, dataloader_idx):
+    def on_train_batch_start(self, batch, batch_idx, dataloader_idx=1):
         # Panya jan 29, 2025
         print(f"Panya: Running on rank 0 with batch_idx={batch_idx}, dataloader_idx={dataloader_idx}")
 
