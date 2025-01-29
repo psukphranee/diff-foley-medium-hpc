@@ -12,6 +12,8 @@ from pytorch_lightning.utilities import rank_zero_info
 
 import json #Panya 12.11.24
 
+import pdb
+
 import numpy as np
     # model:
     #   base_learning_rate: float
@@ -697,6 +699,7 @@ if __name__ == "__main__":
     # Run the Model:
     if opt.train:
         try:
+            pdb.set_trace()
             trainer.fit(model, data)
         except Exception:
             melk()

@@ -25,6 +25,7 @@ from adm.models.autoencoder_img import AutoencoderKL
 from adm.modules.diffusionmodules.util import make_beta_schedule, extract_into_tensor, noise_like
 from adm.models.diffusion.sd_ddim_scale import DDIMSampler
 
+import pdb
 
 # Add Other Sampler:
 from adm.models.diffusion.plms import PLMSSampler
