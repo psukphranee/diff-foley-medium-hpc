@@ -73,7 +73,7 @@ class CUDACallback(Callback):
 
         # Panya jan 27 2025, changing below due to deprecation
         # max_memory = torch.cuda.max_memory_allocated(trainer.root_gpu) / 2 ** 20
-        max_memory = torch.cuda.max_memory_allocated(trainer.root_gpu) / 2 ** 20
+        max_memory = torch.cuda.max_memory_allocated(trainer.strategy.root_device.index) / 2 ** 20
         epoch_time = time.time() - self.start_time
 
         try:
