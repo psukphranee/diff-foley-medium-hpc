@@ -7,4 +7,4 @@ python main.py \
 --stage 2 \
 --epoch 3 \
 --scale_lr False \
---max_epochs 5
+--max_epochs 2
