@@ -177,6 +177,10 @@ class DataModuleFromConfig(pl.LightningDataModule):
 
     def _test_dataloader(self):
         return DataLoader(self.datasets['validation'], batch_size=self.batch_size, num_workers=self.num_workers, worker_init_fn=self.worker_init_fn, shuffle=True)
+    
+    # Panya Jan 29, 2025. Defining this per chatgpt probably because of deprecated syntax
+    def _test_dataloader(self):
+        return self._test_dataloader()
 
 
 class WrappedDataset(Dataset):
