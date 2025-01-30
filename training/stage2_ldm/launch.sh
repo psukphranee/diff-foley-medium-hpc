@@ -8,3 +8,4 @@ python main.py \
 --epoch 1 \
 --scale_lr False \
 --max_epochs 2
+--no-test
