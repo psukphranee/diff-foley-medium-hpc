@@ -381,6 +381,9 @@ def nondefault_trainer_args(opt):
 # Launch the Training:
 if __name__ == "__main__":
 
+    # Panya jan 29 2025
+    torch.cuda.empty_cache()
+
     # Panya: Comment ---------------------------------- #
     # This code is responsible for managing experiment names, resuming from checkpoints, and organizing logging directories based on user input and current time. This organization helps in tracking and managing training experiments effectively.
 
