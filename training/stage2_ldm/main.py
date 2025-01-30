@@ -192,7 +192,7 @@ class WrappedDataset(Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
-        print("Panya: self.data[idx]: ", str(self.data[idx]))
+        # print("Panya: self.data[idx]: ", str(self.data[idx]))
         return self.data[idx]
 
     #     is_iterable_dataset = isinstance(self.datasets['train'], Txt2ImgIterableBaseDataset)
