@@ -114,7 +114,7 @@ data:
         fps: 4
 
 checkpoint:
-  save_every_n_epochs: 4
+  save_every_n_epochs: 1
 
 
 callback:
