@@ -65,7 +65,7 @@ class audio_video_spec_fullset_Dataset(torch.utils.data.Dataset):
         self.feat_list = [self.feat_list[i] for i in shuffle_idx]
         self.video_list = [self.video_list[i] for i in shuffle_idx]
 
-        print("PANYA DEBUG JAN 27 2025: ", self.feat_list)
+        # print("PANYA DEBUG JAN 27 2025: ", self.feat_list)
 
 
         if debug_num:
