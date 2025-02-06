@@ -569,7 +569,8 @@ if __name__ == "__main__":
                 "save_last": True,
                 'save_top_k': 3,
                 # changed 'period' to 'every_n_train_steps'
-                'every_n_train_steps': config.checkpoint.save_every_n_epochs,
+                # Panya comments out 2.5.2024 'every_n_train_steps': config.checkpoint.save_every_n_epochs,
+                'every_n_epochs': config.checkpoint.save_every_n_epochs,
             }
     }
 
