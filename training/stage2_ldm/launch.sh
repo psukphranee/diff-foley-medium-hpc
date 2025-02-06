@@ -7,6 +7,6 @@ python main.py \
 --stage 2 \
 --epoch 2 \
 --scale_lr False \
---max_epochs 24 \
+--max_epochs 2 \
 --no-test True \
 --train True
