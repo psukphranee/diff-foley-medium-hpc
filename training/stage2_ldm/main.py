@@ -589,7 +589,7 @@ if __name__ == "__main__":
     modelckpt_cfg = OmegaConf.merge(default_modelckpt_cfg, modelckpt_cfg)
     trainer_kwargs['callbacks'] = instantiate_from_config(modelckpt_cfg)
     # trainer_kwargs['checkpoint_callback'] = checkpoint_callback
-    print(trainer_kwargs['callbacks'])
+    print("Callbacks: ", trainer_kwargs['callbacks'])
     # Add callback which sets up log directory
     # default_callbacks_cfg = {
     #         "setup_callback": {
