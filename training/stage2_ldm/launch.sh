@@ -5,7 +5,7 @@ python main.py \
 -t --name diff_foley_experiment  \
 --gpus 0, 1 \
 --stage 2 \
-# --epoch 2 \
+--epoch 4 \
 --scale_lr False \
 --max_epochs 3 \
 --no-test True \
