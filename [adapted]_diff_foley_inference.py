@@ -129,8 +129,8 @@ ldm_config_path = "./config/Stage2_LDM.yaml"
 # ldm_ckpt_path = "/content/drive/MyDrive/Diff-Foley-Workspace/Diff-Foley/diff_foley_ckpt/lighting_log_ckpt.ckpt" # Panya Feb 12, 2025
 ldm_ckpt_path = "./checkpoints/last.ckpt" # Panya Feb 12, 2025
 
-config = OmegaConf.load(ldm_config_path)
-
+LDM_config = OmegaConf.load(ldm_config_path)
+CAVP_config = OmegaConf.load(cavp_config_path)
 
 # Loading LDM:
 #The load_model_from_config function uses the provided configuration to instantiate and initialize a LatentDiffusion model, \
@@ -138,7 +138,7 @@ config = OmegaConf.load(ldm_config_path)
 # from the checkpoint file and moved to the GPU for inference. The configuration ensures that all components are correctly \
 # set up and initialized according to the specified parameters.
 print("Loading LDM...")
-latent_diffusion_model = load_model_from_config(config, ldm_ckpt_path, verbose=True)
+latent_diffusion_model = load_model_from_config(CAVP_config, ldm_ckpt_path, verbose=True)
 print("...Finished Loading LDM")
 '''
 """### 3. Data Preprocess"""
