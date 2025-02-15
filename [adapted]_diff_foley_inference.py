@@ -73,10 +73,6 @@ There are some packages that require restarting the kernel so put them in differ
 # Commented out IPython magic to ensure Python compatibility.
 #Consolidate working path so that we can reference out working space
 
-import os
-workspace_path = os.path.join("/","content", "drive","MyDrive", "Diff-Foley-Workspace")
-# %cd drive/MyDrive/Diff-Foley-Workspace/
-# %ls
 
 from omegaconf import OmegaConf #needed for loading LDM Model
 import os
@@ -85,13 +81,9 @@ import numpy as np
 import librosa
 import soundfile as sf
 from tqdm import tqdm
-
 import sys
-sys.path.append("/".join(os.getcwd().split("/")[:-1]))
-from diff_foley.util import instantiate_from_config #looks like this is located in diff_foley/modules
 
-import sys
-sys.path.append(os.path.join(workspace_path, "inference"))
+from util import instantiate_from_config #looks like this is located in diff_foley/modules
 from demo_util import Extract_CAVP_Features
 
 # Set Device:
@@ -101,8 +93,8 @@ device = torch.device("cuda")
 
 fps = 4                                                     #  CAVP default FPS=4, Don't change it.
 batch_size = 40   # Don't change it.
-cavp_config_path = "./inference/config/Stage1_CAVP.yaml"              #  CAVP Config
-cavp_ckpt_path = os.path.join(workspace_path, "Diff-Foley/diff_foley_ckpt/cavp_epoch66.ckpt")      #  CAVP Ckpt
+cavp_config_path = "./config/Stage1_CAVP.yaml"              #  CAVP Config
+cavp_ckpt_path = "./checkpoints/epoch_latest.pt"     #  CAVP Ckpt
 os.path.exists(cavp_ckpt_path)
 
 # Initalize CAVP Model:
@@ -132,10 +124,10 @@ def load_model_from_config(config, ckpt, verbose=False):
     return model
 
 # LDM Config:
-ldm_config_path = "/content/drive/MyDrive/Diff-Foley-Workspace/inference/config/Stage2_LDM.yaml"
+ldm_config_path = "./config/Stage2_LDM.yaml"
 # ldm_ckpt_path = "/content/drive/MyDrive/Diff-Foley-Workspace/Diff-Foley/diff_foley_ckpt/ldm_epoch240.ckpt"
 # ldm_ckpt_path = "/content/drive/MyDrive/Diff-Foley-Workspace/Diff-Foley/diff_foley_ckpt/lighting_log_ckpt.ckpt" # Panya Feb 12, 2025
-ldm_ckpt_path = "/content/drive/MyDrive/Diff-Foley-Workspace/Diff-Foley/diff_foley_ckpt/last.ckpt" # Panya Feb 12, 2025
+ldm_ckpt_path = "./checkpoints/last.ckpt" # Panya Feb 12, 2025
 
 config = OmegaConf.load(ldm_config_path)
 
