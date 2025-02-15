@@ -139,6 +139,7 @@ config = OmegaConf.load(ldm_config_path)
 # set up and initialized according to the specified parameters.
 latent_diffusion_model = load_model_from_config(config, ldm_ckpt_path)
 
+'''
 """### 3. Data Preprocess"""
 
 # Sample1:
@@ -282,3 +283,4 @@ print("Gen Success !!")
 
 import torch
 print(torch.cuda.device_count())
+'''
