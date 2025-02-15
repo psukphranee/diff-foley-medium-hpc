@@ -104,6 +104,9 @@ os.path.exists(cavp_ckpt_path)
 
 # --------------------------------------------------------------------------------------------------
 """
+from open_clip.factory import get_model_config, list_models
+from adm.modules.stage2_decode.clip_video_spec import CLIP_Video_Spec_v2_Panya
+
 
 def load_model_from_config(config, ckpt, verbose=False):
     print(f"Loading model from {ckpt}")

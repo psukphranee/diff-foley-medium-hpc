@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./training/open_cavp_main/src",
+        "./training/stage2_ldm"
+    ]
+}
