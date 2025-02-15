@@ -139,7 +139,7 @@ CAVP_config = OmegaConf.load(cavp_config_path)
 # from the checkpoint file and moved to the GPU for inference. The configuration ensures that all components are correctly \
 # set up and initialized according to the specified parameters.
 print("Loading LDM...")
-latent_diffusion_model = load_model_from_config(LDM_config, ldm_ckpt_path, verbose=True)
+latent_diffusion_model = load_model_from_config(LDM_config, cavp_ckpt_path, verbose=True)
 print("...Finished Loading LDM")
 '''
 """### 3. Data Preprocess"""
