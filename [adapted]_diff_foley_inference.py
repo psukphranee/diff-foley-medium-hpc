@@ -98,7 +98,7 @@ cavp_ckpt_path = "./checkpoints/epoch_latest.pt"     #  CAVP Ckpt
 os.path.exists(cavp_ckpt_path)
 
 # Initalize CAVP Model:
-# extract_cavp = Extract_CAVP_Features(fps=fps, batch_size=batch_size, device=device, config_path=cavp_config_path, ckpt_path=cavp_ckpt_path)
+extract_cavp = Extract_CAVP_Features(fps=fps, batch_size=batch_size, device=device, config_path=cavp_config_path, ckpt_path=cavp_ckpt_path)
 
 """### 2. Loading Stage2 LDM Model:
 
