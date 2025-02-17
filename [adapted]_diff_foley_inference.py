@@ -126,8 +126,6 @@ def load_model_from_config(config, ckpt, verbose=False):
 
 # LDM Config:
 ldm_config_path = "./config/Stage2_LDM.yaml"
-# ldm_ckpt_path = "/content/drive/MyDrive/Diff-Foley-Workspace/Diff-Foley/diff_foley_ckpt/ldm_epoch240.ckpt"
-# ldm_ckpt_path = "/content/drive/MyDrive/Diff-Foley-Workspace/Diff-Foley/diff_foley_ckpt/lighting_log_ckpt.ckpt" # Panya Feb 12, 2025
 ldm_ckpt_path = "./checkpoints/last.ckpt" # Panya Feb 12, 2025
 
 LDM_config = OmegaConf.load(ldm_config_path)
@@ -139,7 +137,7 @@ CAVP_config = OmegaConf.load(cavp_config_path)
 # from the checkpoint file and moved to the GPU for inference. The configuration ensures that all components are correctly \
 # set up and initialized according to the specified parameters.
 print("Loading LDM...")
-latent_diffusion_model = load_model_from_config(LDM_config, cavp_ckpt_path, verbose=True)
+latent_diffusion_model = load_model_from_config(LDM_config, ldm_ckpt_path, verbose=True)
 print("...Finished Loading LDM")
 '''
 """### 3. Data Preprocess"""
