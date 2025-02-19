@@ -95,8 +95,8 @@ device = torch.device("cuda")
 
 fps = 4                                                     #  CAVP default FPS=4, Don't change it.
 batch_size = 40   # Don't change it.
-cavp_config_path = "./config/Stage1_CAVP.yaml"              #  CAVP Config
-cavp_ckpt_path = "./checkpoints/epoch_latest.pt"     #  CAVP Ckpt
+cavp_config_path = "../config/Stage1_CAVP.yaml"              #  CAVP Config
+cavp_ckpt_path = "../checkpoints/epoch_latest.pt"     #  CAVP Ckpt
 os.path.exists(cavp_ckpt_path)
 
 # Initalize CAVP Model:
