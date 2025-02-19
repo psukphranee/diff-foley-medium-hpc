@@ -127,8 +127,8 @@ def load_model_from_config(config, ckpt, verbose=False):
     return model
 
 # LDM Config:
-ldm_config_path = "./config/Stage2_LDM.yaml"
-ldm_ckpt_path = "./checkpoints/last.ckpt" # Panya Feb 12, 2025
+ldm_config_path = "../config/Stage2_LDM.yaml"
+ldm_ckpt_path = "../checkpoints/last.ckpt" # Panya Feb 12, 2025
 
 LDM_config = OmegaConf.load(ldm_config_path)
 CAVP_config = OmegaConf.load(cavp_config_path)
