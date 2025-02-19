@@ -83,6 +83,8 @@ import soundfile as sf
 from tqdm import tqdm
 import sys
 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from util import instantiate_from_config #looks like this is located in diff_foley/modules
 from demo_util import Extract_CAVP_Features
 
@@ -141,8 +143,6 @@ latent_diffusion_model = load_model_from_config(LDM_config, ldm_ckpt_path, verbo
 print("...Finished Loading LDM")
 
 workspace_path = "../"
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 """### 3. Data Preprocess"""
 
