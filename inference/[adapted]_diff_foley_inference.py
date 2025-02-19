@@ -139,7 +139,8 @@ CAVP_config = OmegaConf.load(cavp_config_path)
 print("Loading LDM...")
 latent_diffusion_model = load_model_from_config(LDM_config, ldm_ckpt_path, verbose=True)
 print("...Finished Loading LDM")
-'''
+
+workspace_path = "../"
 """### 3. Data Preprocess"""
 
 # Sample1:
@@ -166,6 +167,7 @@ cavp_feats, new_video_path = extract_cavp(video_path, start_second, truncate_sec
 
 cavp_feats.shape
 
+'''
 def seed_everything(seed):
     import random, os
     import numpy as np
