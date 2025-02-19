@@ -142,7 +142,7 @@ print("Loading LDM...")
 latent_diffusion_model = load_model_from_config(LDM_config, ldm_ckpt_path, verbose=True)
 print("...Finished Loading LDM")
 
-workspace_path = "../"
+workspace_path = ".."
 
 """### 3. Data Preprocess"""
 
