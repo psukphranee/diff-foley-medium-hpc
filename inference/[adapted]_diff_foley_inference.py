@@ -141,6 +141,9 @@ latent_diffusion_model = load_model_from_config(LDM_config, ldm_ckpt_path, verbo
 print("...Finished Loading LDM")
 
 workspace_path = "../"
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 """### 3. Data Preprocess"""
 
 # Sample1:
