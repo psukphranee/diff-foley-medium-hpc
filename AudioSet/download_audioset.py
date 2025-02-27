@@ -20,7 +20,7 @@ def download_from_csv(csv_file, output_dir):
         except Exception as e:
             print(f"Failed to download {youtube_id}: {e}")
 
-download_from_csv('./balanced_train_segments.csv')
+download_from_csv('./balanced_train_segments.csv', "downloaded")
 
 # Example: Load the CSV file and download the videos
 # df = pd.read_csv('./balanced_train_segments.csv')
