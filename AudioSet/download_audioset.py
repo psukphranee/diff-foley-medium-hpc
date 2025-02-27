@@ -7,7 +7,7 @@ print("Starting script...")
 
 def download_from_csv(csv_file, output_dir):
     print(f"Reading CSV file: {csv_file}")
-    df = pd.read_csv(csv_file, sep=',', quotechar='"', on_bad_lines='skip')  # Handle quoted fields
+    df = pd.read_csv(csv_file, sep=',', quotechar='"', on_bad_lines='skip', header=2)  # Handle quoted fields
     # df = pd.read_csv(csv_file, sep=',', quotechar='"', on_bad_lines='skip', engine='python')  # Added engine='python'
     print(f"Found {len(df)} entries in CSV file")
     os.makedirs(output_dir, exist_ok=True)
