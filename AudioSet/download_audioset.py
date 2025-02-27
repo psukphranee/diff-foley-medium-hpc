@@ -21,7 +21,7 @@ def download_from_csv(csv_file, output_dir):
             print(f"Failed to download {youtube_id}: {e}")
 
 # Example: Load the CSV file and download the videos
-df = pd.read_csv('balanced_train_segments.csv')
+df = pd.read_csv('./balanced_train_segments.csv')
 output_dir = 'audioset_downloads'
 os.makedirs(output_dir, exist_ok=True)
 
