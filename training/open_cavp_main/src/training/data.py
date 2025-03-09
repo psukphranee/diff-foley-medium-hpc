@@ -2325,7 +2325,9 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     # 10.5.24 - is video_npy supposed to by numpy data or binary mp4 data?
     stream = io.BytesIO(video_npy)
 
-    print("Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: stream is of type ", type(stream))
+    msg = f'Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: stream is of type {type(stream)}'
+    logging.info(msg)
+    
     video_npy = numpy.lib.format.read_array(stream) #Panya 10.5.24 - This is commented out in the original code. see repo. we are uncommenting in addition to commenting out the following line to see if this helps with our issues
     # video_npy = Image.open(stream) #Panya 10.5.24 Commenting this out to see if it helps with the error of stream not being an image
     video_npy = np.array(video_npy)
