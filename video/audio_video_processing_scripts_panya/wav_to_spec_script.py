@@ -23,7 +23,7 @@ if not os.path.isdir(input_dir):
 
 try:
     # PANYA READ: change path depending on computer your on
-    result = subprocess.run(['find', os.path.expanduser('~/Documents/diff-foley-medium-hpc'), '-name', 'wav2spec.py'],
+    result = subprocess.run(['find', os.path.expanduser('~/Diff-Foley'), '-name', 'wav2spec.py'],
                             capture_output=True, text=True, check=True)
     wav2spec_path = result.stdout.splitlines()[0]  # Get the first result from find command
     wav2spec_dir = os.path.dirname(wav2spec_path)  # Extract the directory of wav2spec.py
