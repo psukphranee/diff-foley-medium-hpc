@@ -25,8 +25,6 @@ def extract_audio(input_directory):
                 '-ar', '16000', '-ac', '2', output_path
             ]
             
-            print(f"Running FFmpeg command to extract audio:\n{' '.join(command)}")
-
             # Run the command
             subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             print(f"Extracted: {output_path}")

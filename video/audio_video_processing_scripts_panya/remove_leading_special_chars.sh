@@ -14,25 +14,19 @@ cd "$directory" || { echo "Directory not found: $directory"; exit 1; }
 
 # Loop through all files in the directory
 for file in *; do
-  # Check if the file name starts with an underscore or other specific special characters
-  if [[ "$file" =~ ^[_]+ ]]; then
-    # Generate a new file name by removing leading underscores
-    new_file=$(echo "$file" | sed 's/^_+//')
+  # Check if the file name starts with a special character
+  if [[ "$file" =~ ^[[:punct:]]+ ]]; then
+    # Generate a new file name by removing leading special characters
+    new_file=$(echo "$file" | sed 's/^[[:punct:]]\+//')
     
-    # Check if new file name is empty to avoid renaming to an empty string
-    if [ -z "$new_file" ]; then
-      echo "Cannot rename '$file' because the new filename would be empty."
-      continue
-    fi
-
     # Rename the file using -- to handle filenames starting with special characters
-    mv -- "$file" "$new_file" || { echo "Failed to rename '$file'"; continue; }
+    mv -- "$file" "$new_file"
     
     # Print the old and new file names
     echo "Renamed: '$file' -> '$new_file'"
   else
-    # Print message if file does not start with the targeted special character
-    echo "'$file' does not start with the targeted special character."
+    # Print message if file does not start with a special character
+    echo "'$file' does not start with a special character."
   fi
 done
 

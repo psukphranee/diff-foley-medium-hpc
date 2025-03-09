@@ -32,7 +32,7 @@ for file in mp4_files:
     
     # Define output file name for resampled video
     basename = os.path.splitext(file)[0]
-    resampled_file = os.path.join(output_directory, f"{basename}.mp4")
+    resampled_file = os.path.join(output_directory, f"{basename}_resampled.mp4")
 
     # Step 1: Resample the video to 4 fps
     resample_command = [
