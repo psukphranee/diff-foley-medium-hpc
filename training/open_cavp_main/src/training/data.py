@@ -2182,7 +2182,9 @@ def get_wds_dataset_vggsound_audioset_intra_contrast(args, preprocess_img, is_tr
 def preprocess_vggsound_audioset_temporal_contrast(sample, sample_num=4, shift_lb=8):
     # image, json = sample
     # print(src)
-    msg = f'Panya: [preprocess_vggsound_audioset_temporal_contrast]: processing sample with {sample[list(sample.keys())[0]]}'
+    # march 2 2025. comment next line and replace with following
+    # msg = f'Panya: [preprocess_vggsound_audioset_temporal_contrast]: processing "sample" with keys {sample[list(sample.keys())[0]]}'
+    msg = f'Panya: [preprocess_vggsound_audioset_temporal_contrast]: processing "sample" with keys {list(sample.keys())}'
     logging.info(msg)
     try:
         spec = sample["spec.npy"]
