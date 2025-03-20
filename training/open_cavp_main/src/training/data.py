@@ -2383,7 +2383,7 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     
     sample_spec_list = torch.from_numpy(np.concatenate(sample_spec_list, 0))    # sample_num x H x W
 
-    msg = f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: Attempting to concatenate: {sample_video_list} along dimension 0"
+    msg = f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: Attempting to concatenate: {sample_video_list.shape} along dimension 0"
     logging.info(msg)
     sample_video_list = torch.cat(sample_video_list, 0)                         # sample_num x T x C x H x W
 
