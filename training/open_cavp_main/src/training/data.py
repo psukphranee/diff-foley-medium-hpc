@@ -2366,12 +2366,15 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     '''
     # Check Video npy: 
     sample_video_list = []
-    for i in range(sample_num):
+    for i in range(sample_num): # Panya: 3/20/25 sample_num are slices of the passed video.
         start_frame, end_frame = start_frame_index_list[i], end_frame_index_list[i]
         if video_npy.shape[0] < end_frame:
-            repeat_num = int((start_frame + truncate_frame) // video_npy.shape[0]) + 1
-            sample_video = np.tile(video_npy, (repeat_num, 1))
-            sample_video = video_npy[start_frame: end_frame]
+            repeat_num = int((start_frame + truncate_frame) // video_npy.shape[0]) + 1 #Panya 3/20/25 if the video is short, it calculate the number of times we have to repeat the video
+
+            #Panya 3/20/25. With the help of ChatGPT, we found that the following two lines may be erroroneous. The previous line does a wrap around of the video segment if it is too short. But then sample_video is slicing the original unwrapped segment.
+            # sample_video = np.tile(video_npy, (repeat_num, 1)) # Panya 3/20/25 commenting out per comment above
+            video_npy_repeated = np.tile(video_npy, (repeat_num, 1)) #Panya 3/20/25. added this to replace line above (per comment above previous line)
+            sample_video = video_npy_repeated[start_frame: end_frame] 
         else:
             sample_video = video_npy[start_frame: end_frame]
         # Video Tensor Transforms:
