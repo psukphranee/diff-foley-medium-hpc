@@ -1537,7 +1537,7 @@ def get_wds_dataset_vggsound_audioset_music_intra_contrast(args, preprocess_img,
     # print(input_shards)
     if is_train and args.train_data == "audioset_vggsound_music":
         # input_shards = ["/content/drive/MyDrive/Diff-Foley-Workspace/training/open_cavp_main/src/training_dummy_files_vgg/vggsound-{}.tar".format(str(i).zfill(6)) for i in range(32)
-        input_shards = [os.path.join(diff_foley_main, "video/goodarchive_{}.tar").format(str(i)) for i in range(1,3)]
+        input_shards = [os.path.join(diff_foley_main, "video/ucf101_boxing_punching_bag_{}.tar").format(str(i)) for i in range(1,2)]
         #input_shards.extend(["/content/drive/MyDrive/Diff-Foley-Workspace/training/open_cavp_main/src/training_dummy_files_audioset/audioset-{}.tar".format(str(i).zfill(6)) for i in range(32)])
         #input_shards.extend([os.path.join(diff_foley_main,"training/open_cavp_main/src/training_dummy_files_audioset/audioset-{}.tar").format(str(i).zfill(6)) for i in range(32)])
         #input_shards.extend(["/content/drive/MyDrive/Diff-Foley-Workspace/training/open_cavp_main/src/training_dummy_files_audioset_music/audioset_music-{}.tar".format(str(i).zfill(6)) for i in range(8)])
