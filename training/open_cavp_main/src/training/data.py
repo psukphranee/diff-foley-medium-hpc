@@ -2386,7 +2386,7 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
         sample_video_list.append(sample_video.unsqueeze(0))
 
     # Panya 4/6/25
-    for item in sample_video_list
+    for item in sample_video_list:
         msg = f'sample_video shape: {sample_video.shape}'
         logging.info(msg)
     
