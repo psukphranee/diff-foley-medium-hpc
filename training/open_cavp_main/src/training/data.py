@@ -2184,7 +2184,7 @@ def preprocess_vggsound_audioset_temporal_contrast(sample, sample_num=4, shift_l
     # print(src)
     # march 2 2025. comment next line and replace with following
     # msg = f'Panya: [preprocess_vggsound_audioset_temporal_contrast]: processing "sample" with keys {sample[list(sample.keys())[0]]}'
-    msg = f'Panya: [preprocess_vggsound_audioset_temporal_contrast]: processing "sample" with keys {list(sample.keys())}'
+    msg = f'Panya: [preprocess_vggsound_audioset_temporal_contrast]: processing "sample" {sample['__key__']} with keys {list(sample.keys())}'
     logging.info(msg)
     try:
         spec = sample["spec.npy"]
@@ -2302,7 +2302,7 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     assert sample_num == 2 or sample_num == 3 or sample_num == 4 , "sample num must be [2,3,4]"
     start_frame_index_list, end_frame_index_list = sample_temporal_index(sample_num=sample_num, shift_lb=shift_lb)
     start_spec_list = []
-    msg = f'Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: {str(start_frame_index_list)}, {str(end_frame_index_list)}'
+    msg = f'Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast] start/end frames index list: {str(start_frame_index_list)}, {str(end_frame_index_list)}'
     #print(msg)
     logging.info(msg)
     
