@@ -1,12 +1,12 @@
 Home directory: /Users/920753844
-INFO:root:Running with a single process. Device cpu.
-2025-03-10,18:23:47 | INFO | Running with a single process. Device cpu.
+INFO:root:Running with a single process. Device cuda:0.
+2025-03-20,14:19:45 | INFO | Running with a single process. Device cuda:0.
 INFO:root:Line 219 of main_wds_intra_contrast.py
-2025-03-10,18:23:47 | INFO | Line 219 of main_wds_intra_contrast.py
+2025-03-20,14:19:45 | INFO | Line 219 of main_wds_intra_contrast.py
 INFO:root:Loaded audio_contrastive_pretrained model config.
-2025-03-10,18:23:47 | INFO | Loaded audio_contrastive_pretrained model config.
+2025-03-20,14:19:45 | INFO | Loaded audio_contrastive_pretrained model config.
 INFO:root:Panya: Loading model CLIP_Video_Spec in stage 1.
-2025-03-10,18:23:47 | INFO | Panya: Loading model CLIP_Video_Spec in stage 1.
+2025-03-20,14:19:45 | INFO | Panya: Loading model CLIP_Video_Spec in stage 1.
 Panya: Loading model CLIP_Video_Spec in stage 1.
 Video Pretrained: True  Audio Pretrained: True
 /Users/920753844/Diff-Foley/training/open_cavp_main/src/open_clip/model.py:578: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
@@ -14,45 +14,1813 @@ Video Pretrained: True  Audio Pretrained: True
 ====> Load Pretrained Video Encoder Success from: /Users/920753844/Diff-Foley/training/open_cavp_main/src/pretrained_model/slowonly_r50_4x16x1_256e_8xb16_kinetics400-rgb_20220901-f6a40d08.pth
 /Users/920753844/Diff-Foley/training/open_cavp_main/src/open_clip/model.py:590: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
   state_dict = torch.load(ckpt_path)['model']
+====> Load Pretrained Audio Encoder Succes from: /Users/920753844/Diff-Foley/training/open_cavp_main/src/pretrained_model/Cnn14_16k_mAP=0.438.pth
+INFO:root:Model:
+2025-03-20,14:19:47 | INFO | Model:
+INFO:root:CLIP_Video_Spec(
+  (video_encoder): ResNet3dSlowOnly(
+    (conv1): ConvModule(
+      (conv): Conv3d(3, 64, kernel_size=(1, 7, 7), stride=(1, 2, 2), padding=(0, 3, 3), bias=False)
+      (bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activate): ReLU(inplace=True)
+    )
+    (maxpool): MaxPool3d(kernel_size=(1, 3, 3), stride=(1, 2, 2), padding=(0, 1, 1), dilation=1, ceil_mode=False)
+    (pool2): MaxPool3d(kernel_size=(2, 1, 1), stride=(2, 1, 1), padding=0, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(64, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(64, 64, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(64, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (downsample): ConvModule(
+          (conv): Conv3d(64, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (1): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(256, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(64, 64, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(64, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(256, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(64, 64, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(64, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(256, 128, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(128, 128, kernel_size=(1, 3, 3), stride=(1, 2, 2), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(128, 512, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (downsample): ConvModule(
+          (conv): Conv3d(256, 512, kernel_size=(1, 1, 1), stride=(1, 2, 2), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (1): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(512, 128, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(128, 128, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(128, 512, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(512, 128, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(128, 128, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(128, 512, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (3): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(512, 128, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(128, 128, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(128, 512, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(512, 256, kernel_size=(3, 1, 1), stride=(1, 1, 1), padding=(1, 0, 0), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(256, 256, kernel_size=(1, 3, 3), stride=(1, 2, 2), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(256, 1024, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (downsample): ConvModule(
+          (conv): Conv3d(512, 1024, kernel_size=(1, 1, 1), stride=(1, 2, 2), bias=False)
+          (bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (1): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(1024, 256, kernel_size=(3, 1, 1), stride=(1, 1, 1), padding=(1, 0, 0), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(256, 256, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(256, 1024, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(1024, 256, kernel_size=(3, 1, 1), stride=(1, 1, 1), padding=(1, 0, 0), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(256, 256, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(256, 1024, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (3): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(1024, 256, kernel_size=(3, 1, 1), stride=(1, 1, 1), padding=(1, 0, 0), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(256, 256, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(256, 1024, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (4): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(1024, 256, kernel_size=(3, 1, 1), stride=(1, 1, 1), padding=(1, 0, 0), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(256, 256, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(256, 1024, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (5): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(1024, 256, kernel_size=(3, 1, 1), stride=(1, 1, 1), padding=(1, 0, 0), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(256, 256, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(256, 1024, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(1024, 512, kernel_size=(3, 1, 1), stride=(1, 1, 1), padding=(1, 0, 0), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(512, 512, kernel_size=(1, 3, 3), stride=(1, 2, 2), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(512, 2048, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (downsample): ConvModule(
+          (conv): Conv3d(1024, 2048, kernel_size=(1, 1, 1), stride=(1, 2, 2), bias=False)
+          (bn): BatchNorm3d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (1): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(2048, 512, kernel_size=(3, 1, 1), stride=(1, 1, 1), padding=(1, 0, 0), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(512, 512, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(512, 2048, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(2048, 512, kernel_size=(3, 1, 1), stride=(1, 1, 1), padding=(1, 0, 0), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(512, 512, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(512, 2048, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (adaptive_pool): AdaptiveAvgPool2d(output_size=(1, 1))
+  )
+  (video_project_head): Linear(in_features=2048, out_features=512, bias=True)
+  (video_pool): MaxPool1d(kernel_size=16, stride=16, padding=0, dilation=1, ceil_mode=False)
+  (spec_encoder): Cnn14(
+    (bn): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv_block1): ConvBlock(
+      (conv1): Conv2d(1, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (conv_block2): ConvBlock(
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (conv_block3): ConvBlock(
+      (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (conv_block4): ConvBlock(
+      (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (conv_block5): ConvBlock(
+      (conv1): Conv2d(512, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (conv2): Conv2d(1024, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (bn2): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (conv_block6): ConvBlock(
+      (conv1): Conv2d(1024, 2048, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (conv2): Conv2d(2048, 2048, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (bn2): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (fc1): Linear(in_features=2048, out_features=2048, bias=True)
+    (final_project): Linear(in_features=2048, out_features=512, bias=True)
+  )
+  (spec_project_head): Identity()
+  (spec_pool): MaxPool1d(kernel_size=16, stride=16, padding=0, dilation=1, ceil_mode=False)
+)
+2025-03-20,14:19:47 | INFO | CLIP_Video_Spec(
+  (video_encoder): ResNet3dSlowOnly(
+    (conv1): ConvModule(
+      (conv): Conv3d(3, 64, kernel_size=(1, 7, 7), stride=(1, 2, 2), padding=(0, 3, 3), bias=False)
+      (bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (activate): ReLU(inplace=True)
+    )
+    (maxpool): MaxPool3d(kernel_size=(1, 3, 3), stride=(1, 2, 2), padding=(0, 1, 1), dilation=1, ceil_mode=False)
+    (pool2): MaxPool3d(kernel_size=(2, 1, 1), stride=(2, 1, 1), padding=0, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(64, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(64, 64, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(64, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (downsample): ConvModule(
+          (conv): Conv3d(64, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (1): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(256, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(64, 64, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(64, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(256, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(64, 64, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(64, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(256, 128, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(128, 128, kernel_size=(1, 3, 3), stride=(1, 2, 2), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(128, 512, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (downsample): ConvModule(
+          (conv): Conv3d(256, 512, kernel_size=(1, 1, 1), stride=(1, 2, 2), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (1): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(512, 128, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(128, 128, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(128, 512, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(512, 128, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(128, 128, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(128, 512, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (3): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(512, 128, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(128, 128, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(128, 512, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(512, 256, kernel_size=(3, 1, 1), stride=(1, 1, 1), padding=(1, 0, 0), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(256, 256, kernel_size=(1, 3, 3), stride=(1, 2, 2), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(256, 1024, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (downsample): ConvModule(
+          (conv): Conv3d(512, 1024, kernel_size=(1, 1, 1), stride=(1, 2, 2), bias=False)
+          (bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (1): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(1024, 256, kernel_size=(3, 1, 1), stride=(1, 1, 1), padding=(1, 0, 0), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(256, 256, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(256, 1024, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(1024, 256, kernel_size=(3, 1, 1), stride=(1, 1, 1), padding=(1, 0, 0), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(256, 256, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(256, 1024, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (3): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(1024, 256, kernel_size=(3, 1, 1), stride=(1, 1, 1), padding=(1, 0, 0), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(256, 256, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(256, 1024, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (4): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(1024, 256, kernel_size=(3, 1, 1), stride=(1, 1, 1), padding=(1, 0, 0), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(256, 256, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(256, 1024, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (5): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(1024, 256, kernel_size=(3, 1, 1), stride=(1, 1, 1), padding=(1, 0, 0), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(256, 256, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(256, 1024, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(1024, 512, kernel_size=(3, 1, 1), stride=(1, 1, 1), padding=(1, 0, 0), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(512, 512, kernel_size=(1, 3, 3), stride=(1, 2, 2), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(512, 2048, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (downsample): ConvModule(
+          (conv): Conv3d(1024, 2048, kernel_size=(1, 1, 1), stride=(1, 2, 2), bias=False)
+          (bn): BatchNorm3d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (1): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(2048, 512, kernel_size=(3, 1, 1), stride=(1, 1, 1), padding=(1, 0, 0), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(512, 512, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(512, 2048, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck3d(
+        (conv1): ConvModule(
+          (conv): Conv3d(2048, 512, kernel_size=(3, 1, 1), stride=(1, 1, 1), padding=(1, 0, 0), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv2): ConvModule(
+          (conv): Conv3d(512, 512, kernel_size=(1, 3, 3), stride=(1, 1, 1), padding=(0, 1, 1), bias=False)
+          (bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (activate): ReLU(inplace=True)
+        )
+        (conv3): ConvModule(
+          (conv): Conv3d(512, 2048, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+          (bn): BatchNorm3d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (adaptive_pool): AdaptiveAvgPool2d(output_size=(1, 1))
+  )
+  (video_project_head): Linear(in_features=2048, out_features=512, bias=True)
+  (video_pool): MaxPool1d(kernel_size=16, stride=16, padding=0, dilation=1, ceil_mode=False)
+  (spec_encoder): Cnn14(
+    (bn): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv_block1): ConvBlock(
+      (conv1): Conv2d(1, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (conv_block2): ConvBlock(
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (conv_block3): ConvBlock(
+      (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (conv_block4): ConvBlock(
+      (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (conv_block5): ConvBlock(
+      (conv1): Conv2d(512, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (conv2): Conv2d(1024, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (bn2): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (conv_block6): ConvBlock(
+      (conv1): Conv2d(1024, 2048, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (conv2): Conv2d(2048, 2048, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (bn2): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (fc1): Linear(in_features=2048, out_features=2048, bias=True)
+    (final_project): Linear(in_features=2048, out_features=512, bias=True)
+  )
+  (spec_project_head): Identity()
+  (spec_pool): MaxPool1d(kernel_size=16, stride=16, padding=0, dilation=1, ceil_mode=False)
+)
+INFO:root:Params:
+2025-03-20,14:19:47 | INFO | Params:
+INFO:root:  accum_freq: 1
+2025-03-20,14:19:47 | INFO |   accum_freq: 1
+INFO:root:  aug_cfg: {}
+2025-03-20,14:19:47 | INFO |   aug_cfg: {}
+INFO:root:  batch_size: 1
+2025-03-20,14:19:47 | INFO |   batch_size: 1
+INFO:root:  beta1: 0.9
+2025-03-20,14:19:47 | INFO |   beta1: 0.9
+INFO:root:  beta2: 0.999
+2025-03-20,14:19:47 | INFO |   beta2: 0.999
+INFO:root:  checkpoint_path: ./logs/2025_03_20-14_19_45-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/checkpoints
+2025-03-20,14:19:47 | INFO |   checkpoint_path: ./logs/2025_03_20-14_19_45-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/checkpoints
+INFO:root:  coca_caption_loss_weight: 2.0
+2025-03-20,14:19:47 | INFO |   coca_caption_loss_weight: 2.0
+INFO:root:  coca_contrastive_loss_weight: 1.0
+2025-03-20,14:19:47 | INFO |   coca_contrastive_loss_weight: 1.0
+INFO:root:  copy_codebase: False
+2025-03-20,14:19:47 | INFO |   copy_codebase: False
+INFO:root:  csv_caption_key: title
+2025-03-20,14:19:47 | INFO |   csv_caption_key: title
+INFO:root:  csv_img_key: filepath
+2025-03-20,14:19:47 | INFO |   csv_img_key: filepath
+INFO:root:  csv_separator: 	
+2025-03-20,14:19:47 | INFO |   csv_separator: 	
+INFO:root:  data_dir: /Users/920753844/Diff-Foley/video
+2025-03-20,14:19:47 | INFO |   data_dir: /Users/920753844/Diff-Foley/video
+INFO:root:  dataset_resampled: False
+2025-03-20,14:19:47 | INFO |   dataset_resampled: False
+INFO:root:  dataset_type: vggsound_audioset_music_webdataset_intra_contrast
+2025-03-20,14:19:47 | INFO |   dataset_type: vggsound_audioset_music_webdataset_intra_contrast
+INFO:root:  ddp_static_graph: False
+2025-03-20,14:19:47 | INFO |   ddp_static_graph: False
+INFO:root:  debug: False
+2025-03-20,14:19:47 | INFO |   debug: False
+INFO:root:  delete_previous_checkpoint: False
+2025-03-20,14:19:47 | INFO |   delete_previous_checkpoint: False
+INFO:root:  device: cuda:0
+2025-03-20,14:19:47 | INFO |   device: cuda:0
+INFO:root:  dist_backend: nccl
+2025-03-20,14:19:47 | INFO |   dist_backend: nccl
+INFO:root:  dist_url: env://
+2025-03-20,14:19:47 | INFO |   dist_url: env://
+INFO:root:  distributed: False
+2025-03-20,14:19:47 | INFO |   distributed: False
+INFO:root:  epochs: 2
+2025-03-20,14:19:47 | INFO |   epochs: 2
+INFO:root:  epochs_cooldown: None
+2025-03-20,14:19:47 | INFO |   epochs_cooldown: None
+INFO:root:  eps: 1e-08
+2025-03-20,14:19:47 | INFO |   eps: 1e-08
+INFO:root:  force_custom_text: False
+2025-03-20,14:19:47 | INFO |   force_custom_text: False
+INFO:root:  force_image_size: None
+2025-03-20,14:19:47 | INFO |   force_image_size: None
+INFO:root:  force_patch_dropout: None
+2025-03-20,14:19:47 | INFO |   force_patch_dropout: None
+INFO:root:  force_quick_gelu: False
+2025-03-20,14:19:47 | INFO |   force_quick_gelu: False
+INFO:root:  fps: 4
+2025-03-20,14:19:47 | INFO |   fps: 4
+INFO:root:  gather_with_grad: False
+2025-03-20,14:19:47 | INFO |   gather_with_grad: False
+INFO:root:  grad_checkpointing: False
+2025-03-20,14:19:47 | INFO |   grad_checkpointing: False
+INFO:root:  grad_clip_norm: None
+2025-03-20,14:19:47 | INFO |   grad_clip_norm: None
+INFO:root:  horovod: False
+2025-03-20,14:19:47 | INFO |   horovod: False
+INFO:root:  image_mean: None
+2025-03-20,14:19:47 | INFO |   image_mean: None
+INFO:root:  image_std: None
+2025-03-20,14:19:47 | INFO |   image_std: None
+INFO:root:  imagenet_v2: None
+2025-03-20,14:19:47 | INFO |   imagenet_v2: None
+INFO:root:  imagenet_val: None
+2025-03-20,14:19:47 | INFO |   imagenet_val: None
+INFO:root:  intra_clip_num: 3
+2025-03-20,14:19:47 | INFO |   intra_clip_num: 3
+INFO:root:  intra_contrast_weight: 1
+2025-03-20,14:19:47 | INFO |   intra_contrast_weight: 1
+INFO:root:  local_loss: False
+2025-03-20,14:19:47 | INFO |   local_loss: False
+INFO:root:  local_rank: 0
+2025-03-20,14:19:47 | INFO |   local_rank: 0
+INFO:root:  lock_image: False
+2025-03-20,14:19:47 | INFO |   lock_image: False
+INFO:root:  lock_image_freeze_bn_stats: False
+2025-03-20,14:19:47 | INFO |   lock_image_freeze_bn_stats: False
+INFO:root:  lock_image_unlocked_groups: 0
+2025-03-20,14:19:47 | INFO |   lock_image_unlocked_groups: 0
+INFO:root:  lock_text: False
+2025-03-20,14:19:47 | INFO |   lock_text: False
+INFO:root:  lock_text_freeze_layer_norm: False
+2025-03-20,14:19:47 | INFO |   lock_text_freeze_layer_norm: False
+INFO:root:  lock_text_unlocked_layers: 0
+2025-03-20,14:19:47 | INFO |   lock_text_unlocked_layers: 0
+INFO:root:  log_every_n_steps: 1
+2025-03-20,14:19:47 | INFO |   log_every_n_steps: 1
+INFO:root:  log_level: 20
+2025-03-20,14:19:47 | INFO |   log_level: 20
+INFO:root:  log_local: False
+2025-03-20,14:19:47 | INFO |   log_local: False
+INFO:root:  log_path: ./logs/2025_03_20-14_19_45-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/out.log
+2025-03-20,14:19:47 | INFO |   log_path: ./logs/2025_03_20-14_19_45-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1/out.log
+INFO:root:  logs: ./logs/
+2025-03-20,14:19:47 | INFO |   logs: ./logs/
+INFO:root:  loss_type: clip_intra_contrast
+2025-03-20,14:19:47 | INFO |   loss_type: clip_intra_contrast
+INFO:root:  lr: 0.0008
+2025-03-20,14:19:47 | INFO |   lr: 0.0008
+INFO:root:  lr_cooldown_end: 0.0
+2025-03-20,14:19:47 | INFO |   lr_cooldown_end: 0.0
+INFO:root:  lr_cooldown_power: 1.0
+2025-03-20,14:19:47 | INFO |   lr_cooldown_power: 1.0
+INFO:root:  lr_scheduler: cosine
+2025-03-20,14:19:47 | INFO |   lr_scheduler: cosine
+INFO:root:  model: audio_contrastive_pretrained
+2025-03-20,14:19:47 | INFO |   model: audio_contrastive_pretrained
+INFO:root:  name: 2025_03_20-14_19_45-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1
+2025-03-20,14:19:47 | INFO |   name: 2025_03_20-14_19_45-lr_8e-4_warmup200_wds_vgg+audioset_cnn14_pretrained_clip_num3_shift_lb8_intra_loss_w1
+INFO:root:  no_set_device_rank: False
+2025-03-20,14:19:47 | INFO |   no_set_device_rank: False
+INFO:root:  precision: amp
+2025-03-20,14:19:47 | INFO |   precision: amp
+INFO:root:  pretrained: 
+2025-03-20,14:19:47 | INFO |   pretrained: 
+INFO:root:  pretrained_image: False
+2025-03-20,14:19:47 | INFO |   pretrained_image: False
+INFO:root:  rank: 0
+2025-03-20,14:19:47 | INFO |   rank: 0
+INFO:root:  remote_sync: None
+2025-03-20,14:19:47 | INFO |   remote_sync: None
+INFO:root:  remote_sync_frequency: 300
+2025-03-20,14:19:47 | INFO |   remote_sync_frequency: 300
+INFO:root:  remote_sync_protocol: s3
+2025-03-20,14:19:47 | INFO |   remote_sync_protocol: s3
+INFO:root:  report_to: 
+2025-03-20,14:19:47 | INFO |   report_to: 
+INFO:root:  resume: None
+2025-03-20,14:19:47 | INFO |   resume: None
+INFO:root:  save_frequency: 1
+2025-03-20,14:19:47 | INFO |   save_frequency: 1
+INFO:root:  save_most_recent: True
+2025-03-20,14:19:47 | INFO |   save_most_recent: True
+INFO:root:  seed: 0
+2025-03-20,14:19:47 | INFO |   seed: 0
+INFO:root:  shift: 8
+2025-03-20,14:19:47 | INFO |   shift: 8
+INFO:root:  shift_lb: 8
+2025-03-20,14:19:47 | INFO |   shift_lb: 8
+INFO:root:  skip_scheduler: False
+2025-03-20,14:19:47 | INFO |   skip_scheduler: False
+INFO:root:  spec_encode: cnn14_pool
+2025-03-20,14:19:47 | INFO |   spec_encode: cnn14_pool
+INFO:root:  split_txt_path: /public/MARS/Users/lsm/lsm_project/lsm_project/audio_diffusion/process_data/clean_vggsound_fullset/data_list/
+2025-03-20,14:19:47 | INFO |   split_txt_path: /public/MARS/Users/lsm/lsm_project/lsm_project/audio_diffusion/process_data/clean_vggsound_fullset/data_list/
+INFO:root:  sr: 16000
+2025-03-20,14:19:47 | INFO |   sr: 16000
+INFO:root:  subset_num: 400
+2025-03-20,14:19:47 | INFO |   subset_num: 400
+INFO:root:  temporal_mix_weight: 1.0
+2025-03-20,14:19:47 | INFO |   temporal_mix_weight: 1.0
+INFO:root:  tensorboard: False
+2025-03-20,14:19:47 | INFO |   tensorboard: False
+INFO:root:  tensorboard_path: 
+2025-03-20,14:19:47 | INFO |   tensorboard_path: 
+INFO:root:  torchscript: False
+2025-03-20,14:19:47 | INFO |   torchscript: False
+INFO:root:  trace: False
+2025-03-20,14:19:47 | INFO |   trace: False
+INFO:root:  train_data: audioset_vggsound_music
+2025-03-20,14:19:47 | INFO |   train_data: audioset_vggsound_music
+INFO:root:  train_num_samples: 250
+2025-03-20,14:19:47 | INFO |   train_num_samples: 250
+INFO:root:  truncate_sec: 4
+2025-03-20,14:19:47 | INFO |   truncate_sec: 4
+INFO:root:  use_bn_sync: False
+2025-03-20,14:19:47 | INFO |   use_bn_sync: False
+INFO:root:  val_data: None
+2025-03-20,14:19:47 | INFO |   val_data: None
+INFO:root:  val_frequency: 2
+2025-03-20,14:19:47 | INFO |   val_frequency: 2
+INFO:root:  val_num_samples: None
+2025-03-20,14:19:47 | INFO |   val_num_samples: None
+INFO:root:  video_encode: Slowonly_pool
+2025-03-20,14:19:47 | INFO |   video_encode: Slowonly_pool
+INFO:root:  wandb: False
+2025-03-20,14:19:47 | INFO |   wandb: False
+INFO:root:  wandb_notes: 
+2025-03-20,14:19:47 | INFO |   wandb_notes: 
+INFO:root:  wandb_project_name: open-clip
+2025-03-20,14:19:47 | INFO |   wandb_project_name: open-clip
+INFO:root:  warmup: 100
+2025-03-20,14:19:47 | INFO |   warmup: 100
+INFO:root:  wd: 0.2
+2025-03-20,14:19:47 | INFO |   wd: 0.2
+INFO:root:  workers: 1
+2025-03-20,14:19:47 | INFO |   workers: 1
+INFO:root:  world_size: 1
+2025-03-20,14:19:47 | INFO |   world_size: 1
+INFO:root:  zeroshot_frequency: 2
+2025-03-20,14:19:47 | INFO |   zeroshot_frequency: 2
+/Users/920753844/Diff-Foley/training/open_cavp_main/src/training/main_wds_intra_contrast.py:303: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = GradScaler() if args.precision == "amp" else None
+Shards List:  ['/Users/920753844/Diff-Foley/video/ucf101_boxing_punching_bag_1.tar']
+INFO:root:Panya: [get_wds_dataset_vggsound_audioset_music_intra_contrast]: Value of 'resampled': False
+2025-03-20,14:19:47 | INFO | Panya: [get_wds_dataset_vggsound_audioset_music_intra_contrast]: Value of 'resampled': False
+INFO:root:Panya: [get_dataset_size]: 
+shards_list = ['/Users/920753844/Diff-Foley/video/ucf101_boxing_punching_bag_1.tar'], 
+dir_path = /Users/920753844/Diff-Foley/video, 
+sizes_filename = /Users/920753844/Diff-Foley/video/sizes.json, 
+len_filename = /Users/920753844/Diff-Foley/video/__len__
+2025-03-20,14:19:47 | INFO | Panya: [get_dataset_size]: 
+shards_list = ['/Users/920753844/Diff-Foley/video/ucf101_boxing_punching_bag_1.tar'], 
+dir_path = /Users/920753844/Diff-Foley/video, 
+sizes_filename = /Users/920753844/Diff-Foley/video/sizes.json, 
+len_filename = /Users/920753844/Diff-Foley/video/__len__
+INFO:root:Panya: [get_wds_dataset_vggsound_audioset_music_intra_contrast]: num_samples= 163, num_shards=1
+2025-03-20,14:19:47 | INFO | Panya: [get_wds_dataset_vggsound_audioset_music_intra_contrast]: num_samples= 163, num_shards=1
+INFO:root:the key "train" is in "data" and evaulation is not going on. we start epochs...
+2025-03-20,14:19:47 | INFO | the key "train" is in "data" and evaulation is not going on. we start epochs...
+INFO:root:Start epoch 0
+2025-03-20,14:19:47 | INFO | Start epoch 0
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c01.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c01.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g01_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g01_c01
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g01_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g01_c01
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c01.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c01.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g01_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g01_c01
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c02.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c02.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g01_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g01_c01
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g01_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g01_c02
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g01_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g01_c02
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c02.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c02.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g01_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g01_c02
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c03.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c03.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g01_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g01_c02
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g01_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g01_c03
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g01_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g01_c03
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c03.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c03.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g01_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g01_c03
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c04.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c04.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g01_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g01_c03
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g01_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g01_c04
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g01_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g01_c04
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c04.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c04.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g01_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g01_c04
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c05.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c05.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g01_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g01_c04
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g01_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g01_c05
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g01_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g01_c05
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c05.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c05.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g01_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g01_c05
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c06.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c06.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g01_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g01_c05
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g01_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g01_c06
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g01_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g01_c06
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c06.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c06.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g01_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g01_c06
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c07.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c07.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g01_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g01_c06
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g01_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g01_c07
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g01_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g01_c07
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c07.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g01_c07.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g01_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g01_c07
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c01.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c01.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g01_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g01_c07
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g02_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g02_c01
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g02_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g02_c01
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c01.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c01.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g02_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g02_c01
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c02.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c02.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g02_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g02_c01
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g02_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g02_c02
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g02_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g02_c02
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c02.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c02.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g02_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g02_c02
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c03.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c03.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g02_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g02_c02
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g02_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g02_c03
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g02_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g02_c03
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c03.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c03.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g02_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g02_c03
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c04.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c04.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g02_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g02_c03
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g02_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g02_c04
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g02_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g02_c04
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c04.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c04.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g02_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g02_c04
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c05.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c05.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g02_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g02_c04
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g02_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g02_c05
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g02_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g02_c05
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c05.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c05.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g02_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g02_c05
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c06.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c06.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g02_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g02_c05
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g02_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g02_c06
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g02_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g02_c06
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c06.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c06.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g02_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g02_c06
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c07.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c07.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g02_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g02_c06
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g02_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g02_c07
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g02_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g02_c07
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c07.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g02_c07.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g02_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g02_c07
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c01.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c01.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g02_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g02_c07
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g03_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g03_c01
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g03_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g03_c01
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c01.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c01.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g03_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g03_c01
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c02.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c02.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g03_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g03_c01
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g03_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g03_c02
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g03_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g03_c02
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c02.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c02.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g03_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g03_c02
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c03.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c03.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g03_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g03_c02
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g03_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g03_c03
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g03_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g03_c03
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c03.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c03.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g03_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g03_c03
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c04.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c04.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g03_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g03_c03
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g03_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g03_c04
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g03_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g03_c04
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c04.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c04.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g03_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g03_c04
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c05.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c05.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g03_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g03_c04
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g03_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g03_c05
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g03_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g03_c05
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c05.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c05.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g03_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g03_c05
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c06.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c06.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g03_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g03_c05
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g03_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g03_c06
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g03_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g03_c06
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c06.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c06.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g03_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g03_c06
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c07.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c07.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g03_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g03_c06
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g03_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g03_c07
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g03_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g03_c07
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c07.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g03_c07.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g03_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g03_c07
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c01.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c01.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g03_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g03_c07
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g04_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g04_c01
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g04_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g04_c01
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c01.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c01.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g04_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g04_c01
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c02.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c02.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g04_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g04_c01
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g04_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g04_c02
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g04_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g04_c02
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c02.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c02.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g04_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g04_c02
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c03.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c03.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g04_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g04_c02
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g04_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g04_c03
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g04_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g04_c03
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c03.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c03.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g04_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g04_c03
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c04.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c04.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g04_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g04_c03
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g04_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g04_c04
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g04_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g04_c04
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c04.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c04.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g04_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g04_c04
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c05.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c05.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g04_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g04_c04
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g04_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g04_c05
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g04_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g04_c05
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c05.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c05.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g04_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g04_c05
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c06.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c06.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g04_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g04_c05
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g04_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g04_c06
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g04_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g04_c06
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c06.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c06.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g04_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g04_c06
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c07.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c07.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g04_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g04_c06
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g04_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g04_c07
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g04_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g04_c07
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c07.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g04_c07.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g04_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g04_c07
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c01.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c01.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g04_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g04_c07
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g05_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g05_c01
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g05_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g05_c01
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c01.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c01.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g05_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g05_c01
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c02.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c02.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g05_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g05_c01
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g05_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g05_c02
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g05_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g05_c02
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c02.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c02.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g05_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g05_c02
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c03.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c03.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g05_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g05_c02
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g05_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g05_c03
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g05_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g05_c03
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c03.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c03.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g05_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g05_c03
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c04.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c04.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g05_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g05_c03
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g05_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g05_c04
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g05_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g05_c04
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c04.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c04.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g05_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g05_c04
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c05.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c05.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g05_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g05_c04
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g05_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g05_c05
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g05_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g05_c05
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c05.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c05.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g05_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g05_c05
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c06.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c06.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g05_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g05_c05
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g05_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g05_c06
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g05_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g05_c06
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c06.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c06.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g05_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g05_c06
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c07.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c07.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g05_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g05_c06
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g05_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g05_c07
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g05_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g05_c07
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c07.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g05_c07.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g05_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g05_c07
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c01.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c01.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g05_c07
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g05_c07
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g06_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g06_c01
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g06_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g06_c01
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c01.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c01.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g06_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g06_c01
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c02.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c02.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g06_c01
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g06_c01
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g06_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g06_c02
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g06_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g06_c02
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c02.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c02.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g06_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g06_c02
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c03.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c03.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g06_c02
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g06_c02
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g06_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g06_c03
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g06_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g06_c03
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c03.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c03.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g06_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g06_c03
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c04.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c04.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g06_c03
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g06_c03
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g06_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g06_c04
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g06_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g06_c04
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c04.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c04.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g06_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g06_c04
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c05.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c05.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g06_c04
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g06_c04
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g06_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g06_c05
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g06_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g06_c05
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c05.video.jpg
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c05.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g06_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g06_c05
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c06.spec.npy
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c06.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g06_c05
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g06_c05
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g06_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g06_c06
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g06_c06
+2025-03-20,14:19:47 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g06_c06
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c06.video.jpg
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c06.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g06_c06
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g06_c06
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c07.spec.npy
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c07.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g06_c06
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g06_c06
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g06_c07
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g06_c07
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g06_c07
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g06_c07
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c07.video.jpg
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g06_c07.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g06_c07
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g06_c07
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c01.spec.npy
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c01.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g06_c07
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g06_c07
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g07_c01
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g07_c01
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g07_c01
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g07_c01
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c01.video.jpg
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c01.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g07_c01
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g07_c01
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c02.spec.npy
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c02.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g07_c01
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g07_c01
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g07_c02
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g07_c02
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g07_c02
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g07_c02
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c02.video.jpg
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c02.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g07_c02
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g07_c02
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c03.spec.npy
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c03.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g07_c02
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g07_c02
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g07_c03
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g07_c03
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g07_c03
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g07_c03
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c03.video.jpg
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c03.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g07_c03
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g07_c03
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c04.spec.npy
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c04.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g07_c03
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g07_c03
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g07_c04
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g07_c04
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g07_c04
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g07_c04
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c04.video.jpg
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c04.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g07_c04
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g07_c04
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c05.spec.npy
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c05.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g07_c04
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g07_c04
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g07_c05
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g07_c05
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g07_c05
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g07_c05
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c05.video.jpg
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c05.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g07_c05
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g07_c05
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c06.spec.npy
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c06.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g07_c05
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g07_c05
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g07_c06
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g07_c06
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g07_c06
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g07_c06
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c06.video.jpg
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c06.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g07_c06
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g07_c06
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c07.spec.npy
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c07.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g07_c06
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g07_c06
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g07_c07
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g07_c07
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g07_c07
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g07_c07
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c07.video.jpg
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g07_c07.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g07_c07
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g07_c07
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g08_c01.spec.npy
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g08_c01.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g07_c07
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g07_c07
+INFO:root:Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g08_c01
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Setting new dictionary with key  v_BoxingPunchingBag_g08_c01
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g08_c01
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix spec.npy to v_BoxingPunchingBag_g08_c01
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g08_c01.video.jpg
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g08_c01.video.jpg
+INFO:root:Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g08_c01
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: Adding suffix video.jpg to v_BoxingPunchingBag_g08_c01
+INFO:root:Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type=<class 'dict'>. keys=dict_keys(['fname', 'data', '__url__'])
+INFO:root:Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g08_c02.spec.npy
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: processing file v_BoxingPunchingBag_g08_c02.spec.npy
+INFO:root:Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g08_c01
+2025-03-20,14:19:48 | INFO | Panya: [group_by_keys_nothrow]: yielding sample v_BoxingPunchingBag_g08_c01
+INFO:root:Panya: [preprocess_vggsound_audioset_temporal_contrast]: processing "sample" with keys ['__key__', '__url__', 'spec.npy', 'video.jpg']
+2025-03-20,14:19:48 | INFO | Panya: [preprocess_vggsound_audioset_temporal_contrast]: processing "sample" with keys ['__key__', '__url__', 'spec.npy', 'video.jpg']
+INFO:root:Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: cut_video function. video is of type:, <class 'bytes'>
+2025-03-20,14:19:48 | INFO | Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: cut_video function. video is of type:, <class 'bytes'>
+INFO:root:Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: [3, 13, 21], [19, 29, 37]
+2025-03-20,14:19:48 | INFO | Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: [3, 13, 21], [19, 29, 37]
+INFO:root:Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: stream is of type <class '_io.BytesIO'>
+2025-03-20,14:19:48 | INFO | Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: stream is of type <class '_io.BytesIO'>
+INFO:root:Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: video_npy shape after loading: (25, 224, 224, 3)
+2025-03-20,14:19:48 | INFO | Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: video_npy shape after loading: (25, 224, 224, 3)
+INFO:root:Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: video_npy shape after transpose: (25, 3, 224, 224)
+2025-03-20,14:19:48 | INFO | Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: video_npy shape after transpose: (25, 3, 224, 224)
+INFO:root:Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: Attempting to concatenate sample_video_list of len 3 along dimension 0
+2025-03-20,14:19:48 | INFO | Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: Attempting to concatenate sample_video_list of len 3 along dimension 0
+INFO:root:Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: sample_video_list[0] 1
+2025-03-20,14:19:48 | INFO | Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: sample_video_list[0] 1
 Traceback (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
   File "/Users/920753844/Diff-Foley/training/open_cavp_main/src/training/main_wds_intra_contrast.py", line 467, in <module>
     main(sys.argv[1:])
-  File "/Users/920753844/Diff-Foley/training/open_cavp_main/src/training/main_wds_intra_contrast.py", line 220, in main
-    model, preprocess_train, preprocess_val = create_model_and_transforms_video_spec(
-                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/920753844/Diff-Foley/training/open_cavp_main/src/open_clip/factory.py", line 392, in create_model_and_transforms_video_spec
-    model = create_model_video_spec(
-            ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/920753844/Diff-Foley/training/open_cavp_main/src/open_clip/factory.py", line 581, in create_model_video_spec
-    model = CLIP_Video_Spec(args=args, **model_cfg, cast_dtype=cast_dtype)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/920753844/Diff-Foley/training/open_cavp_main/src/open_clip/model.py", line 590, in __init__
-    state_dict = torch.load(ckpt_path)['model']
-                 ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/serialization.py", line 1114, in load
-    return _legacy_load(
-           ^^^^^^^^^^^^^
-  File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/serialization.py", line 1348, in _legacy_load
-    result = unpickler.load()
-             ^^^^^^^^^^^^^^^^
-  File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/serialization.py", line 1281, in persistent_load
-    obj = restore_location(obj, location)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/serialization.py", line 414, in default_restore_location
-    result = fn(storage, location)
-             ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/serialization.py", line 391, in _deserialize
-    device = _validate_device(location, backend_name)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/serialization.py", line 364, in _validate_device
-    raise RuntimeError(f'Attempting to deserialize object on a {backend_name.upper()} '
-RuntimeError: Attempting to deserialize object on a CUDA device but torch.cuda.is_available() is False. If you are running on a CPU-only machine, please use torch.load with map_location=torch.device('cpu') to map your storages to the CPU.
-I0310 18:23:48.278000 140620606932608 torch/_dynamo/utils.py:335] TorchDynamo compilation metrics:
-I0310 18:23:48.278000 140620606932608 torch/_dynamo/utils.py:335] Function    Runtimes (s)
-I0310 18:23:48.278000 140620606932608 torch/_dynamo/utils.py:335] ----------  --------------
-E0310 18:23:48.986000 139757145466496 torch/distributed/elastic/multiprocessing/api.py:833] failed (exitcode: 1) local_rank: 0 (pid: 426354) of binary: /Users/920753844/diff-foly-env-new/bin/python
+  File "/Users/920753844/Diff-Foley/training/open_cavp_main/src/training/main_wds_intra_contrast.py", line 393, in main
+    train_one_epoch(model, data, loss, epoch, optimizer, scaler, scheduler, args, tb_writer=writer)
+  File "/Users/920753844/Diff-Foley/training/open_cavp_main/src/training/train_wds_intra_contrast.py", line 81, in train_one_epoch
+    for i, batch in enumerate(dataloader):
+  File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/webdataset/pipeline.py", line 71, in iterator
+    for sample in self.iterator1():
+  File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/utils/data/dataloader.py", line 1344, in _next_data
+    return self._process_data(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/utils/data/dataloader.py", line 1370, in _process_data
+    data.reraise()
+  File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/_utils.py", line 706, in reraise
+    raise exception
+RuntimeError: Caught RuntimeError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/utils/data/_utils/worker.py", line 309, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 42, in fetch
+    data = next(self.dataset_iter)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/webdataset/pipeline.py", line 71, in iterator
+    for sample in self.iterator1():
+  File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/webdataset/filters.py", line 490, in _batched
+    for sample in data:
+  File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/webdataset/filters.py", line 309, in _map
+    if handler(exn):
+       ^^^^^^^^^^^^
+  File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/webdataset/filters.py", line 86, in reraise_exception
+    raise exn
+  File "/Users/920753844/diff-foly-env-new/lib64/python3.11/site-packages/webdataset/filters.py", line 307, in _map
+    result = f(sample)
+             ^^^^^^^^^
+  File "/Users/920753844/Diff-Foley/training/open_cavp_main/src/training/data.py", line 2201, in preprocess_vggsound_audioset_temporal_contrast
+    video, spec, start_frame, end_frame = cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_num=sample_num, shift_lb=shift_lb)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/920753844/Diff-Foley/training/open_cavp_main/src/training/data.py", line 2391, in cut_video_and_spec_vggsound_audioset_temporal_contrast
+    sample_video_list = torch.cat(sample_video_list, 0)                         # sample_num x T x C x H x W
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Sizes of tensors must match except in dimension 0. Expected size 16 but got size 12 for tensor number 1 in the list.
+
+I0320 14:19:48.055000 140456563807872 torch/_dynamo/utils.py:335] TorchDynamo compilation metrics:
+I0320 14:19:48.055000 140456563807872 torch/_dynamo/utils.py:335] Function    Runtimes (s)
+I0320 14:19:48.055000 140456563807872 torch/_dynamo/utils.py:335] ----------  --------------
+E0320 14:19:56.005000 140160388691584 torch/distributed/elastic/multiprocessing/api.py:833] failed (exitcode: 1) local_rank: 0 (pid: 709702) of binary: /Users/920753844/diff-foly-env-new/bin/python
 Traceback (most recent call last):
   File "/Users/920753844/diff-foly-env-new/bin/torchrun", line 8, in <module>
     sys.exit(main())
@@ -78,10 +1846,11 @@ Failures:
 ------------------------------------------------------------
 Root Cause (first observed failure):
 [0]:
-  time      : 2025-03-10_18:23:48
-  host      : n1.hpc.at.sfsu.edu
+  time      : 2025-03-20_14:19:56
+  host      : gpu01.hpc.at.sfsu.edu
   rank      : 0 (local_rank: 0)
-  exitcode  : 1 (pid: 426354)
+  exitcode  : 1 (pid: 709702)
   error_file: <N/A>
   traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
 ============================================================
+srun: error: gpu01: task 0: Exited with exit code 1
