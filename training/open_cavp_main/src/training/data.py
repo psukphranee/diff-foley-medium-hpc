@@ -2375,6 +2375,9 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
             # sample_video = np.tile(video_npy, (repeat_num, 1)) # Panya 3/20/25 commenting out per comment above
             video_npy_repeated = np.tile(video_npy, (repeat_num, 1)) #Panya 3/20/25. added this to replace line above (per comment above previous line)
             sample_video = video_npy_repeated[start_frame: end_frame] 
+
+            #Create message to output the previus two lines
+        
         else:
             sample_video = video_npy[start_frame: end_frame]
         # Video Tensor Transforms:
@@ -2387,7 +2390,7 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     logging.info(msg)
     msg = f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: sample_video_list[0] {len(sample_video_list[0])}"
     logging.info(msg)
-    
+
     sample_video_list = torch.cat(sample_video_list, 0)                         # sample_num x T x C x H x W
 
     log_str = f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: exiting and returning: sample_video_list, sample_spec_list, start_frame, end_frame"
