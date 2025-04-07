@@ -2377,12 +2377,16 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
             sample_video = video_npy_repeated[start_frame: end_frame] 
 
             #Create message to output the previus two lines
-        
+
         else:
             sample_video = video_npy[start_frame: end_frame]
         # Video Tensor Transforms:
         sample_video = transform_video(torch.from_numpy(sample_video))
         sample_video_list.append(sample_video.unsqueeze(0))
+
+        # Panya 4/6/25
+        msg = f'sample_video_list shape: {sample_video_list.shape}'
+        logging.info(msg)
     
     sample_spec_list = torch.from_numpy(np.concatenate(sample_spec_list, 0))    # sample_num x H x W
 
