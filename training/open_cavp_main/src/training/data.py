@@ -2354,7 +2354,8 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
             sample_spec = spec_raw[:, spec_start : spec_start + spec_truncate]
         else:
             sample_spec = spec_raw[:, spec_start : spec_start + spec_truncate]
-        sample_spec_list.append(sample_spec[None])
+        
+        sample_spec_list.append(sample_spec[None]) # Panya 4/7/25: sample_spec[None] shorthand for .unsqueeze(0)
     
     # Panya 10.5.24:
     '''
@@ -2377,12 +2378,11 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
             sample_video = video_npy_repeated[start_frame: end_frame] 
 
             #Create message to output the previus two lines
-
+        
         else:
             sample_video = video_npy[start_frame: end_frame]
         # Video Tensor Transforms:
         sample_video = transform_video(torch.from_numpy(sample_video))
-        
         sample_video_list.append(sample_video.unsqueeze(0))
 
     # Panya 4/6/25
