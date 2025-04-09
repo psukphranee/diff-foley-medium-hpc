@@ -2184,7 +2184,7 @@ def preprocess_vggsound_audioset_temporal_contrast(sample, sample_num=4, shift_l
     # print(src)
     # march 2 2025. comment next line and replace with following
     # msg = f'Panya: [preprocess_vggsound_audioset_temporal_contrast]: processing "sample" with keys {sample[list(sample.keys())[0]]}'
-    msg = f'Panya: [preprocess_vggsound_audioset_temporal_contrast]: processing "sample" {sample['__key__']} with keys {list(sample.keys())}'
+    msg = f'Panya: [preprocess_vggsound_audioset_temporal_contrast]: processing "sample" {sample.get("__key__", "UNKNOWN")} with keys {list(sample.keys())}'
     logging.info(msg)
     try:
         spec = sample["spec.npy"]
@@ -2328,7 +2328,7 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     stream = io.BytesIO(video_npy)
 
     msg = f'Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: stream is of type {type(stream)}'
-    logging.info(msg)
+    # logging.info(msg)
     
     video_npy = numpy.lib.format.read_array(stream) #Panya 10.5.24 - This is commented out in the original code. see repo. we are uncommenting in addition to commenting out the following line to see if this helps with our issues
     # video_npy = Image.open(stream) #Panya 10.5.24 Commenting this out to see if it helps with the error of stream not being an image
