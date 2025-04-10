@@ -2317,6 +2317,7 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
         start_frame = start_frame_index_list[i]
         spec_start = int(start_frame / fps * sr / hop_size)
         start_spec_list.append(spec_start)
+    logging.info(f'Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: start_spec_list are spectrogram starting points calculated in part from the starting video fram list and is {start_spec_list}')
     
     # Stream:
     stream = io.BytesIO(spec_raw)
