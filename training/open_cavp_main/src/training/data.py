@@ -2369,6 +2369,9 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     sample_video_list = []
     for i in range(sample_num): # Panya: 3/20/25 sample_num are slices of the passed video.
         start_frame, end_frame = start_frame_index_list[i], end_frame_index_list[i]
+        # Panya 4/9/25
+        log_str = f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: the current end frame is {end_frame} and it is being compared to video_npy.shape[0]={video_npy.shape[0]}"
+        logging.info(log_str)
         if video_npy.shape[0] < end_frame:
             repeat_num = int((start_frame + truncate_frame) // video_npy.shape[0]) + 1 #Panya 3/20/25 if the video is short, it calculate the number of times we have to repeat the video
 
