@@ -190,8 +190,8 @@ def group_by_keys_nothrow(data, keys=base_plus_ext, lcase=True, suffixes=None, h
     for filesample in data:
         assert isinstance(filesample, dict)
 
-        msg = f"Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type={type(filesample)}. keys={filesample.keys()}"
-        logging.info(msg)
+        # msg = f"Panya: [group_by_keys_nothrow]: isinstance assertion true. filesample type={type(filesample)}. keys={filesample.keys()}"
+        # logging.info(msg)
 
         if not filesample.keys():
             print("Panya: [group_by_keys_nothrow]: no keys in filesample, breaking.")
@@ -2386,8 +2386,10 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
         sample_video_list.append(sample_video.unsqueeze(0))
 
     # Panya 4/6/25
+    msg = f'Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: sample_video_list has clips of the following lengths: '
+    logging.info(msg)
     for item in sample_video_list:
-        msg = f'sample_video shape: {sample_video.shape}'
+        msg = f'sample_video shape: {item.shape}'
         logging.info(msg)
     
     sample_spec_list = torch.from_numpy(np.concatenate(sample_spec_list, 0))    # sample_num x H x W
