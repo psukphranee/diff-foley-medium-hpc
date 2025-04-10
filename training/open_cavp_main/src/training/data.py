@@ -2355,10 +2355,10 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
             spec_raw = np.tile(spec_raw, repeat_num)               # repeat 2 
             sample_spec = spec_raw[:, spec_start : spec_start + spec_truncate]
             logging.info(f'Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: spec_raw is too short and is tiled {repeat_num}')
-            logging.info(f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: Extracted from repeated sample of shape: {sample_spec.shape}")
+            logging.info(f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: Extracted sample_spec from repeated sample of shape: {sample_spec.shape}")
         else:
             sample_spec = spec_raw[:, spec_start : spec_start + spec_truncate]
-            logging.info(f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: Extracted from original sample of shape: {sample_spec.shape}")
+            logging.info(f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: Extracted sample_spec from original sample of shape: {sample_spec.shape}")
         
         sample_spec_list.append(sample_spec[None]) # Panya 4/7/25: sample_spec[None] shorthand for .unsqueeze(0)
     
