@@ -2302,9 +2302,7 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     assert sample_num == 2 or sample_num == 3 or sample_num == 4 , "sample num must be [2,3,4]"
     start_frame_index_list, end_frame_index_list = sample_temporal_index(sample_num=sample_num, shift_lb=shift_lb)
     start_spec_list = []
-    msg = f'Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: start/end frames index list: {str(start_frame_index_list)}, {str(end_frame_index_list)}'
-    #print(msg)
-    logging.info(msg)
+    
     
     truncate_sec = 4
     fps = 4
@@ -2343,6 +2341,10 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     video_npy = video_npy.reshape(shape_h, -1, shape_h, 3).transpose(1,3,0,2)    # T x 3 x H x W
     log_str = f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: video_npy shape after transpose: {video_npy.shape}"
     logging.info(log_str)
+
+    msg = f'Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: start/end frames index list: {str(start_frame_index_list)}, {str(end_frame_index_list)}'
+    #print(msg)
+    logging.info(msg)
 
     # Check Spec_Raw and Crop Spec:
     sample_spec_list = []
