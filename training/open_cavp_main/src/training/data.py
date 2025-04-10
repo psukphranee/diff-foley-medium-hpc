@@ -2302,7 +2302,7 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
     assert sample_num == 2 or sample_num == 3 or sample_num == 4 , "sample num must be [2,3,4]"
     start_frame_index_list, end_frame_index_list = sample_temporal_index(sample_num=sample_num, shift_lb=shift_lb)
     start_spec_list = []
-    msg = f'Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast] start/end frames index list: {str(start_frame_index_list)}, {str(end_frame_index_list)}'
+    msg = f'Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: start/end frames index list: {str(start_frame_index_list)}, {str(end_frame_index_list)}'
     #print(msg)
     logging.info(msg)
     
@@ -2396,7 +2396,7 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
 
     sample_video_list = torch.cat(sample_video_list, 0)                         # sample_num x T x C x H x W
 
-    msg = f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: Concatenate sample_video_list of len {len(sample_video_list)} along dimension 0. Result is of shape {sample_spec_list.shape}"
+    msg = f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: Concatenate sample_video_list of len {len(sample_video_list)} along dimension 0. Result is of shape {sample_video_list.shape}. Similarly, sample_spec_list is of shape {sample_spec_list.shape}."
     logging.info(msg)
 
     log_str = f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: exiting and returning: sample_video_list, sample_spec_list, start_frame, end_frame"
