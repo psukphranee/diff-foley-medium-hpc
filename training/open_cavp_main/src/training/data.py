@@ -2379,7 +2379,7 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
 
             #Panya 3/20/25. With the help of ChatGPT, we found that the following two lines may be erroroneous. The previous line does a wrap around of the video segment if it is too short. But then sample_video is slicing the original unwrapped segment.
             # sample_video = np.tile(video_npy, (repeat_num, 1)) # Panya 3/20/25 commenting out per comment above
-            video_npy_repeated = np.tile(video_npy, (repeat_num, 1)) #Panya 3/20/25. added this to replace line above (per comment above previous line)
+            video_npy_repeated = np.tile(video_npy, (repeat_num, 1,1,1)) #Panya 3/20/25. added this to replace line above (per comment above previous line). Also, 4/9/25: we replaced (repeat_num, 1) with (repeat_num, 1,1,1)
             logging.info(f'Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: video_npy is too short and is tiled {repeat_num} times. The result is of shape {video_npy_repeated.shape}')
             sample_video = video_npy_repeated[start_frame: end_frame] 
             logging.info(f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: Extracted repeated sample of shape: {sample_video.shape}")
