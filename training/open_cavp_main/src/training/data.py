@@ -2382,11 +2382,11 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
             video_npy_repeated = np.tile(video_npy, (repeat_num, 1)) #Panya 3/20/25. added this to replace line above (per comment above previous line)
             msg = f'video_npy is too short and is tiled {repeat_num} times. The result is of shape {video_npy_repeated.shape}'
             sample_video = video_npy_repeated[start_frame: end_frame] 
-
+            logging.info(f"Extracted repeated sample of shape: {sample_video.shape}")
             #Create message to output the previus two lines
-        
         else:
             sample_video = video_npy[start_frame: end_frame]
+            logging.info(f"Extracted normal sample of shape: {sample_video.shape}")
         # Video Tensor Transforms:
         sample_video = transform_video(torch.from_numpy(sample_video))
         sample_video_list.append(sample_video.unsqueeze(0))
