@@ -2354,8 +2354,11 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
             repeat_num = int((spec_start + spec_truncate) // spec_raw.shape[-1]) + 1
             spec_raw = np.tile(spec_raw, repeat_num)               # repeat 2 
             sample_spec = spec_raw[:, spec_start : spec_start + spec_truncate]
+            logging.info(f'Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: spec_raw is too short and is tiled {repeat_num}')
+            logging.info(f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: Extracted from repeated sample of shape: {sample_spec.shape}")
         else:
             sample_spec = spec_raw[:, spec_start : spec_start + spec_truncate]
+            logging.info(f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: Extracted from original sample of shape: {sample_spec.shape}")
         
         sample_spec_list.append(sample_spec[None]) # Panya 4/7/25: sample_spec[None] shorthand for .unsqueeze(0)
     
@@ -2382,11 +2385,11 @@ def cut_video_and_spec_vggsound_audioset_temporal_contrast(video, spec, sample_n
             video_npy_repeated = np.tile(video_npy, (repeat_num, 1,1,1)) #Panya 3/20/25. added this to replace line above (per comment above previous line). Also, 4/9/25: we replaced (repeat_num, 1) with (repeat_num, 1,1,1)
             logging.info(f'Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: video_npy is too short and is tiled {repeat_num} times. The result is of shape {video_npy_repeated.shape}')
             sample_video = video_npy_repeated[start_frame: end_frame] 
-            logging.info(f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: Extracted repeated sample of shape: {sample_video.shape}")
+            logging.info(f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: Extracted from repeated sample of shape: {sample_video.shape}")
             #Create message to output the previus two lines
         else:
             sample_video = video_npy[start_frame: end_frame]
-            logging.info(f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: Extracted normal sample of shape: {sample_video.shape}")
+            logging.info(f"Panya: [cut_video_and_spec_vggsound_audioset_temporal_contrast]: Extracted from original sample of shape: {sample_video.shape}")
         # Video Tensor Transforms:
         sample_video = transform_video(torch.from_numpy(sample_video))
         sample_video_list.append(sample_video.unsqueeze(0))
